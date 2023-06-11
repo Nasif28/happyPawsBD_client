@@ -1,16 +1,11 @@
 import {
   Box,
-  Button,
   Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
   CardMedia,
   Link,
   Stack,
   Typography,
 } from "@mui/material";
-import { red } from "@mui/material/colors";
 import { Carousel } from "@trendyol-js/react-carousel";
 import React from "react";
 
@@ -37,7 +32,7 @@ const Vats = () => {
         <Carousel
           show={3}
           slide={3}
-          transition={.5}
+          transition={0.5}
           swiping={true}
           leftArrow="←"
           rightArrow="→"
@@ -47,7 +42,7 @@ const Vats = () => {
             sx={{
               width: 250,
               height: 150,
-              margin: "20px 60px"
+              margin: "20px 60px",
             }}
           >
             <CardMedia
@@ -101,7 +96,7 @@ const Vats = () => {
             sx={{
               width: 250,
               height: 150,
-              margin: "20px 60px"
+              margin: "20px 60px",
             }}
           >
             <CardMedia
@@ -155,7 +150,7 @@ const Vats = () => {
             sx={{
               width: 250,
               height: 150,
-              margin: "20px 60px"
+              margin: "20px 60px",
             }}
           >
             <CardMedia
@@ -209,7 +204,7 @@ const Vats = () => {
             sx={{
               width: 250,
               height: 150,
-              margin: "20px 50px"
+              margin: "20px 50px",
             }}
           >
             <CardMedia

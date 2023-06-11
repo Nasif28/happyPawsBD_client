@@ -20,14 +20,14 @@ const Vat_Care = () => {
         <Stack spacing={5} sx={{ p: 4 }} flex={1}>
           <Typography
             variant="h3"
-            color="initial"
-            sx={{ lineHeight: 1.2, fontWeight: "bold" }}
+            color="primary.headline"
+            sx={{ lineHeight: 1.2, fontWeight: "900" }}
           >
             Great Pet Care at your fingertips
           </Typography>
 
-          <Typography variant="body1" color="initial" sx={{ lineHeight: 1.2 }}>
-            With vet-backed petcare products, guidance, and Rewards – we’re here
+          <Typography variant="body1" color="primary.para" sx={{ lineHeight: 1.5 }}>
+            With vet-backed petcare products, guidance, and Rewards – <br />we’re here
             to support your pet’s health in every way we can.
           </Typography>
 
@@ -42,7 +42,7 @@ const Vat_Care = () => {
           </Button>
         </Stack>
 
-        <Box flex={1.2}>
+        <Box flex={1.1}>
           <img
             src="./../../../images/vat-care.png"
             alt="Vat care"

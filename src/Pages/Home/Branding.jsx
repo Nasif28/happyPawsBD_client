@@ -19,15 +19,15 @@ const Branding = () => {
         <Stack spacing={6} sx={{ p: 4 }} flex={1.2}>
           <Typography
             variant="h3"
-            color="initial"
+            color="primary.headline"
             sx={{ lineHeight: 1.2, fontWeight: "900" }}
           >
             100% Committed to Your Pet's Health
           </Typography>
 
-          <Typography variant="body1" color="initial" sx={{ lineHeight: 1.2 }}>
-            With vet-backed petcare products, guidance, and Rewards – we’re here
-            to support your pet’s health in every way we can.
+          <Typography variant="body1" color="primary.para" sx={{ lineHeight: 1.5 }}>
+            With vet-backed petcare products, guidance, and Rewards – <br />we’re here
+            to support your pet’s health in every way we can
           </Typography>
 
           <ButtonGroup
