@@ -11,7 +11,7 @@ import React from "react";
 
 const Vats = () => {
   return (
-    <Box className="myContainer" mt={20} textAlign={"center"}>
+    <Box className="myContainer" my={20} textAlign={"center"}>
       <Typography
         variant="h4"
         color="primary.headline"

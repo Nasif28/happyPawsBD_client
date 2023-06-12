@@ -7,15 +7,13 @@ const Vat_Care = () => {
     height: "70vh",
     backgroundColor: "rgba(122, 178, 89, 0.15)",
     padding: theme.spacing(4),
-    margin: "1rem 0",
-    // clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 100%)",
     display: "flex",
     justifyContent: "space-between",
-    borderRadius: "1rem",
+    borderRadius: ".6rem",
   }));
 
   return (
-    <Box className="myContainer">
+    <Box className="myContainer" my={20}>
       <BrandingWrapper>
         <Stack spacing={5} sx={{ p: 4 }} flex={1}>
           <Typography

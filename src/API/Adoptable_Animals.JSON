@@ -1,0 +1,123 @@
+[
+    {
+        "rank": "1",
+        "name": "Labrador Retriever",
+        "cost": "1000",
+        "origin": "Canada",
+        "img": "https://www.dogbreedslist.info/uploads/dog-pictures/labrador-retriever-2-2.jpg",
+        "colors": "Black, Chocolate, Yellow",
+        "lifeSpan": "10 years",
+        "shortDescription": "The Labrador Retriever is a medium to large-sized, short-coupled, powerfully-built dog with a short, dense, water-resistant coat; small, drop ears; and a short, thick otter-like tail carried level with the back or with a slight upward curve.",
+        "description": "The Labrador Retriever is a medium to large-sized, short-coupled, powerfully-built dog with a short, dense, water-resistant coat; small, drop ears; and a short, thick otter-like tail carried level with the back or with a slight upward curve. The length of body is equal to or only slightly longer than the height at the withers, and the distance from the elbows to the ground is equal to one-half the height at the withers. Balance, outline, intelligence, temperament and movement are of overriding importance. The Labrador Retriever is a breed of moderation, thoroughly sound, and willing and able to do its work. The Labrador Retriever is a dog without exaggeration, so light, weedy dogs; long, low-stationed dogs; and cloddy, lumbering dogs are to be equally penalized. The Labrador Retriever should be evaluated as a working gun dog, and exaggerations or faults should be penalized in proportion to how much they interfere with the dog’s ability to work. The Labrador Retriever is an enthusiastic hunter with a good nose and a soft mouth. They excel in all performance activities. Another essential characteristic of the Labrador Retriever is the short, dense, double coat that protects the dog when retrieving from water. The short, “otter” tail is another distinctive feature of this breed. Labrador Retrievers are noted for their excellent temperaments. This breed is friendly, outgoing and eager to please. They are extremely intelligent and easily trained to perform a variety of complex tasks."
+    },
+    {
+        "rank": "2",
+        "name": "German Shepherd",
+        "cost": "1500",
+        "origin": "Germany",
+        "img": "https://www.dogbreedslist.info/uploads/dog-pictures/german-shepherd-dog-2.jpg",
+        "colors": "Black, Silver, Red",
+        "lifeSpan": "12 years",
+        "shortDescription": "The German Shepherds are medium to large-sized dogs, well-balanced, muscular dog, slightly longer than tall, with a medium length coat, erect ears, and a low-set natural tail that normally reaches to the hock..",
+        "description": "The German Shepherds are medium to large-sized dogs, well-balanced, muscular dog, slightly longer than tall, with a medium length coat, erect ears, and a low-set natural tail that normally reaches to the hock and is carried in a slight curve like a saber. The outline of the German Shepherd Dog is made up of smooth curves rather than angles. The head is in proportion to the size of the body, strong without appearing coarse or fine. Gender differences are readily apparent. The German Shepherd Dog should be evaluated as an all-around working dog, and exaggerations or faults should be penalized in proportion to how much they interfere with the dog’s ability to work. The German Shepherd Dog is confident and fearless, willing to be approached, yet a certain level of aloofness towards strangers is acceptable. When working, the German Shepherd is alert and eager, adapting well to new tasks. Lack of confidence is a serious defect in the character of a German Shepherd. The structure of this breed was designed for efficient locomotion, particularly at the trot, so poor movement is another serious fault."
+    },
+    {
+        "rank": "3",
+        "name": "Golden Retriever",
+        "cost": "1500",
+        "origin": "United Kingdom",
+        "img": "https://www.dogbreedslist.info/uploads/dog-pictures/golden-retriever-2-3.jpg",
+        "colors": "Golden, Dark Golden, Light Golden",
+        "lifeSpan": "11 years",
+        "shortDescription": "The Golden Retriever is a medium-sized to large, well-balanced dog with a distinctive golden-colored coat; small, drop ears; and a natural tail carried level with the back or with a slight upward curve.",
+        "description": "The Golden Retriever is a medium-sized to large, well-balanced dog with a distinctive golden-colored coat; small, drop ears; and a natural tail carried level with the back or with a slight upward curve. The correct relationship of length of body to height is 12:11. The Golden Retriever is a dog without exaggeration. The Golden Retriever should be evaluated as a working gun dog, and exaggerations or faults should be penalized in proportion to how much they interfere with the dog’s ability to work. The breed’s most readily identifiable characteristic is its rich, lustrous golden color. Another essential characteristic is proper temperament. A Golden Retriever is friendly, calm, compliant and compatible with people and other dogs. Goldens are particularly good with children. The Golden Retriever’s friendly temperament is reflected in his kindly expression. The Golden Retriever is a powerfully built dog, with a good nose for tracking, a soft mouth, and an eagerness to learn."
+    },
+    {
+        "rank": "4",
+        "name": "Bulldog",
+        "cost": "3000",
+        "origin": "United Kingdom",
+        "img": "https://www.dogbreedslist.info/uploads/dog-pictures/bulldog-2.jpg",
+        "colors": "White, Fawn, Gray, Red",
+        "lifeSpan": "9 years",
+        "shortDescription": "The English Bulldog is a wide, medium-sized, compact dog with short legs. The body and head are massive with extra skin on both the skull and forehead falling in folds. The cheeks extend to the sides of the eyes.",
+        "description": "The English Bulldog is a wide, medium-sized, compact dog with short legs. The body and head are massive with extra skin on both the skull and forehead falling in folds. The cheeks extend to the sides of the eyes. The muzzle is wide, short and pug with a broad, deep stop. The black nose is broad with large nostrils. The dark eyes are deep set. The rose ears are small, thin and set high on the head. The jaws are massive, very broad, and square with hanging upper lips. The teeth should have an under bite. The tail is either straight or screwed and carried low. The short, flat coat is straight, smooth and glossy. Coat colors include red brindle and other shades of brindle, solid white, solid red, fawn, fallow, piebald, pale yellow or washed-out red or white or a combination of these colors.Despite its sourmug, the bulldog is jovial, comical and amiable, among the most docile and mellow of dogs. It is willing to please, although it retains a stubborn streak. It is very good with children. Most are moderately friendly toward strangers. Although some can be aggressive with strange dogs, the breed is quite good with other pets."
+    },
+    {
+        "rank": "5",
+        "name": "Beagle",
+        "cost": "800",
+        "origin": "United Kingdom",
+        "img": "https://www.dogbreedslist.info/uploads/dog-pictures/beagle-2-2.jpg",
+        "colors": "Black, Tricolor, Red, White",
+        "lifeSpan": "14 years",
+        "shortDescription": "The Beagle should look like a miniature foxhound, solid for its size. The beagle's moderate size enables it to be followed on foot. It can also be carried to the hunt, and once there, can scurry around in thick underbrush.",
+        "description": "The Beagle should look like a miniature foxhound, solid for its size. The beagle's moderate size enables it to be followed on foot. It can also be carried to the hunt, and once there, can scurry around in thick underbrush. Its close hard coat protects it from underbrush. Its moderate build enables it to nimbly traverse rough terrain. The beagle's amiable personality allows it to get along with other dogs and to be a successful pack hunter. The beagle is noted for its melodious bay, which helps hunters locate it from a distance. One of the most amiable hounds, the beagle was bred as a pack hunter and needs companionship, whether human or canine. It loves to explore the outdoors and is an enthusiastic trailer. Given adequate exercise, it is a calm, tractable house pet. It is an excellent child's dog, gentle, incredibly tolerant and always ready to join in a game or an adventure. It is an independent breed, however, and may run off if a trail beckons. It barks and howls."
+    },
+    {
+        "rank": "6",
+        "name": "Rottweiler",
+        "cost": "1600",
+        "origin": "Germany",
+        "img": "https://www.dogbreedslist.info/uploads/dog-pictures/rottweiler-2-2.jpg",
+        "colors": "Black",
+        "lifeSpan": "10 years",
+        "shortDescription": "The Rottweiler is a large breed, slightly longer than it is tall and robust with a powerful, substantial build. It combines the abilities necessary to drive cattle for long distances as well as serve as a formidable guard dog",
+        "description": "The Rottweiler is a large breed, slightly longer than it is tall and robust with a powerful, substantial build. It combines the abilities necessary to drive cattle for long distances as well as serve as a formidable guard dog — jobs that entail great strength, agility and endurance. Its trot is sure and powerful, with strong reach and drive. Its coat is straight, coarse and dense. Its expression reflects the Rottweiler at its best — noble, alert and self-assured. Confident, bold, alert and imposing, the Rottweiler is a popular choice for its ability to protect. As befitting its self-assured nature, it tends to be headstrong and stubborn and is often domineering. It is reserved, often wary, toward strangers. It may be overly protective if it perceives that its family is being threatened, and it may also attempt to herd children. This is a powerful breed that needs socialization, consistent training and daily exercise to be the best it can be — a loyal family member and guardian."
+    },
+    {
+        "rank": "7",
+        "name": "Yorkshire Terrier",
+        "cost": "2200",
+        "origin": "United Kingdom",
+        "img": "https://www.dogbreedslist.info/uploads/dog-pictures/yorkshire-terrier-2-2.jpg",
+        "colors": "Black, Gold, Tan",
+        "lifeSpan": "14 years",
+        "shortDescription": "The Yorkshire Terrier’s appearance is that of a well-balanced, long coated, small (Toy-type) terrier, readily identified by its steel blue and tan, straight-flowing coat. The hair is parted on the muzzle and from the base of the skull to the end of the tail.",
+        "description": "The Yorkshire Terrier’s appearance is that of a well-balanced, long coated, small (Toy-type) terrier, readily identified by its steel blue and tan, straight-flowing coat. The hair is parted on the muzzle and from the base of the skull to the end of the tail. The body is square and evenly proportioned. The dog’s high head carriage and confident manner gives the appearance of vigor and self-importance. The Yorkshire Terrier is tolerant of older children, provided they respect its personal space. Due to its small size and bold temperament (which arises from its working origins) the Yorkshire Terrier is not recommended for young children unless carefully supervised. The Yorkshire Terrier can occasionally be a bit too brave when dealing with larger dogs, but gets along fine with cats and other household pets. Yorkies prefer life indoors, and are especially unsuited to cold climates."
+    },
+    {
+        "rank": "8",
+        "name": "Siberian Husky",
+        "cost": "1200",
+        "origin": "Russia",
+        "img": "https://www.dogbreedslist.info/uploads/dog-pictures/siberian-husky-2.jpg",
+        "colors": "Agouti, Gray, Sable, Red, White",
+        "lifeSpan": "13 years",
+        "shortDescription": "The Siberian Husky combines power, speed and endurance, enabling it to carry a light load at moderate speed over a great distance. It is moderately compact, slightly longer than it is tall, and of definite Northern heritage.",
+        "description": "The Siberian Husky combines power, speed and endurance, enabling it to carry a light load at moderate speed over a great distance. It is moderately compact, slightly longer than it is tall, and of definite Northern heritage. It is quick and light on its feet, with a smooth and effortless stride exhibiting both good reach and drive. It has a double coat of medium length, with a soft, dense undercoat and a straight, somewhat flat-lying outer coat. Its expression is keen but friendly, interested and even mischievous. Fun-loving, adventurous, alert, independent, clever, stubborn, mischievous and obstinate — all describe the Siberian husky. This breed loves to run and will roam if given the chance. It may be aggressive toward strange dogs, but it is generally good with other household dogs. In fact, it is a very social dog that must have human or canine companionship. It may chase strange cats or livestock. Some howl, dig and chew."
+    },
+    {
+        "rank": "9",
+        "name": "Pomeranian",
+        "cost": "2500",
+        "origin": "Poland",
+        "img": "https://www.dogbreedslist.info/uploads/dog-pictures/pomeranian-2.jpg",
+        "colors": "Black, Tan, Blue, Brown, Red",
+        "lifeSpan": "14 years",
+        "shortDescription": "The Pomeranian is a small, square-proportioned, miniature spitz with a cobby, rounded body. It shares the spitz characteristics of small ears, double coat and curled tail. It has an alert, foxlike expression.",
+        "description": "The Pomeranian is a small, square-proportioned, miniature spitz with a cobby, rounded body. It shares the spitz characteristics of small ears, double coat and curled tail. It has an alert, foxlike expression. Its gait is smooth and free with good reach and drive. The soft thick undercoat combined with the longer harsh outer coat, standing off from the body, combine to give the dog a unique puffy appearance. This look is further accentuated by the thick ruff and a head carriage that is naturally up-gazing. Bouncy, bold and busy, the Pomeranian makes the most of every day. It is curious, playful, self-confident (even cocky) and attentive, ever ready for a game or adventure. It is reserved toward strangers. Some can be aggressive toward other dogs. Some bark a lot."
+    },
+    {
+        "rank": "10",
+        "name": "Maltese",
+        "cost": "2000",
+        "origin": "Italy",
+        "img": "https://www.dogbreedslist.info/uploads/dog-pictures/maltese-2.jpg",
+        "colors": "White",
+        "lifeSpan": "16 years",
+        "shortDescription": "Even though the breed is known for its coat, its body structure, facial expression and overall carriage are essential components of the type. The Maltese is a diminutive dog with a compact, square body.",
+        "description": "Even though the breed is known for its coat, its body structure, facial expression and overall carriage are essential components of the type. The Maltese is a diminutive dog with a compact, square body, covered all over with long, flat, silky, white hair hanging almost to the ground. The expression is gentle yet alert. It is a vigorous dog, with a jaunty, smooth, flowing gait. The well-built Maltese seems to float over the ground when trotting. They are one of the most gentle mannered of all little dogs, but are also full of energy and very playful, making them great family dogs. Maltese are highly intelligent and know very well how to use their charm to get their way. If given the chance, they become easily spoiled. This isn’t a problem for dog savvy owners, but many pet owners will give in, often resulting in a pet with poor manners. It is not recommended that Maltese go to homes with young children, where as tiny puppies, there is the possibility of being stepped on or dropped by a child."
+    },
+    {
+        "rank": "11",
+        "name": "Collie",
+        "cost": "1600",
+        "origin": "United Kingdom",
+        "img": "https://www.dogbreedslist.info/uploads/dog-pictures/rough-collie-2.jpg",
+        "colors": "Black, White, Blue, Sable",
+        "lifeSpan": "15 years",
+        "shortDescription": "The Collie is an active, lithe, strong dog that combines strength, speed and grace. Its gait suggests effortless speed as well as the ability to change speed and direction instantly, as required in herding dogs.",
+        "description": "The Collie is an active, lithe, strong dog that combines strength, speed and grace. Its gait suggests effortless speed as well as the ability to change speed and direction instantly, as required in herding dogs. The coat can be of two types, both with a soft, abundant undercoat. The outer coat of the smooth variety is short, hard and flat; that of the rough variety is straight, harsh, abundant and long, particularly on the mane and ruff. The collie's expression is an important hallmark of the breed, and depends upon the shape and balance of the skull and muzzle, as well as the characteristics of the eyes and ears. It should be bright, alert and intelligent — traits accentuated by a fairly refined head. Collies are impressive dogs; friendly, highly-intelligent, proud, and beautiful. They are great at understanding human's moods and they are very fond of children, making them ideal family pets. Collies require daily exercise and human interaction to be happy. Gentle training is all that is required for a Collie to learn easily and quickly. They have historically been and continue to be beloved family companions."
+    }
+]
