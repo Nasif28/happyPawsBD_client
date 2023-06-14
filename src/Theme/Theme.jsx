@@ -7,7 +7,7 @@ export const theme = createTheme({
       yellow: "#FBD062",
       green: "#7AB259",
       headline: "#333332",
-      para: "#404040",
+      para: "#626262",
       back: "rgba(122, 178, 89, 0.15)"
     },
   },

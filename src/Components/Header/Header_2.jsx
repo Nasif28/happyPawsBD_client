@@ -12,12 +12,16 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { Stack } from "@mui/material";
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [menu1AnchorEl, setMenu1AnchorEl] = React.useState(null);
+  const [menu2AnchorEl, setMenu2AnchorEl] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -39,7 +43,22 @@ function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  // ----------------
+  const handleMenu1Click = (event) => {
+    setMenu1AnchorEl(event.currentTarget);
+  };
 
+  const handleMenu1Close = () => {
+    setMenu1AnchorEl(null);
+  };
+
+  const handleMenu2Click = (event) => {
+    setMenu2AnchorEl(event.currentTarget);
+  };
+
+  const handleMenu2Close = () => {
+    setMenu2AnchorEl(null);
+  };
   return (
     <AppBar position="static" color="default" sx={{ mt: 30 }}>
       <Container maxWidth="xl">
@@ -139,89 +158,144 @@ function Header() {
 
           {/* Nav Section --------------------------------------------------------- */}
 
-          <Box
+          <Stack direction="row" spacing={2}>
+            <Button color="inherit">Features</Button>
+            <Button color="inherit">Pricing</Button>
+            <Button color="inherit">About</Button>
+            <Button
+              endIcon={<KeyboardArrowDownIcon />}
+              onClick={handleMenu1Click}
+            >
+              Resources
+            </Button>
+            <Button
+              endIcon={<KeyboardArrowDownIcon />}
+              onClick={handleMenu2Click}
+            >
+              Animal
+            </Button>
+            <Button color="inherit">Login</Button>
+          </Stack>
+          <Menu
+            anchorEl={menu1AnchorEl}
+            keepMounted
+            open={Boolean(menu1AnchorEl)}
+            onClose={handleMenu1Close}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            MenuListProps={{
+              "aria-labelledby": "resources-button",
+            }}
+          >
+            <MenuItem onClick={handleMenu1Close}>Blog</MenuItem>
+            <MenuItem onClick={handleMenu1Close}>Podcast</MenuItem>
+          </Menu>
+          <Menu
+            anchorEl={menu2AnchorEl}
+            keepMounted
+            open={Boolean(menu2AnchorEl)}
+            onClose={handleMenu2Close}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            MenuListProps={{
+              "aria-labelledby2": "animal-button",
+            }}
+          >
+            <MenuItem onClick={handleMenu2Close}>Blog2</MenuItem>
+            <MenuItem onClick={handleMenu2Close}>Podcast2</MenuItem>
+          </Menu>
+
+          {/* --------------------- */}
+           {/* <Box
             sx={{
-              textAlign: "center",
+              mx: 4,
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
             }}
           >
             <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, px: 2, display: "block" }}
-            >
-              Place1
-            </Button>
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, px: 2, display: "block" }}
-            >
-              Place2
-            </Button>
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, px: 2, display: "block" }}
-            >
-              Place3
-            </Button>
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, px: 2, display: "block" }}
-            >
-              Place4
-            </Button>
-
-            <Button
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-              sx={{ my: 2, px: 2 }}
-            >
-              Dashboard
-              <KeyboardArrowDownIcon />
-            </Button>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                "aria-labelledby": "basic-button",
+              sx={{
+                px: 2,
+                color: "inherit",
+                fontWeight: "bold",
+                "&:hover": { backgroundColor: "rgba(122, 178, 89, 0.15)" },
               }}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
-            </Menu>
-
-            <Button
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-              sx={{ my: 2, px: 2 }}
-            >
-              Dashboard2
-              <KeyboardArrowDownIcon />
+              Home
             </Button>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                "aria-labelledby": "basic-button",
+            <Button
+              sx={{
+                px: 2,
+                color: "inherit",
+                fontWeight: "bold",
+                "&:hover": { backgroundColor: "rgba(122, 178, 89, 0.15)" },
               }}
             >
-              <MenuItem onClick={handleClose}>Profile2</MenuItem>
-              <MenuItem onClick={handleClose}>My account2</MenuItem>
-              <MenuItem onClick={handleClose}>Logout2</MenuItem>
-            </Menu>
-          </Box>
-
+              Pets
+            </Button>
+            <Button
+              sx={{
+                px: 2,
+                color: "inherit",
+                fontWeight: "bold",
+                "&:hover": { backgroundColor: "rgba(122, 178, 89, 0.15)" },
+              }}
+            >
+              Shop
+            </Button>
+            <Button
+              sx={{
+                px: 2,
+                color: "inherit",
+                fontWeight: "bold",
+                "&:hover": { backgroundColor: "rgba(122, 178, 89, 0.15)" },
+              }}
+            >
+              Veterinary Services
+            </Button>
+            <Button
+              sx={{
+                px: 2,
+                color: "inherit",
+                fontWeight: "bold",
+                "&:hover": { backgroundColor: "rgba(122, 178, 89, 0.15)" },
+              }}
+            >
+              Get Involved
+            </Button>
+            <Button
+              sx={{
+                px: 2,
+                color: "inherit",
+                fontWeight: "bold",
+                "&:hover": { backgroundColor: "rgba(122, 178, 89, 0.15)" },
+              }}
+            >
+              About Us
+            </Button>
+            <Button
+              sx={{
+                px: 2,
+                color: "inherit",
+                fontWeight: "bold",
+                "&:hover": { backgroundColor: "rgba(122, 178, 89, 0.15)" },
+              }}
+            >
+              Contact Us
+            </Button>
+          </Box> */}
           {/* Open Setting Section ----------------------------------------------------- */}
 
           <Box sx={{ flexGrow: 0 }}>
