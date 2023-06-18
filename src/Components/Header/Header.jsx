@@ -18,6 +18,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Stack } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
   const { window } = props;
@@ -42,7 +43,8 @@ const Header = (props) => {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
-  // ----------------
+
+  // Full View Menu Nested Item Controller ----------------------------
   const handleMenu1Click = (event) => {
     setMenu1AnchorEl(event.currentTarget);
   };
@@ -188,6 +190,7 @@ const Header = (props) => {
               Contact Us
             </Button>
           </Box> */}
+
           <Stack
             direction="row"
             spacing={2}
@@ -198,20 +201,29 @@ const Header = (props) => {
             }}
           >
             <Button
+              // href="/"
               sx={{
-                color: "inherit",
-                fontWeight: "bold",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              Home
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/home"
+              >
+                Home
+              </Link>
             </Button>
+
             <Button
               // endIcon={<KeyboardArrowDownIcon />}
               onClick={handleMenu1Click}
               sx={{
                 color: "inherit",
-                fontWeight: "bold",
+                fontWeight: "600",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
@@ -224,7 +236,7 @@ const Header = (props) => {
               onClick={handleMenu2Click}
               sx={{
                 color: "inherit",
-                fontWeight: "bold",
+                fontWeight: "600",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
@@ -237,7 +249,7 @@ const Header = (props) => {
               onClick={handleMenu3Click}
               sx={{
                 color: "inherit",
-                fontWeight: "bold",
+                fontWeight: "600",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
@@ -250,7 +262,7 @@ const Header = (props) => {
               onClick={handleMenu4Click}
               sx={{
                 color: "inherit",
-                fontWeight: "bold",
+                fontWeight: "600",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
@@ -260,21 +272,36 @@ const Header = (props) => {
 
             <Button
               sx={{
-                color: "inherit",
-                fontWeight: "bold",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              About Us
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/about_us"
+              >
+                About Us
+              </Link>
             </Button>
+
             <Button
               sx={{
-                color: "inherit",
-                fontWeight: "bold",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              Contact Us
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/contact_us"
+              >
+                Contact Us
+              </Link>
             </Button>
           </Stack>
 
@@ -296,79 +323,134 @@ const Header = (props) => {
             <MenuItem
               onClick={handleMenu1Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              PET INFO
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/pet_info"
+              >
+                PET INFO
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu1Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              DAYCARE
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/daycare"
+              >
+                DAYCARE
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu1Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              BOARDING
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/boarding"
+              >
+                BOARDING
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu1Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              PET TRAINING
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/pet_training"
+              >
+                PET TRAINING
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu1Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              ADOPTION
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/adoption"
+              >
+                ADOPTION
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu1Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              RESCUE ALERT
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/rescue_alert"
+              >
+                RESCUE ALERT
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu1Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              LOST & FOUND
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/lost&found"
+              >
+                LOST & FOUND
+              </Link>
             </MenuItem>
           </Menu>
 
@@ -389,35 +471,58 @@ const Header = (props) => {
             <MenuItem
               onClick={handleMenu2Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              FOOD
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/food"
+              >
+                FOOD
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu2Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              MEDICINE
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/medicine"
+              >
+                MEDICINE
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu2Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              ACCESSORIES
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/accessories"
+              >
+                ACCESSORIES
+              </Link>
             </MenuItem>
           </Menu>
 
@@ -438,68 +543,115 @@ const Header = (props) => {
             <MenuItem
               onClick={handleMenu3Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              ONLINE CONSULTATION
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/online_consultation"
+              >
+                ONLINE CONSULTATION
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu3Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              IN-PERSON CONSULTATION
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/in_person_consultation"
+              >
+                IN-PERSON CONSULTATION
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu3Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              NEAREST CLINIC
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/nearest_clinic"
+              >
+                NEAREST CLINIC
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu3Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              HOUSE CALLS
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/house_calls"
+              >
+                HOUSE CALLS
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu3Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              HEALTH CARE BLOG
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/health_care_blog"
+              >
+                HEALTH CARE BLOG
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu3Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              COVID-19 INFO
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/covid19_info"
+              >
+                COVID-19 INFO
+              </Link>
             </MenuItem>
           </Menu>
 
@@ -520,68 +672,115 @@ const Header = (props) => {
             <MenuItem
               onClick={handleMenu4Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              VOLUNTEER
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/volunteer"
+              >
+                VOLUNTEER
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu4Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              MAKE DONATION
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/make_donation"
+              >
+                MAKE DONATION
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu4Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              OUR SUCCESS STORY
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/our_success_story"
+              >
+                OUR SUCCESS STORY
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu4Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              SHARE YOUR STORY
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/share_your_story"
+              >
+                SHARE YOUR STORY
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu4Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              REMEMBRANCE
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/remembrance"
+              >
+                REMEMBRANCE
+              </Link>
             </MenuItem>
+
             <MenuItem
               onClick={handleMenu4Close}
               sx={{
-                color: "inherit",
-                fontWeight: "700",
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
               }}
             >
-              REVIEWS
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/reviews"
+              >
+                REVIEWS
+              </Link>
             </MenuItem>
           </Menu>
 

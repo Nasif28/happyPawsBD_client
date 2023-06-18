@@ -10,7 +10,7 @@ const Footer = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        // minHeight: "90vh",
+        minHeight: "90vh",
       }}
     >
       <Box
