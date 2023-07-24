@@ -447,7 +447,7 @@ const Header = (props) => {
                   color: "inherit",
                   fontWeight: "600",
                 }}
-                to="/lost&found"
+                to="/lost_found"
               >
                 LOST & FOUND
               </Link>

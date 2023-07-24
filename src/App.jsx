@@ -14,6 +14,10 @@ import Pet_Training from "./Pages/Pets/Pet Training/Pet_Training";
 import Adoption from "./Pages/Pets/Adoption/Adoption";
 import Rescue_Alert from "./Pages/Pets/Rescue Alert/Rescue_Alert";
 import Lost_Found from "./Pages/Pets/Lost & Found/Lost_Found";
+import LostPets from "./Pages/Pets/Lost & Found/LostPets";
+import FoundPets from "./Pages/Pets/Lost & Found/FoundPets";
+import LostForm from "./Pages/Pets/Lost & Found/LostForm";
+import FoundForm from "./Pages/Pets/Lost & Found/FoundForm";
 
 // Shop -----------------------------------
 import Food from "./Pages/Shop/Food/Food";
@@ -40,6 +44,7 @@ import About_Us from "./Pages/About US/About_Us";
 import Contact_Us from "./Pages/Contact Us/Contact_Us";
 import Footer from "./Components/Footer/Footer";
 
+
 const App = () => {
   return (
     <>
@@ -58,7 +63,11 @@ const App = () => {
           <Route path="/pet_training" element={<Pet_Training />} />
           <Route path="/adoption" element={<Adoption />} />
           <Route path="/rescue_alert" element={<Rescue_Alert />} />
-          <Route path="/lost&found" element={<Lost_Found />} />
+          <Route path="/lost_found" element={<Lost_Found />} />
+          <Route path="/lost_found/lost_pets" element={<LostPets />} />
+          <Route path="/lost_found/found_pets" element={<FoundPets />} />
+          <Route path="/lost_found/lost_form" element={<LostForm />} />
+          <Route path="/lost_found/found_form" element={<FoundForm />} />
 
           {/* Shop ---------------------------------------  */}
           <Route path="/food" element={<Food />} />
