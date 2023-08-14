@@ -7,15 +7,28 @@ const URL = 'http://localhost:5000';
 //     return await axios.get(`${URL}/lost_found/lost_pets`);
 // }
 
-export const addLostPet = async (lostPet) => {
-    return await axios.post(`${URL}/lost_found/lost_form`, lostPet);
+// From Data for Lost Pet
+// export const addLostPet = async (lostPet, petPicture) => {
+//     console.log(petPicture);
+//     return await axios.post(`${URL}/lost_found/lost_form`, lostPet, petPicture);
+// }
 
+// All Lost Pets
+export const getLostPets = async () => {
+    return await axios.get(`${URL}/lost_found/lost_pets`);
 }
 
-// export const deleteUser = async (id) => {
-//     return await axios.delete(`${URL}/${id}`);
-// }
+// From Data for Found Pet
+export const addFoundPet = async (foundPet) => {
+    return await axios.post(`${URL}/lost_found/found_form`, foundPet);
+}
 
-// export const editUser = async (id, user) => {
-//     return await axios.put(`${URL}/${id}`, user)
-// }
+// All Found Pets
+export const getFoundPets = async () => {
+    return await axios.get(`${URL}/lost_found/found_pets`);
+}
+
+// From Data for Adoption Application
+export const adoptionApplication = async (adoption) => {
+    return await axios.post(`${URL}/adoption/adoption_form`, adoption);
+}

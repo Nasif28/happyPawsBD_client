@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addFoundPet } from "../../../API/api";
+import { adoptionApplication } from "../../../API/api";
 import {
   Box,
   Button,
@@ -14,77 +14,64 @@ import {
 } from "@mui/material";
 
 const initialValue = {
+  animalCode: "",
+  animalName: "",
   animalType: "",
   breed: "",
-  colors: "",
-  distinctiveFeatures: "",
   gender: "",
-  founderName: "",
+  adopterName: "",
   contactPhone: "",
   contactEmail: "",
-  foundLocation: "",
-  foundDate: "",
-  description: "",
+  address: "",
+  experience: "",
 };
 
-const FoundForm = () => {
-  const [foundPet, setFoundPet] = useState(initialValue);
-  // const [petPicture, setPetPicture] = useState(null);
+const AdoptionForm = () => {
+  const [adoption, setAdoption] = useState(initialValue);
   const [showSuccess, setShowSuccess] = useState(false); // State to control Snackbar visibility
 
   const {
+    animalCode,
+    animalName,
     animalType,
     breed,
-    colors,
-    distinctiveFeatures,
     gender,
-    founderName,
+    adopterName,
     contactPhone,
     contactEmail,
-    foundLocation,
-    foundDate,
-    description,
-  } = foundPet;
+    address,
+    experience,
+  } = adoption;
 
   const handleChange = (e) => {
-    setFoundPet({ ...foundPet, [e.target.name]: e.target.value });
+    setAdoption({ ...adoption, [e.target.name]: e.target.value });
   };
 
   const handleAnimalType = (e) => {
-    setFoundPet({ ...foundPet, animalType: e.target.value });
+    setAdoption({ ...adoption, animalType: e.target.value });
   };
 
   const handleAnimalGender = (e) => {
-    setFoundPet({ ...foundPet, gender: e.target.value });
+    setAdoption({ ...adoption, gender: e.target.value });
   };
-
-  // const handlePictureChange = (e) => {
-  //   setPetPicture(e.target.files[0]);
-  // };
 
   const handleSubmit = async () => {
     try {
-      // const formData = new FormData();
-      // formData.append("lostPet", JSON.stringify(lostPet));
-      // formData.append("petPicture", petPicture);
-
-      await addFoundPet(foundPet);
+      await adoptionApplication(adoption);
 
       // Clear the form after successful submission
-      setFoundPet({
+      setAdoption({
+        animalCode: "",
+        animalName: "",
         animalType: "",
         breed: "",
-        colors: "",
-        distinctiveFeatures: "",
         gender: "",
-        founderName: "",
+        adopterName: "",
         contactPhone: "",
         contactEmail: "",
-        foundLocation: "",
-        foundDate: "",
-        description: "",
+        address: "",
+        experience: "",
       });
-      //   // setPetPicture(null);
 
       // Set showSuccess to true to show the Snackbar
       setShowSuccess(true);
@@ -105,15 +92,15 @@ const FoundForm = () => {
         textAlign={"center"}
       >
         <Typography variant="h4" fontWeight={700} mb={2}>
-          Regester The Found Pet
+          WANT TO ADOPT A PET?
         </Typography>
 
         <Typography variant="h6" fontWeight={700} py={1}>
-          To See All the Lost Pets -
+          See all the Available Pet for Adoption
         </Typography>
 
-        <Button variant="contained" color="success">
-          See All Lost Pets
+        <Button href="/adoption" variant="contained" color="success">
+          All Adoptable Pet
         </Button>
       </Box>
 
@@ -134,7 +121,7 @@ const FoundForm = () => {
           fontWeight={500}
           textAlign={"center"}
         >
-          Fill the Form
+          Fill the Application
         </Typography>
 
         <Box
@@ -146,6 +133,32 @@ const FoundForm = () => {
             px: 4,
           }}
         >
+          <TextField
+            variant="outlined"
+            label="Adopting Animal Code"
+            name="animalCode"
+            value={animalCode}
+            size="small"
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            color="success"
+            focused
+          />
+
+          <TextField
+            variant="outlined"
+            label="Adopting Pet Name"
+            name="animalName"
+            value={animalName}
+            size="small"
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            color="success"
+            focused
+          />
+
           <FormControl
             variant="outlined"
             name="animalType"
@@ -189,32 +202,6 @@ const FoundForm = () => {
             focused
           />
 
-          <TextField
-            variant="outlined"
-            label="Pet's Colors"
-            name="colors"
-            value={colors}
-            size="small"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
-          <TextField
-            variant="outlined"
-            label="Distinctive Features"
-            name="distinctiveFeatures"
-            value={distinctiveFeatures}
-            size="small"
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
-
           <FormControl
             variant="outlined"
             name="gender"
@@ -241,9 +228,9 @@ const FoundForm = () => {
 
           <TextField
             variant="outlined"
-            label="Owner Name"
-            name="founderName"
-            value={founderName}
+            label="Adopter Name"
+            name="adopterName"
+            value={adopterName}
             size="small"
             required
             onChange={handleChange}
@@ -281,9 +268,9 @@ const FoundForm = () => {
           />
           <TextField
             variant="outlined"
-            label="Last Seen Area"
-            name="foundLocation"
-            value={foundLocation}
+            label="Your Address"
+            name="address"
+            value={address}
             size="small"
             required
             onChange={handleChange}
@@ -295,22 +282,9 @@ const FoundForm = () => {
 
           <TextField
             variant="outlined"
-            label="Date of Lost"
-            name="foundDate"
-            value={foundDate}
-            size="small"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
-          <TextField
-            variant="outlined"
-            label="Description of Circumstances"
-            name="description"
-            value={description}
+            label="Your Experience Details"
+            name="experience"
+            value={experience}
             size="small"
             onChange={handleChange}
             fullWidth
@@ -321,20 +295,6 @@ const FoundForm = () => {
             focused
           />
 
-          {/* Picture Upload */}
-          {/* <input
-        style={{
-          border: "2px solid green",
-          borderRadius: "5px",
-          padding: 6,
-          marginTop: 5,
-          cursor: "pointer",
-        }}
-        type="file"
-        accept="image/*"
-        onChange={handlePictureChange}
-      /> */}
-
           {/* Submit Button */}
           <Button
             variant="contained"
@@ -343,7 +303,7 @@ const FoundForm = () => {
             fullWidth
             onClick={handleSubmit}
           >
-            Submit Found Pet Application
+            Submit Pet Adoption Application
           </Button>
 
           {/* Snackbar for showing the success message */}
@@ -358,7 +318,7 @@ const FoundForm = () => {
               severity="success"
               sx={{ width: "100%" }}
             >
-              Your form has been submitted successfully!
+              Your application has been submitted successfully!
             </Alert>
           </Snackbar>
         </Box>
@@ -367,4 +327,4 @@ const FoundForm = () => {
   );
 };
 
-export default FoundForm;
+export default AdoptionForm;

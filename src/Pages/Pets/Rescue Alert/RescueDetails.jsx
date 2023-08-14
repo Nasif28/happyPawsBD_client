@@ -1,12 +1,23 @@
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import React from "react";
 
-const AdoptionDetails = () => {
+const RescueDetails = () => {
   return (
     <Box className="myContainer" mt={5}>
-      <Stack direction="row" spacing={6} sx={{ p: 4 }} flex={1} divider={<Divider orientation="vertical" flexItem />}>
+      <Stack
+        direction="row"
+        spacing={6}
+        sx={{ p: 4 }}
+        flex={1}
+        divider={<Divider orientation="vertical" flexItem />}
+      >
         <Box flex={1}>
-          <Typography variant="h5" color="primary.headline" fontWeight={700} my={2}>
+          <Typography
+            variant="h5"
+            color="primary.headline"
+            fontWeight={700}
+            my={2}
+          >
             ADOPTERS WELCOME
           </Typography>
 
@@ -21,7 +32,12 @@ const AdoptionDetails = () => {
         </Box>
 
         <Box flex={1.4}>
-          <Typography variant="h5" color="primary.headline" fontWeight={700} my={2}>
+          <Typography
+            variant="h5"
+            color="primary.headline"
+            fontWeight={700}
+            my={2}
+          >
             ADOPTION REQUIREMENTS
           </Typography>
 
@@ -52,7 +68,7 @@ const AdoptionDetails = () => {
       </Stack>
 
       <Typography variant="h5" color="primary.headline" fontWeight={700} my={2}>
-       HOW TO ADD A NEW PET TO YOUR FAMILY
+        HOW TO ADD A NEW PET TO YOUR FAMILY
       </Typography>
 
       <Typography variant="body2" color="primary.para" pl={5}>
@@ -91,4 +107,4 @@ const AdoptionDetails = () => {
   );
 };
 
-export default AdoptionDetails;
+export default RescueDetails;

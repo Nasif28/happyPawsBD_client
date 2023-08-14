@@ -31,17 +31,21 @@ const Lost_Found = () => {
         paddingTop={3}
       >
         {/* Lost A Pet???--------------------------------------------------------- */}
-        <Box backgroundColor="primary.back" p={3} flex="50%">
+        <Box flex="50%">
           <Typography
             variant="h4"
-            color={"primary.green"}
-            pb={5}
+            color={"white"}
+            backgroundColor="green"
+            p={3}
+            mb={1}
             sx={{ fontWeight: "900" }}
           >
             Lost A Pet!?
           </Typography>
 
           <Stack
+            backgroundColor="primary.back"
+            p={3}
             // direction="row"
             justifyContent="space-evenly"
             alignItems="center"
@@ -69,7 +73,7 @@ const Lost_Found = () => {
                   pb={2}
                   sx={{ lineHeight: 1.5, fontWeight: "900" }}
                 >
-                  Submit Lost Pet Form
+                  REGISTER A LOST PET
                 </Typography>
 
                 <Typography variant="body1">
@@ -80,7 +84,10 @@ const Lost_Found = () => {
             </a>
 
             {/* 2 Box Starts -----------------------------------------------------------  */}
-            <a href="./lost_found/found_pets" style={{ textDecoration: "none" }}>
+            <a
+              href="./lost_found/found_pets"
+              style={{ textDecoration: "none" }}
+            >
               <Stack
                 p={3}
                 sx={{
@@ -100,7 +107,7 @@ const Lost_Found = () => {
                   pb={2}
                   sx={{ lineHeight: 1.5, fontWeight: "900" }}
                 >
-                  See All Found Pets
+                  SEE ALL FOUND PETS
                 </Typography>
 
                 <Typography variant="body1">
@@ -113,17 +120,21 @@ const Lost_Found = () => {
         </Box>
 
         {/* Found A Pet???--------------------------------------------------------- */}
-        <Box backgroundColor="primary.back" p={3} flex="50%">
+        <Box flex="50%">
           <Typography
             variant="h4"
-            pb={5}
-            color={"primary.green"}
+            p={3}
+            mb={1}
+            color={"white"}
+            backgroundColor="green"
             sx={{ fontWeight: "900" }}
           >
             Found A Pet!?
           </Typography>
 
           <Stack
+            backgroundColor="primary.back"
+            p={3}
             // direction="row"
             justifyContent="space-evenly"
             alignItems="center"
@@ -131,7 +142,10 @@ const Lost_Found = () => {
             divider={<Divider orientation="horizental" flexItem />}
           >
             {/* 1 Box Starts -----------------------------------------------------------  */}
-            <a href="./lost_found/found_form" style={{ textDecoration: "none" }}>
+            <a
+              href="./lost_found/found_form"
+              style={{ textDecoration: "none" }}
+            >
               <Stack
                 p={3}
                 sx={{
@@ -151,7 +165,7 @@ const Lost_Found = () => {
                   pb={2}
                   sx={{ lineHeight: 1.5, fontWeight: "900" }}
                 >
-                  Submit Found Pet Form
+                  REGISTER A FOUND PET
                 </Typography>
 
                 <Typography variant="body1">
@@ -182,7 +196,7 @@ const Lost_Found = () => {
                   pb={2}
                   sx={{ lineHeight: 1.5, fontWeight: "900" }}
                 >
-                  See All Lost Pets
+                  SEE ALL LOST PETS
                 </Typography>
 
                 <Typography variant="body1">
