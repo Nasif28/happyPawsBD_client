@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-// import { MuiFileInput } from "mui-file-input";
-import axios from "axios";
-// import { addLostPet } from "../../../API/api";
+import { addLostPet } from "../../../API/api";
 
 import {
   Box,
@@ -19,11 +17,8 @@ import {
 const initialValue = {
   petName: "",
   animalType: "",
-  breed: "",
   age: "",
-  weight: "",
   colors: "",
-  distinctiveFeatures: "",
   gender: "",
   ownerName: "",
   contactPhone: "",
@@ -37,17 +32,13 @@ const initialValue = {
 const LostFormcopy = () => {
   const [lostPet, setLostPet] = useState(initialValue);
   // const [petPicture, setPetPicture] = useState(null);
-  // const [fileList, setFileList] = useState();
-  const [showSuccess, setShowSuccess] = useState(false); // State to control Snackbar visibility
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const {
     petName,
     animalType,
-    breed,
     age,
-    weight,
     colors,
-    distinctiveFeatures,
     gender,
     ownerName,
     contactPhone,
@@ -70,15 +61,6 @@ const LostFormcopy = () => {
     setLostPet({ ...lostPet, gender: e.target.value });
   };
 
-  // const handlePictureChange = (e) => {
-  //   setLostPet({ ...lostPet, petPicture: e.target.files[0] });
-  //   // setPetPicture(e.target.files[0]);
-  //   // setPetPicture(e);
-  // };
-  // const handlePictureChange = (e) => {
-  //   setLostPet({ ...lostPet, petPicture: e.target.files[0] });
-  // };
-
   const handlePictureChange = async (e) => {
     setLostPet({
       ...lostPet,
@@ -86,64 +68,16 @@ const LostFormcopy = () => {
     });
   };
 
-  console.log(petPicture);
-  console.log(lostPet);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      // const formDataWithImage = new FormData();
-      // formDataWithImage.append("petPicture", petPicture); // Append image file to FormData
-      // for (const key in formData) {
-      //   formDataWithImage.append(key, formData[key]);
-
-      // await addLostPet(lostPet, petPicture);
-
       const formData = new FormData();
-      // lostPet.petPicture = petPicture; // Append petPicture object to lostPet
-      // formData.append("lostPet", JSON.stringify(lostPet));
       formData.append("lostPet", lostPet);
-      // formData.append("petPicture", petPicture);
-      console.log(petPicture);
-      console.log(lostPet);
 
-      //       const formData = new FormData();
+      await addLostPet(lostPet);
 
-      // formData.append("lostPet", JSON.stringify(lostPet));
-      // formData.append("petPicture", petPicture);
-
-      await axios.post("http://localhost:5000/lost_found/lost_form", lostPet)
-      // , {
-      //   // headers: {
-      //   //   "Content-Type": "multipart/form-data",
-      //   // },
-      // });
-
-      // Clear the form after successful submission
-      // setLostPet({
-      //   petName: "",
-      //   animalType: "",
-      //   breed: "",
-      //   age: "",
-      //   weight: "",
-      //   colors: "",
-      //   distinctiveFeatures: "",
-      //   gender: "",
-      //   ownerName: "",
-      //   contactPhone: "",
-      //   contactEmail: "",
-      //   lastSeenLocation: "",
-      //   lostDate: "",
-      //   description: "",
-      //   petPicture: "",
-      // });
-
-      
-
-      // Set showSuccess to true to show the Snackbar
-      setShowSuccess(true);
       setLostPet(initialValue);
+      setShowSuccess(true);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -248,19 +182,6 @@ const LostFormcopy = () => {
 
           <TextField
             variant="outlined"
-            label="Breed Type"
-            name="breed"
-            value={breed}
-            size="small"
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
-
-          <TextField
-            variant="outlined"
             label="Age"
             name="age"
             value={age}
@@ -271,18 +192,7 @@ const LostFormcopy = () => {
             color="success"
             focused
           />
-          <TextField
-            variant="outlined"
-            label="Weight"
-            name="weight"
-            value={weight}
-            size="small"
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+
           <TextField
             variant="outlined"
             label="Pet's Colors"
@@ -290,18 +200,6 @@ const LostFormcopy = () => {
             value={colors}
             size="small"
             required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
-          <TextField
-            variant="outlined"
-            label="Distinctive Features"
-            name="distinctiveFeatures"
-            value={distinctiveFeatures}
-            size="small"
             onChange={handleChange}
             fullWidth
             margin="normal"
@@ -400,6 +298,7 @@ const LostFormcopy = () => {
             color="success"
             focused
           />
+
           <TextField
             variant="outlined"
             label="Description of Circumstances"
@@ -409,14 +308,29 @@ const LostFormcopy = () => {
             onChange={handleChange}
             fullWidth
             multiline
-            rows={4}
+            rows={3}
             margin="normal"
             color="success"
             focused
           />
 
           {/* Picture Upload */}
-          <input
+          <TextField
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            color="success"
+            focused
+            name="petPicture"
+            type="file"
+            // accept="image/*"
+            accept=".jpeg, .png, .jpg"
+            label="Attach Picture of Your Pet"
+            onChange={handlePictureChange}
+          />
+
+          {/* Picture Upload */}
+          {/* <input
             style={{
               border: "2px solid green",
               borderRadius: "5px",
@@ -428,12 +342,9 @@ const LostFormcopy = () => {
             type="file"
             // accept="image/*"
             accept=".jpeg, .png, .jpg"
-            label="Image"
+            label="Attach Picture of Your Pet"
             onChange={handlePictureChange}
-            // onChange={onSelectFile}
-          />
-
-          {/* <MuiFileInput value={petPicture} onChange={handlePictureChange} /> */}
+          /> */}
 
           {/* Submit Button */}
           <Button

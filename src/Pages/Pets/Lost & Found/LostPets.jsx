@@ -11,27 +11,26 @@ import {
   Typography,
 } from "@mui/material";
 import { getLostPets } from "../../../API/api";
-import LostPetPic from "../../../../images/LostPet.png";
 
 const LostPets = () => {
   const [lostPets, setLostPets] = useState([]);
 
-  const {
-    petName,
-    animalType,
-    breed,
-    age,
-    weight,
-    colors,
-    distinctiveFeatures,
-    gender,
-    ownerName,
-    contactPhone,
-    contactEmail,
-    lastSeenLocation,
-    lostDate,
-    description,
-  } = lostPets;
+  // const {
+  //   petName,
+  //   animalType,
+  //   breed,
+  //   age,
+  //   weight,
+  //   colors,
+  //   distinctiveFeatures,
+  //   gender,
+  //   ownerName,
+  //   contactPhone,
+  //   contactEmail,
+  //   lastSeenLocation,
+  //   lostDate,
+  //   description,
+  // } = lostPets;
 
   useEffect(
     () => async () => {
