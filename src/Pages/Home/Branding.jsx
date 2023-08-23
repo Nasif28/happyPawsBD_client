@@ -25,9 +25,13 @@ const Branding = () => {
             100% Committed to Your Pet's Health
           </Typography>
 
-          <Typography variant="body1" color="primary.para" sx={{ lineHeight: 1.5 }}>
-            With vet-backed petcare products, guidance, and Rewards – <br />we’re here
-            to support your pet’s health in every way we can
+          <Typography
+            variant="body1"
+            color="primary.para"
+            sx={{ lineHeight: 1.5 }}
+          >
+            With vet-backed petcare products, guidance, and Rewards – <br />
+            we’re here to support your pet’s health in every way we can
           </Typography>
 
           <ButtonGroup
@@ -37,9 +41,15 @@ const Branding = () => {
             aria-label="large button group"
             sx={{ width: "80%" }}
           >
-            <Button sx={{ flex: "1" }}>Adopt</Button>
-            <Button sx={{ flex: "1" }}>Donate</Button>
-            <Button sx={{ flex: "1" }}>Join Us</Button>
+            <Button href="/adoption/adoptable_pets" sx={{ flex: "1" }}>
+              Adopt
+            </Button>
+            <Button href="/make_donation" sx={{ flex: "1" }}>
+              Donate
+            </Button>
+            <Button href="/volunteer" sx={{ flex: "1" }}>
+              Join Us
+            </Button>
           </ButtonGroup>
         </Stack>
 

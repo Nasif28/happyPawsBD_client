@@ -1,14 +1,13 @@
 import React from "react";
 import AdoptionDetails from "./AdoptionDetails";
 import AdoptionBanner from "./AdoptionBanner";
-import AdoptablePets from "./AdoptablePets";
+import AdoptionCSS from "./Adoption.css"
 
 const Adoption = () => {
   return (
     <div>
       <AdoptionBanner />
       <AdoptionDetails />
-      <AdoptablePets />
     </div>
   );
 };

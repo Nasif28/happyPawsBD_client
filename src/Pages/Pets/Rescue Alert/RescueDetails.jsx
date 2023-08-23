@@ -4,6 +4,26 @@ import React from "react";
 const RescueDetails = () => {
   return (
     <Box className="myContainer" mt={5}>
+      <Box textAlign={"center"} my={4}>
+        <Typography
+          variant="h5"
+          color="primary.headline"
+          fontWeight={900}
+          mb={2}
+        >
+          Make a Difference: Report Animals Needing Emergency Rescue
+        </Typography>
+
+        <Typography variant="body1">
+          "At HAPPY PAWS BD, we believe in the power of community.
+          <br />
+          If you come across an animal that is in distress, injured, or in need
+          of immediate rescue, let us know so we can take action.
+          <br />
+          Your contribution can save a life."
+        </Typography>
+      </Box>
+
       <Stack
         direction="row"
         spacing={6}
@@ -18,91 +38,97 @@ const RescueDetails = () => {
             fontWeight={700}
             my={2}
           >
-            ADOPTERS WELCOME
+            CALL TO ACTION
+          </Typography>
+
+          <Typography
+            variant="body1"
+            color="primary.para"
+            mb={1}
+            fontWeight={700}
+          >
+            "Act Now to Save Lives"
           </Typography>
 
           <Typography variant="body2" color="primary.para" mb={4}>
-            Here at The Animal Foundation, our Adoptions Department approaches
-            adopting our homeless pets in need with an open end approach
-            philosophy inspired by the coined term 'Adopters Welcome' by The
-            Humane Society of the United States. Some ways that The Animal
-            Foundation embodies this philosophy is by removing outdated barriers
-            for our community to adopt
+            Every second counts when an animal is in need. Your action can make
+            a difference. Report an animal in distress now.
+          </Typography>
+
+          <Typography
+            variant="body1"
+            color="primary.para"
+            mb={1}
+            fontWeight={700}
+          >
+            "Join Our Rescue Network"
+          </Typography>
+
+          <Typography variant="body2" color="primary.para" mb={4}>
+            Become part of our rescue efforts. Your contribution can ensure that
+            animals get the help they deserve.
           </Typography>
         </Box>
 
-        <Box flex={1.4}>
+        <Box flex={1}>
           <Typography
             variant="h5"
             color="primary.headline"
             fontWeight={700}
             my={2}
           >
-            ADOPTION REQUIREMENTS
+            EMERGENCY CONATCT
           </Typography>
 
-          <Typography variant="body2" color="primary.para" pl={5}>
-            <ul>
-              <li>
-                Must be 18+ years old to adopt a cat & 21+ years old to adopt a
-                dog
-              </li>
-              <li>Must have positive vet check</li>
-              <li>
-                All pets in the home must be up-to-date on vaccines &
-                spayed/neutered unless medically excused with vet note
-              </li>
-              <li>Renters must show proof of pet policy lease</li>
-              <li>
-                Potential adopter must reply within 24 hours once notified or
-                our adoption counselors will contact the next eligible applicant
-              </li>
-              <li>
-                Must have animal spayed/neutered when adopted or by 6 months of
-                age. (This may be extended to 1 year of age for large breed dogs
-                if provided with a vet note.)
-              </li>
-            </ul>
+          <Typography
+            variant="body1"
+            color="primary.para"
+            mb={1}
+            fontWeight={700}
+          >
+            "For Immediate Assistance"
+          </Typography>
+
+          <Typography variant="body2" color="primary.para" mb={4}>
+            If you encounter an animal that requires immediate attention, please
+            call our emergency hotline:{" "}
+            <span className="span1">+8801983794542</span>.
+          </Typography>
+
+          <Typography
+            variant="body1"
+            color="primary.para"
+            mb={1}
+            fontWeight={700}
+          >
+            "Your Report Matters"
+          </Typography>
+
+          <Typography variant="body2" color="primary.para" mb={4}>
+            Rest assured, your report will be treated with urgency. We are
+            committed to responding to every rescue request promptly.
           </Typography>
         </Box>
       </Stack>
 
-      <Typography variant="h5" color="primary.headline" fontWeight={700} my={2}>
-        HOW TO ADD A NEW PET TO YOUR FAMILY
-      </Typography>
+      <Box textAlign={"center"} my={4}>
+        <Typography
+          variant="h5"
+          color="primary.headline"
+          fontWeight={900}
+          mb={2}
+        >
+          Together, We Can Make a Difference
+        </Typography>
 
-      <Typography variant="body2" color="primary.para" pl={5}>
-        <ul>
-          <li>
-            Visit https://animalfoundation.com/adopt-a-pet/adoption-search to
-            browse adoptable animals and write down a couple animal ID#s before
-            you arrive.
-          </li>
-          <li>
-            Adoptions take place on a first-come, first-served basis for walk-in
-            traffic, beginning at 11am.
-          </li>
-          <li>
-            When you arrive, you will be added to a waiting list. You must have
-            at least one animal ID# to be added to the waiting list.
-          </li>
-          <li>
-            Please note, patrons sometimes line up before we open to meet a pet,
-            especially during fee-waived adoption events.
-          </li>
-          <li>We do not place holds on pets.</li>
-          <li>
-            Please do not bring your current pets with you to the shelter. We do
-            not allow in-shelter dog-to-dog introductions. The shelter is a
-            strange and stressful place for most pets and does not provide an
-            accurate indication of how the animals will act in a home
-            environment. The most successful dog-to-dog introductions are
-            properly staged outside the shelter environment. We provide
-            step-by-step instructions on how to properly introduce your new pet
-            to resident pet(s).
-          </li>
-        </ul>
-      </Typography>
+        <Typography variant="body1">
+          Thank you for being a compassionate member of our community. With your
+          help, we can provide a better life for animals in need.
+          <br />
+          Share our rescue page with your friends and family. Together, we can
+          create a stronger network to save animals.
+        </Typography>
+      </Box>
     </Box>
   );
 };

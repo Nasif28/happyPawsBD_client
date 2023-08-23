@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "Dr. Sarah John",
+        "specialization": "Veterinary Medicine",
+        "location": "Cityville",
+        "contact": "sarah@example.com",
+        "picture": "https://i.ibb.co/J5gRYvp/Dr-Elizabeth-Racine.png"
+    },
+    {
+        "id": 2,
+        "name": "Dr. Michael Smith",
+        "specialization": "Animal Surgery",
+        "location": "Townsville",
+        "contact": "michael@example.com",
+        "picture": "https://i.ibb.co/M8HX8Hg/Dr-Hanie-Elfenbein.png"
+    },
+    {
+        "id": 3,
+        "name": "Dr. Emily Davis",
+        "specialization": "Exotic Pets",
+        "location": "Countryside",
+        "contact": "emily@example.com",
+        "picture": "https://i.ibb.co/dj6fvT5/Dr-Emily-Swiniarski.png"
+    },
+    {
+        "id": 4,
+        "name": "Dr. David Martinez",
+        "specialization": "Emergency Care",
+        "location": "Metropolis",
+        "contact": "david@example.com",
+        "picture": "https://i.ibb.co/68RMnmW/Dr-Chris-Pinard.png"
+    },
+    {
+        "id": 5,
+        "name": "Dr. Jessica Brown",
+        "specialization": "Wildlife Rehabilitation",
+        "location": "Natureville",
+        "contact": "jessica@example.com",
+        "picture": "https://i.ibb.co/8YH6JXK/Dr-Joanna-Woodnut.png"
+    },
+    {
+        "id": 6,
+        "name": "Dr. John Anders",
+        "specialization": "Equine Health",
+        "location": "Ranchville",
+        "contact": "john@example.com",
+        "picture": "https://i.ibb.co/nbhF07f/Dr-Katie-Woodley-Headshot.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Dr. Laura Wilson",
+        "specialization": "Avian Medicine",
+        "location": "Skytown",
+        "contact": "laura@example.com",
+        "picture": "https://i.ibb.co/25T5gHc/Dr-Monica-Tarantino.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Dr. Mark Taylor",
+        "specialization": "Small Animals",
+        "location": "Petville",
+        "contact": "mark@example.com",
+        "picture": "https://i.ibb.co/rQChCLz/Dr-Natasha-Feduik.png"
+    },
+    {
+        "id": 9,
+        "name": "Dr. Maria Rodrig",
+        "specialization": "Zoo Animals",
+        "location": "Zootown",
+        "contact": "maria@example.com",
+        "picture": "https://i.ibb.co/XbvFPS6/Dr-Sarah-Wallace.png"
+    },
+    {
+        "id": 10,
+        "name": "Dr. Robert White",
+        "specialization": "Dental Care",
+        "location": "Toothville",
+        "contact": "robert@example.com",
+        "picture": "https://i.ibb.co/9pJTnct/Dr-Wailani-Sung-1.png"
+    }
+]

@@ -15,23 +15,6 @@ import { getLostPets } from "../../../API/api";
 const LostPets = () => {
   const [lostPets, setLostPets] = useState([]);
 
-  // const {
-  //   petName,
-  //   animalType,
-  //   breed,
-  //   age,
-  //   weight,
-  //   colors,
-  //   distinctiveFeatures,
-  //   gender,
-  //   ownerName,
-  //   contactPhone,
-  //   contactEmail,
-  //   lastSeenLocation,
-  //   lostDate,
-  //   description,
-  // } = lostPets;
-
   useEffect(
     () => async () => {
       let response = await getLostPets();

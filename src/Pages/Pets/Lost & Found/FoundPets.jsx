@@ -11,24 +11,9 @@ import {
   Typography,
 } from "@mui/material";
 import { getFoundPets } from "../../../API/api";
-import LostPetPic from "../../../../images/LostPet.png";
 
 const FoundPets = () => {
   const [foundPets, setFoundPets] = useState([]);
-
-  const {
-    animalType,
-    breed,
-    colors,
-    distinctiveFeatures,
-    gender,
-    founderName,
-    contactPhone,
-    contactEmail,
-    foundLocation,
-    foundDate,
-    description,
-  } = foundPets;
 
   useEffect(
     () => async () => {
@@ -49,11 +34,11 @@ const FoundPets = () => {
         backgroundColor={"primary.para"}
       >
         <Typography variant="h4" fontWeight={900} pb={2}>
-          All Lost Pets
+          All Found Pets
         </Typography>
 
         <Typography variant="" fontWeight={500}>
-          If You Found Any Pet Bellow <br /> Contact The Owner
+          If Any Pet From Bellow Is Your's <br /> Contact The Founder
         </Typography>
       </Box>
 
@@ -79,7 +64,7 @@ const FoundPets = () => {
                 <CardActionArea>
                   <CardMedia
                     component="img"
-                    image={LostPetPic}
+                    image={pet.petPicture}
                     // alt={item.name}
                     height={200}
                   />
@@ -106,10 +91,10 @@ const FoundPets = () => {
                       Lost Date: {pet.foundDate}
                     </Typography>
 
-                    <Divider>OWNER INFO</Divider>
+                    <Divider>FOUNDER INFO</Divider>
 
                     <Typography variant="body2" fontWeight={700}>
-                      Owner Name: {pet.founderName}
+                      Founder Name: {pet.founderName}
                     </Typography>
 
                     <Typography variant="body2" color="primary.para">

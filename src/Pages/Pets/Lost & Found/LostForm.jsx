@@ -12,6 +12,7 @@ import {
   Snackbar,
   Alert,
   Typography,
+  Divider,
 } from "@mui/material";
 
 const initialValue = {
@@ -86,16 +87,16 @@ const LostFormcopy = () => {
   return (
     <Box className="myContainer">
       <Box
-        backgroundColor="primary.back"
-        p={3}
+        // backgroundColor="primary.back"
+
         my={3}
         borderRadius={5}
         width={800}
         mx={"auto"}
         textAlign={"center"}
       >
-        <Typography variant="h4" fontWeight={700} mb={2}>
-          Regester Your Lost Pet
+        <Typography variant="h4" fontWeight={700} my={2}>
+          LOST PET REGISTRATION
         </Typography>
 
         <Typography variant="h6" fontWeight={700} py={1}>
@@ -107,11 +108,13 @@ const LostFormcopy = () => {
         </Button>
       </Box>
 
+      <Divider variant="middle" />
+
       <Box
         style={{
-          border: "20px solid green",
+          // border: "20px solid green",
           borderRadius: "10px",
-          padding: 6,
+          padding: 10,
           // margin: "10 150",
         }}
         // sx={}
@@ -124,7 +127,7 @@ const LostFormcopy = () => {
           fontWeight={500}
           textAlign={"center"}
         >
-          Fill the Form
+          Fill the Form About Your Lost Pet
         </Typography>
 
         <Box

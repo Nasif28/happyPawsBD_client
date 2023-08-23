@@ -11,13 +11,13 @@ import {
   Snackbar,
   Alert,
   Typography,
+  Divider,
 } from "@mui/material";
 
 const initialValue = {
   animalType: "",
   breed: "",
   colors: "",
-  distinctiveFeatures: "",
   gender: "",
   founderName: "",
   contactPhone: "",
@@ -25,6 +25,7 @@ const initialValue = {
   foundLocation: "",
   foundDate: "",
   description: "",
+  petPicture: "",
 };
 
 const FoundForm = () => {
@@ -36,7 +37,6 @@ const FoundForm = () => {
     animalType,
     breed,
     colors,
-    distinctiveFeatures,
     gender,
     founderName,
     contactPhone,
@@ -44,6 +44,7 @@ const FoundForm = () => {
     foundLocation,
     foundDate,
     description,
+    petPicture,
   } = foundPet;
 
   const handleChange = (e) => {
@@ -58,35 +59,22 @@ const FoundForm = () => {
     setFoundPet({ ...foundPet, gender: e.target.value });
   };
 
-  // const handlePictureChange = (e) => {
-  //   setPetPicture(e.target.files[0]);
-  // };
+  const handlePictureChange = async (e) => {
+    setFoundPet({
+      ...foundPet,
+      petPicture: await convertToBase64(e.target.files[0]),
+    });
+  };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      // const formData = new FormData();
-      // formData.append("lostPet", JSON.stringify(lostPet));
-      // formData.append("petPicture", petPicture);
+      const formData = new FormData();
+      formData.append("foundPet", foundPet);
 
       await addFoundPet(foundPet);
 
-      // Clear the form after successful submission
-      setFoundPet({
-        animalType: "",
-        breed: "",
-        colors: "",
-        distinctiveFeatures: "",
-        gender: "",
-        founderName: "",
-        contactPhone: "",
-        contactEmail: "",
-        foundLocation: "",
-        foundDate: "",
-        description: "",
-      });
-      //   // setPetPicture(null);
-
-      // Set showSuccess to true to show the Snackbar
+      setFoundPet(initialValue);
       setShowSuccess(true);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -96,8 +84,8 @@ const FoundForm = () => {
   return (
     <Box className="myContainer">
       <Box
-        backgroundColor="primary.back"
-        p={3}
+        // backgroundColor="primary.back"
+        // p={3}
         my={3}
         borderRadius={5}
         width={800}
@@ -105,7 +93,7 @@ const FoundForm = () => {
         textAlign={"center"}
       >
         <Typography variant="h4" fontWeight={700} mb={2}>
-          Regester The Found Pet
+          FOUND PET REGISTRATION
         </Typography>
 
         <Typography variant="h6" fontWeight={700} py={1}>
@@ -117,11 +105,13 @@ const FoundForm = () => {
         </Button>
       </Box>
 
+      <Divider variant="middle" />
+
       <Box
         style={{
-          border: "20px solid green",
+          // border: "20px solid green",
           borderRadius: "10px",
-          padding: 6,
+          padding: 10,
           // margin: "10 150",
         }}
         // sx={}
@@ -134,7 +124,7 @@ const FoundForm = () => {
           fontWeight={500}
           textAlign={"center"}
         >
-          Fill the Form
+          Fill the Form About The Pet You Found
         </Typography>
 
         <Box
@@ -202,18 +192,6 @@ const FoundForm = () => {
             color="success"
             focused
           />
-          <TextField
-            variant="outlined"
-            label="Distinctive Features"
-            name="distinctiveFeatures"
-            value={distinctiveFeatures}
-            size="small"
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
 
           <FormControl
             variant="outlined"
@@ -241,7 +219,7 @@ const FoundForm = () => {
 
           <TextField
             variant="outlined"
-            label="Owner Name"
+            label="Your Name"
             name="founderName"
             value={founderName}
             size="small"
@@ -279,9 +257,10 @@ const FoundForm = () => {
             color="success"
             focused
           />
+
           <TextField
             variant="outlined"
-            label="Last Seen Area"
+            label="Found Location"
             name="foundLocation"
             value={foundLocation}
             size="small"
@@ -295,7 +274,7 @@ const FoundForm = () => {
 
           <TextField
             variant="outlined"
-            label="Date of Lost"
+            label="Date of Found"
             name="foundDate"
             value={foundDate}
             size="small"
@@ -306,6 +285,7 @@ const FoundForm = () => {
             color="success"
             focused
           />
+
           <TextField
             variant="outlined"
             label="Description of Circumstances"
@@ -322,18 +302,19 @@ const FoundForm = () => {
           />
 
           {/* Picture Upload */}
-          {/* <input
-        style={{
-          border: "2px solid green",
-          borderRadius: "5px",
-          padding: 6,
-          marginTop: 5,
-          cursor: "pointer",
-        }}
-        type="file"
-        accept="image/*"
-        onChange={handlePictureChange}
-      /> */}
+          <TextField
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            color="success"
+            focused
+            name="petPicture"
+            type="file"
+            // accept="image/*"
+            accept=".jpeg, .png, .jpg"
+            label="Attach Picture of Your Found Pet"
+            onChange={handlePictureChange}
+          />
 
           {/* Submit Button */}
           <Button
@@ -368,3 +349,17 @@ const FoundForm = () => {
 };
 
 export default FoundForm;
+
+// Convert File to Base64 Format
+function convertToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+}

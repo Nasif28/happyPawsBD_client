@@ -11,14 +11,12 @@ import {
   Snackbar,
   Alert,
   Typography,
+  Divider,
 } from "@mui/material";
 
 const initialValue = {
   animalCode: "",
-  animalName: "",
   animalType: "",
-  breed: "",
-  gender: "",
   adopterName: "",
   contactPhone: "",
   contactEmail: "",
@@ -32,10 +30,7 @@ const AdoptionForm = () => {
 
   const {
     animalCode,
-    animalName,
     animalType,
-    breed,
-    gender,
     adopterName,
     contactPhone,
     contactEmail,
@@ -51,29 +46,11 @@ const AdoptionForm = () => {
     setAdoption({ ...adoption, animalType: e.target.value });
   };
 
-  const handleAnimalGender = (e) => {
-    setAdoption({ ...adoption, gender: e.target.value });
-  };
-
   const handleSubmit = async () => {
     try {
       await adoptionApplication(adoption);
 
-      // Clear the form after successful submission
-      setAdoption({
-        animalCode: "",
-        animalName: "",
-        animalType: "",
-        breed: "",
-        gender: "",
-        adopterName: "",
-        contactPhone: "",
-        contactEmail: "",
-        address: "",
-        experience: "",
-      });
-
-      // Set showSuccess to true to show the Snackbar
+      setAdoption(initialValue);
       setShowSuccess(true);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -83,32 +60,34 @@ const AdoptionForm = () => {
   return (
     <Box className="myContainer">
       <Box
-        backgroundColor="primary.back"
-        p={3}
+        // backgroundColor="primary.back"
+        // p={3}
         my={3}
         borderRadius={5}
         width={800}
         mx={"auto"}
         textAlign={"center"}
       >
-        <Typography variant="h4" fontWeight={700} mb={2}>
-          WANT TO ADOPT A PET?
+        <Typography variant="h4" fontWeight={900}>
+      ADOPTION APPLICATION FORM
         </Typography>
 
         <Typography variant="h6" fontWeight={700} py={1}>
           See all the Available Pet for Adoption
         </Typography>
 
-        <Button href="/adoption" variant="contained" color="success">
-          All Adoptable Pet
+        <Button href="/adoption/adoptable_pets" variant="contained" color="success">
+          All Adoptable Pets
         </Button>
       </Box>
 
+      <Divider variant="middle" />
+
       <Box
         style={{
-          border: "20px solid green",
+          // border: "20px solid green",
           borderRadius: "10px",
-          padding: 6,
+          padding: 10,
           // margin: "10 150",
         }}
         // sx={}
@@ -121,7 +100,7 @@ const AdoptionForm = () => {
           fontWeight={500}
           textAlign={"center"}
         >
-          Fill the Application
+          Fill the Adoption Application
         </Typography>
 
         <Box
@@ -138,19 +117,6 @@ const AdoptionForm = () => {
             label="Adopting Animal Code"
             name="animalCode"
             value={animalCode}
-            size="small"
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
-
-          <TextField
-            variant="outlined"
-            label="Adopting Pet Name"
-            name="animalName"
-            value={animalName}
             size="small"
             onChange={handleChange}
             fullWidth
@@ -186,43 +152,6 @@ const AdoptionForm = () => {
               <MenuItem value="Turtle">Turtle</MenuItem>
               <MenuItem value="Hamsters">Hamsters</MenuItem>
               <MenuItem value="Hedgehogs">Hedgehogs</MenuItem>
-            </Select>
-          </FormControl>
-
-          <TextField
-            variant="outlined"
-            label="Breed Type"
-            name="breed"
-            value={breed}
-            size="small"
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
-
-          <FormControl
-            variant="outlined"
-            name="gender"
-            size="small"
-            required
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          >
-            <InputLabel id="gender">Gender</InputLabel>
-            <Select
-              labelId="gender"
-              id="gender"
-              value={gender}
-              label="Gender"
-              onChange={handleAnimalGender}
-            >
-              <MenuItem value="Male">Male</MenuItem>
-              <MenuItem value="Female">Female</MenuItem>
-              <MenuItem value="Not Sure">Not Sure</MenuItem>
             </Select>
           </FormControl>
 

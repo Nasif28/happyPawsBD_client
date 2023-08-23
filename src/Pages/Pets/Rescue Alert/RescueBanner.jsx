@@ -17,38 +17,43 @@ const BrandingWrapper = styled(Box)(({ theme }) => ({
 const RescueBanner = () => {
   return (
     <Box className="myContainer">
-      {/* <img src={AdoptHeader} alt="" /> */}
       <BrandingWrapper>
-        <Stack spacing={4} sx={{ p: 4 }} flex={1.2}>
+        <Stack spacing={4} sx={{ p: 4 }} flex={1.4}>
           <Typography
             variant="h4"
             color="primary.headline"
             sx={{ lineHeight: 1.4, fontWeight: "900" }}
           >
-            Let US Know <br /> If You Find Any Animal <br /> That Need to be
-            Rescued
+            Be a Hero <br /> Be Their Voice <br /> Report an Animal in Distress
           </Typography>
 
-          <Typography
-            variant="h6"
-            color="primary.para"
-            sx={{ fontWeight: "700" }}
-          >
-            Work With Us. Be a Rescuer
-          </Typography>
+          {/* <Typography>
+            Let US Know If You Find Any Animal That Need to be Rescued
+          </Typography> */}
 
-          <Button
-            variant="contained"
-            color="success"
-            size="large"
-            sx={{ width: "30%" }}
-            // href="/adoption/adoption_form"
-          >
-            Join Us
-          </Button>
+          <Box>
+            <Typography
+              variant="h6"
+              pb={2}
+              color="primary.para"
+              sx={{ fontWeight: "700" }}
+            >
+              Work With Us. Be a Rescuer
+            </Typography>
+
+            <Button
+              variant="contained"
+              color="success"
+              size="large"
+              sx={{ width: "49%" }}
+              href="/volunteer"
+            >
+              Join Us
+            </Button>
+          </Box>
         </Stack>
 
-        <Box flex={1} pt={2}>
+        <Box flex={1} pt={4}>
           <img src={RescueAlertBanner} alt="" style={{ width: "90%" }} />
         </Box>
       </BrandingWrapper>
