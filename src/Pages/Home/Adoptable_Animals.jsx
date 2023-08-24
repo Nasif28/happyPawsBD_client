@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import React from "react";
 import adoptableAnimals from "./../../API/adoptableAnimals.json";
-import { Link } from "react-router-dom";
 
 const Adoptable_Animals = () => {
   return (
@@ -57,10 +56,22 @@ const Adoptable_Animals = () => {
                       <Typography variant="body2" fontSize={11}>
                         - {item.origin}
                       </Typography>
-                      <Typography variant="body2" color="primary.para" p={2}>
+                      <Typography
+                        variant="body2"
+                        color="primary.para"
+                        p={2}
+                        maxHeight="140px"
+                        overflow="hidden"
+                        textOverflow="ellipsis"
+                        wordWrap="break-word"
+                      >
                         {item.shortDescription}
                       </Typography>
-                      <Typography variant="body2" color="primary.green" textAlign={"right"}>
+                      <Typography
+                        variant="body2"
+                        color="primary.green"
+                        textAlign={"right"}
+                      >
                         - Read More
                       </Typography>
                     </CardContent>
@@ -72,7 +83,11 @@ const Adoptable_Animals = () => {
         </Stack>
 
         {/* All Animal Button --------------------------------------------------------------  */}
-        <Button variant="outlined" color="success" href="./">
+        <Button
+          variant="outlined"
+          color="success"
+          href="/adoption/adoptable_pets"
+        >
           <Typography variant="button" fontWeight="bold">
             View All Adoptable Animals
           </Typography>

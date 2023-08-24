@@ -25,3 +25,14 @@ code {
   max-width: 1080px;
   margin: 0 auto;
 }
+
+.span1 {
+  color: green;
+  text-decoration: none;
+  font-weight: 700;
+}
+.span2 {
+  color: green;
+  text-decoration: none;
+  font-weight: 500;
+}

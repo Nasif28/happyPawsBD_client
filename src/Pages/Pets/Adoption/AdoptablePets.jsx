@@ -63,7 +63,15 @@ const AdoptablePets = () => {
                     <Typography variant="body2" fontSize={11}>
                       - {item.origin}
                     </Typography>
-                    <Typography variant="body2" color="primary.para" p={2}>
+                    <Typography
+                      variant="body2"
+                      color="primary.para"
+                      p={2}
+                      maxHeight="140px"
+                      overflow="hidden"
+                      textOverflow="ellipsis"
+                      wordWrap="break-word"
+                    >
                       {item.shortDescription}
                     </Typography>
 
@@ -72,6 +80,7 @@ const AdoptablePets = () => {
                       justifyContent="space-between"
                       alignItems="center"
                       spacing={2}
+                      mt={2}
                     >
                       <Typography
                         variant="body2"

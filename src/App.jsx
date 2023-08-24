@@ -42,7 +42,7 @@ import Share_Your_Story from "./Pages/Get Involve/Share Your Story/Share_Your_St
 import Remembrance from "./Pages/Get Involve/Remembrance/Remembrance";
 import Reviews from "./Pages/Get Involve/Reviews/Reviews";
 
-import About_Us from "./Pages/About US/About_Us";
+import About_Us from "./Pages/About Us/About_Us";
 import Contact_Us from "./Pages/Contact Us/Contact_Us";
 import Footer from "./Components/Footer/Footer";
 

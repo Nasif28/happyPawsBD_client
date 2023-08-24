@@ -26,13 +26,14 @@ const Vats = () => {
         <Carousel
           show={3}
           slide={3}
-          transition={0.5}
+          transition={1}
           swiping={true}
           leftArrow="←"
           rightArrow="→"
         >
           {vets.map((item) => (
             <Box
+              key={item.id}
               position="relative"
               sx={{
                 width: 250,
@@ -76,6 +77,7 @@ const Vats = () => {
                   >
                     {item.name}
                   </Typography>
+
                   <Typography
                     sx={{ textAlign: "left" }}
                     variant="h6"
@@ -85,14 +87,41 @@ const Vats = () => {
                   >
                     {item.specialization}
                   </Typography>
-                  <Link
+
+                  <Typography
+                    sx={{ textAlign: "left" }}
+                    variant="h6"
+                    fontSize={11}
+                    fontWeight={500}
+                    component="div"
+                  >
+                    {item.location}
+                  </Typography>
+
+                  <Typography
+                    sx={{ textAlign: "left" }}
+                    variant="h6"
+                    fontSize={11}
+                    fontWeight={500}
+                    component="div"
+                  >
+                    {item.contact}
+                  </Typography>
+
+                  <Box
+                    position="absolute"
+                    bottom="10px"
+                    right="10px"
                     variant="body2"
                     fontSize={11}
-                    sx={{ textAlign: "end", textDecoration: "none", mt:"5" }}
-                    href="www.google.com"
+                    color={"primary.green"}
+                    sx={{
+                      textDecoration: "none",
+                    }}
+                    // href="www.google.com"
                   >
-                    Learn More
-                  </Link>
+                    - Learn More
+                  </Box>
                 </Stack>
               </Card>
             </Box>

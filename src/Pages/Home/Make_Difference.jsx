@@ -24,13 +24,9 @@ const Make_Difference = () => {
       </Typography>
 
       {/* 3 Box Starts -------------------------------------------------------- */}
-      <Stack
-        direction="row"
-        justifyContent="space-evenly"
-        alignItems="center"
-      >
+      <Stack direction="row" justifyContent="space-evenly" alignItems="center">
         {/* 1 Box Starts -----------------------------------------------------------  */}
-        <a href="./" style={{ textDecoration: "none" }}>
+        <a style={{ textDecoration: "none" }}>
           <Stack
             spacing={3}
             p={3}
@@ -78,7 +74,7 @@ const Make_Difference = () => {
         </a>
 
         {/* 2 Box Starts -----------------------------------------------------------  */}
-        <a href="./" style={{ textDecoration: "none" }}>
+        <a style={{ textDecoration: "none" }}>
           <Stack
             spacing={3}
             p={3}
@@ -125,7 +121,7 @@ const Make_Difference = () => {
         </a>
 
         {/* 3 Box Starts -----------------------------------------------------------  */}
-        <a href="./" style={{ textDecoration: "none" }}>
+        <a style={{ textDecoration: "none" }}>
           <Stack
             spacing={3}
             p={3}

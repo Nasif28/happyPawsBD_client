@@ -77,8 +77,8 @@ const Lost_Found = () => {
                 </Typography>
 
                 <Typography variant="body1">
-                  Fill a form with your pet details. We'll post it on site so
-                  that anyone found your pet they can contact with you.
+                  Fill out a form with your pet's details. We'll post it on the
+                  wall if anyone finds your pet they will contact you.
                 </Typography>
               </Stack>
             </a>
@@ -111,7 +111,7 @@ const Lost_Found = () => {
                 </Typography>
 
                 <Typography variant="body1">
-                  Here you'll find all the post about found pet animals by
+                  Here you'll find all the posts about found pet animals by
                   different people
                 </Typography>
               </Stack>
@@ -169,8 +169,8 @@ const Lost_Found = () => {
                 </Typography>
 
                 <Typography variant="body1">
-                  Fill a form about the pet you found. We'll post it on site, if
-                  anyone looking for a lost pet they will contact you.
+                  Fill out a form about the pet you found. If someone finds
+                  their lost pet here, they will contact you.
                 </Typography>
               </Stack>
             </a>
@@ -200,7 +200,7 @@ const Lost_Found = () => {
                 </Typography>
 
                 <Typography variant="body1">
-                  Here you'll find all the post about Lost pet animals by their
+                  Here you'll find all the posts about Lost pet animals by their
                   owner
                 </Typography>
               </Stack>
