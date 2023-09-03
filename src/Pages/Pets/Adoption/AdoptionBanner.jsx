@@ -44,7 +44,7 @@ const AdoptionBanner = () => {
               sx={{ width: "70%" }}
               href="/adoption/adoptable_pets"
             >
-              All Adoptable Pets
+              Explore Adoptable Pets
             </Button>
           </Box>
         </Stack>

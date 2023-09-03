@@ -6,6 +6,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  /* font-family: "Roboto"; */
 }
 
 body {
@@ -31,8 +32,15 @@ code {
   text-decoration: none;
   font-weight: 700;
 }
+
 .span2 {
   color: green;
   text-decoration: none;
   font-weight: 500;
+}
+
+.span3 {
+  color: rgb(0, 0, 0);
+  /* text-decoration: none; */
+  /* font-weight: 700; */
 }

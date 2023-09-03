@@ -118,6 +118,7 @@ const AdoptionForm = () => {
             name="animalCode"
             value={animalCode}
             size="small"
+            required
             onChange={handleChange}
             fullWidth
             margin="normal"

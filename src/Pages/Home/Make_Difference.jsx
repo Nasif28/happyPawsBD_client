@@ -8,7 +8,7 @@ const Make_Difference = () => {
   return (
     <Box
       className="myContainer"
-      height="75vh"
+      height="85vh"
       backgroundColor="primary.back"
       my="20px"
       borderRadius=".3rem"

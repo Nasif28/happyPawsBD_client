@@ -103,7 +103,7 @@ const LostFormcopy = () => {
           To See All the Found Pets -
         </Typography>
 
-        <Button variant="contained" color="success">
+        <Button href="/lost_found/found_pets" variant="contained" color="success">
           See All Found Pets
         </Button>
       </Box>

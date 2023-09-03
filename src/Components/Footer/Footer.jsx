@@ -7,94 +7,267 @@ import {
   Divider,
   Avatar,
   Stack,
+  Button,
 } from "@mui/material";
+import { green } from "@mui/material/colors";
+import contactImage from "./../../../images/contactUs.png";
+import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FmdGoodIcon from "@mui/icons-material/FmdGood";
+import EmailIcon from "@mui/icons-material/Email";
 
 const Footer = () => {
   return (
     <Box
       sx={{
         mt: 10,
-        py: 4,
         textAlign: "center",
         backgroundColor: "primary.back",
         minHeight: "50vh",
       }}
     >
-      <Box className="myContainer" maxWidth="lg" p={2}>
+      <Box className="myContainer" pb={2}>
         <Grid container spacing={3}>
           <Grid item xs={7} md={4}>
             {/* Contact Information */}
-            <Typography variant="h4" gutterBottom>
-              Contact Us
-            </Typography>
-
-            <Typography paragraph>
-              Have any questions or inquiries? Feel free to reach out to us. We
-              are here to help and answer your queries.
-            </Typography>
-
-            {/* Multiple Links */}
-            <Typography variant="h6" gutterBottom>
-              Useful Links
-            </Typography>
-
-            <Link
-              href="https://www.happypawsbd.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="primary"
+            {/* Logo Full Screen ------------------------------------- */}
+            <Typography
+              variant="h6"
+              component="a"
+              href="../"
+              sx={{ color: "inherit", textDecoration: "none", pt: 1 }}
             >
-              Visit Our Website
-            </Link>
+              <img
+                src="./../../../images/HPBD-Logo.png"
+                alt="Happy Paws BD"
+                width={150}
+              />
+            </Typography>
+            <Typography fontWeight={900} variant="h5" gutterBottom>
+              HAPPY PAWS BD{" "}
+            </Typography>
 
-            <br />
-            <Link href="mailto:contact@happypawsbd.com" color="primary">
-              Email Us
-            </Link>
+            <Typography
+              color={"primary.para"}
+              variant="body2"
+              textAlign={"left"}
+            >
+              The "Happy Paws BD" project is a comprehensive pet website aimed
+              at promoting pet welfare and providing a range of services to pet
+              owners and enthusiasts.
+            </Typography>
 
-            <br />
-            <Link href="tel:+1234567890" color="primary">
-              Call Us
-            </Link>
+            <Box mt={2}>
+              <Stack direction="row" justifyContent="space-evenly">
+                <a
+                  href="https://www.facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Avatar sx={{ bgcolor: green[500] }} variant="rounded">
+                    <FacebookOutlinedIcon />
+                  </Avatar>
+                </a>
+
+                <a
+                  href="https://www.instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Avatar sx={{ bgcolor: green[500] }} variant="rounded">
+                    <InstagramIcon />
+                  </Avatar>
+                </a>
+
+                <a
+                  href="https://www.youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Avatar sx={{ bgcolor: green[500] }} variant="rounded">
+                    <YouTubeIcon />
+                  </Avatar>
+                </a>
+
+                <a
+                  href="https://www.google.com/maps"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Avatar sx={{ bgcolor: green[500] }} variant="rounded">
+                    <FmdGoodIcon />
+                  </Avatar>
+                </a>
+
+                <a
+                  href="https://mail.google.com/mail/u/0/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Avatar sx={{ bgcolor: green[500] }} variant="rounded">
+                    <EmailIcon />
+                  </Avatar>
+                </a>
+              </Stack>
+            </Box>
           </Grid>
 
-          <Grid item xs={5} md={3}>
+          <Grid item xs={5} md={2}>
             {/* Contact Information */}
-            <Typography variant="h4" gutterBottom>
-              Contact Us
-            </Typography>
-
-            <Typography paragraph>
-              Have any questions or inquiries? Feel free to reach out to us. We
-              are here to help and answer your queries.
+            <Typography variant="h5" fontWeight={700} mb={2} gutterBottom>
+              Sitemap
             </Typography>
 
             {/* Multiple Links */}
-            <Typography variant="h6" gutterBottom>
-              Useful Links
-            </Typography>
+            <Stack spacing={-2}>
+              <Link
+                href="../"
+                target="_blank"
+                rel="noopener noreferrer"
+                color={"primary.para"}
+                style={{ textDecoration: "none" }}
+              >
+                Home
+              </Link>
 
-            <Link
-              href="https://www.happypawsbd.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="primary"
-            >
-              Visit Our Website
-            </Link>
+              <br />
+              <Link
+                href="/adoption"
+                target="_blank"
+                rel="noopener noreferrer"
+                color={"primary.para"}
+                style={{ textDecoration: "none" }}
+              >
+                Adoption
+              </Link>
 
-            <br />
-            <Link href="mailto:contact@happypawsbd.com" color="primary">
-              Email Us
-            </Link>
+              <br />
+              <Link
+                href="/rescue_alert"
+                target="_blank"
+                rel="noopener noreferrer"
+                color={"primary.para"}
+                style={{ textDecoration: "none" }}
+              >
+                Rescue
+              </Link>
 
-            <br />
-            <Link href="tel:+1234567890" color="primary">
-              Call Us
-            </Link>
+              <br />
+              <Link
+                href="/food"
+                target="_blank"
+                rel="noopener noreferrer"
+                color={"primary.para"}
+                style={{ textDecoration: "none" }}
+              >
+                Shop
+              </Link>
+              <br />
+              <Link
+                href="/lost_found"
+                target="_blank"
+                rel="noopener noreferrer"
+                color={"primary.para"}
+                style={{ textDecoration: "none" }}
+              >
+                Lost & Found
+              </Link>
+
+              <br />
+              <Link
+                href="/online_consultation"
+                target="_blank"
+                rel="noopener noreferrer"
+                color={"primary.para"}
+                style={{ textDecoration: "none" }}
+              >
+                Consultation
+              </Link>
+
+              <br />
+            </Stack>
           </Grid>
 
-          <Grid item xs={12} md={5}>
+          <Grid item xs={5} md={2}>
+            {/* Contact Information */}
+            <Typography variant="h5" fontWeight={700} mb={2} gutterBottom>
+              Support
+            </Typography>
+
+            {/* Multiple Links */}
+            <Stack spacing={-2}>
+              <Link
+                href="/about_us"
+                target="_blank"
+                rel="noopener noreferrer"
+                color={"primary.para"}
+                style={{ textDecoration: "none" }}
+              >
+                About Us
+              </Link>
+
+              <br />
+              <Link
+                href="/contact_us"
+                target="_blank"
+                rel="noopener noreferrer"
+                color={"primary.para"}
+                style={{ textDecoration: "none" }}
+              >
+                Contact Us
+              </Link>
+
+              <br />
+              <Link
+                href="/volunteer"
+                target="_blank"
+                rel="noopener noreferrer"
+                color={"primary.para"}
+                style={{ textDecoration: "none" }}
+              >
+                Volunteer
+              </Link>
+
+              <br />
+              <Link
+                href="/make_donation"
+                target="_blank"
+                rel="noopener noreferrer"
+                color={"primary.para"}
+                style={{ textDecoration: "none" }}
+              >
+                Donation
+              </Link>
+
+              <br />
+
+              <Link
+                href="/share_your_story"
+                target="_blank"
+                rel="noopener noreferrer"
+                color={"primary.para"}
+                style={{ textDecoration: "none" }}
+              >
+                Your Story
+              </Link>
+
+              <br />
+              <Link
+                href="/remembrance"
+                target="_blank"
+                rel="noopener noreferrer"
+                color={"primary.para"}
+                style={{ textDecoration: "none" }}
+              >
+                Remembrance
+              </Link>
+
+              <br />
+            </Stack>
+          </Grid>
+
+          <Grid item xs={12} md={4}>
             {/* Google Map Embed */}
             <iframe
               title="Google Map"
@@ -103,7 +276,7 @@ const Footer = () => {
                 border: 1,
                 borderColor: "black",
                 width: "100%",
-                height: "300px",
+                height: "250px",
                 borderRadius: "10px",
               }}
               allowFullScreen=""
@@ -119,7 +292,7 @@ const Footer = () => {
       <Box
         component="footer"
         sx={{
-          pt: 3,
+          py: 2,
           textAlign: "center",
         }}
       >

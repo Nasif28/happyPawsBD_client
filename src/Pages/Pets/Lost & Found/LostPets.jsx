@@ -76,23 +76,24 @@ const LostPets = () => {
                     </Typography>
 
                     <Typography variant="body2" color="primary.para">
-                      Type: {pet.animalType}
+                      <span className="span3">Type:</span> {pet.animalType}
                     </Typography>
 
                     <Typography variant="body2" color="primary.para">
-                      Breed: {pet.breed}
+                      <span className="span3">Age:</span> {pet.age}
                     </Typography>
 
                     <Typography variant="body2" color="primary.para">
-                      Color: {pet.colors}
+                      <span className="span3"> Color: </span> {pet.colors}
                     </Typography>
 
                     <Typography variant="body2" color="primary.para">
-                      Lost Location: {pet.lastSeenLocation}
+                      <span className="span3">Lost Location:</span>{" "}
+                      {pet.lastSeenLocation}
                     </Typography>
 
                     <Typography variant="body2" color="primary.para">
-                      Lost Date: {pet.lostDate}
+                      <span className="span3">Lost Date:</span> {pet.lostDate}
                     </Typography>
 
                     <Divider>OWNER INFO</Divider>
@@ -102,7 +103,8 @@ const LostPets = () => {
                     </Typography>
 
                     <Typography variant="body2" color="primary.para">
-                      Contact: {pet.contactPhone}
+                      <span className="span3"> Contact:</span>{" "}
+                      {pet.contactPhone}
                     </Typography>
 
                     {/* <Typography

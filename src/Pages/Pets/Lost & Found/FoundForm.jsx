@@ -100,7 +100,7 @@ const FoundForm = () => {
           To See All the Lost Pets -
         </Typography>
 
-        <Button variant="contained" color="success">
+        <Button href="/lost_found/lost_pets" variant="contained" color="success">
           See All Lost Pets
         </Button>
       </Box>

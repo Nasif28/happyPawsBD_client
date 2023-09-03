@@ -72,23 +72,24 @@ const FoundPets = () => {
                     <Divider>PET INFO</Divider>
 
                     <Typography variant="body2" color="primary.para">
-                      Type: {pet.animalType}
+                      <span className="span3">Type:</span> {pet.animalType}
                     </Typography>
 
                     <Typography variant="body2" color="primary.para">
-                      Breed: {pet.breed}
+                      <span className="span3"> Breed: </span> {pet.breed}
                     </Typography>
 
                     <Typography variant="body2" color="primary.para">
-                      Color: {pet.colors}
+                      <span className="span3">Color: </span> {pet.colors}
                     </Typography>
 
                     <Typography variant="body2" color="primary.para">
-                      Lost Location: {pet.foundLocation}
+                      <span className="span3">Lost Location:</span>{" "}
+                      {pet.foundLocation}
                     </Typography>
 
                     <Typography variant="body2" color="primary.para">
-                      Lost Date: {pet.foundDate}
+                      <span className="span3"> Lost Date:</span> {pet.foundDate}
                     </Typography>
 
                     <Divider>FOUNDER INFO</Divider>
@@ -98,7 +99,8 @@ const FoundPets = () => {
                     </Typography>
 
                     <Typography variant="body2" color="primary.para">
-                      Contact: {pet.contactPhone}
+                      <span className="span3"> Contact: </span>{" "}
+                      {pet.contactPhone}
                     </Typography>
 
                     {/* <Typography

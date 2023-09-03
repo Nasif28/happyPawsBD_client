@@ -2,6 +2,8 @@ import "./App.css";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./Theme/Theme";
 import { Route, Routes } from "react-router-dom";
+import { UserAuthContextProvider } from "./context/UserAuthContext";
+import ProtectedRoute from "./Components/Authentication/ProtectedRoute";
 
 import Header from "./Components/Header/Header";
 import Home from "./Pages/Home/Home";
@@ -46,62 +48,104 @@ import About_Us from "./Pages/About Us/About_Us";
 import Contact_Us from "./Pages/Contact Us/Contact_Us";
 import Footer from "./Components/Footer/Footer";
 
+import SignIn from "./Components/Authentication/SignIn";
+import SignUp from "./Components/Authentication/SignUp";
+import Profile from "./Dashboard/Profile";
+
 const App = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Header />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
+        <UserAuthContextProvider>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
 
-          {/* Pets --------------------------------  */}
-          <Route path="/pet_info" element={<Pet_Info />} />
-          <Route path="/daycare" element={<Daycare />} />
-          <Route path="/boarding" element={<Boarding />} />
-          <Route path="/pet_training" element={<Pet_Training />} />
-          <Route path="/adoption" element={<Adoption />} />
-          <Route path="/adoption/adoptable_pets" element={<AdoptablePets />} />
-          <Route path="/adoption/adoption_form" element={<AdoptionForm />} />
-          <Route path="/rescue_alert" element={<RescueAlert />} />
-          <Route path="/lost_found" element={<Lost_Found />} />
-          <Route path="/lost_found/lost_pets" element={<LostPets />} />
-          <Route path="/lost_found/found_pets" element={<FoundPets />} />
-          <Route path="/lost_found/lost_form" element={<LostForm />} />
-          <Route path="/lost_found/found_form" element={<FoundForm />} />
+            {/* Pets --------------------------------  */}
+            <Route path="/pet_info" element={<Pet_Info />} />
+            <Route path="/daycare" element={<Daycare />} />
+            <Route path="/boarding" element={<Boarding />} />
+            <Route path="/pet_training" element={<Pet_Training />} />
+            <Route path="/adoption" element={<Adoption />} />
+            <Route
+              path="/adoption/adoptable_pets"
+              element={<AdoptablePets />}
+            />
+            <Route
+              path="/adoption/adoption_form"
+              element={
+                <ProtectedRoute>
+                  <AdoptionForm />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/rescue_alert" element={<RescueAlert />} />
+            <Route path="/lost_found" element={<Lost_Found />} />
+            <Route path="/lost_found/lost_pets" element={<LostPets />} />
+            <Route path="/lost_found/found_pets" element={<FoundPets />} />
+            <Route
+              path="/lost_found/lost_form"
+              element={
+                <ProtectedRoute>
+                  <LostForm />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/lost_found/found_form"
+              element={
+                <ProtectedRoute>
+                  <FoundForm />
+                </ProtectedRoute>
+              }
+            />
 
-          {/* Shop ---------------------------------------  */}
-          <Route path="/food" element={<Food />} />
-          <Route path="/medicine" element={<Medicine />} />
-          <Route path="/accessories" element={<Accessories />} />
+            {/* Shop ---------------------------------------  */}
+            <Route path="/food" element={<Food />} />
+            <Route path="/medicine" element={<Medicine />} />
+            <Route path="/accessories" element={<Accessories />} />
 
-          {/* Veterinary --------------------------------------  */}
-          <Route
-            path="/online_consultation"
-            element={<Online_Consultation />}
-          />
-          <Route
-            path="/in_person_consultation"
-            element={<In_Person_Consultation />}
-          />
-          <Route path="/nearest_clinic" element={<Nearest_Clinic />} />
-          <Route path="/house_calls" element={<House_Calls />} />
-          <Route path="/health_care_blog" element={<Health_Care_Blog />} />
-          <Route path="/covid19_info" element={<Covid19_Info />} />
+            {/* Veterinary --------------------------------------  */}
+            <Route
+              path="/online_consultation"
+              element={<Online_Consultation />}
+            />
+            <Route
+              path="/in_person_consultation"
+              element={<In_Person_Consultation />}
+            />
+            <Route path="/nearest_clinic" element={<Nearest_Clinic />} />
+            <Route path="/house_calls" element={<House_Calls />} />
+            <Route path="/health_care_blog" element={<Health_Care_Blog />} />
+            <Route path="/covid19_info" element={<Covid19_Info />} />
 
-          {/* Get Involve -----------------  */}
-          <Route path="/volunteer" element={<Volunteer />} />
-          <Route path="/make_donation" element={<Make_Donation />} />
-          <Route path="/our_success_story" element={<Our_Success_Story />} />
-          <Route path="/share_your_story" element={<Share_Your_Story />} />
-          <Route path="/remembrance" element={<Remembrance />} />
-          <Route path="/reviews" element={<Reviews />} />
+            {/* Get Involve -----------------  */}
+            <Route path="/volunteer" element={<Volunteer />} />
+            <Route path="/make_donation" element={<Make_Donation />} />
+            <Route path="/our_success_story" element={<Our_Success_Story />} />
+            <Route path="/share_your_story" element={<Share_Your_Story />} />
+            <Route path="/remembrance" element={<Remembrance />} />
+            <Route path="/reviews" element={<Reviews />} />
 
-          <Route path="about_us" element={<About_Us />} />
-          <Route path="contact_us" element={<Contact_Us />} />
-        </Routes>
+            <Route path="/about_us" element={<About_Us />} />
+            <Route path="/contact_us" element={<Contact_Us />} />
+
+            <Route path="/sign_in" element={<SignIn />} />
+            <Route path="/sign_up" element={<SignUp />} />
+
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </UserAuthContextProvider>
 
         <Footer />
       </ThemeProvider>

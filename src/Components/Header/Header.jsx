@@ -18,7 +18,8 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Stack } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useUserAuth } from "../../context/UserAuthContext";
 
 const Header = (props) => {
   const { window } = props;
@@ -75,6 +76,19 @@ const Header = (props) => {
   const handleMenu4Close = () => {
     setMenu4AnchorEl(null);
   };
+
+  // LogOut
+  const { logOut, user } = useUserAuth();
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate("/sign_in");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <Box className="myContainer" sx={{ display: "flex" }}>
       <AppBar
@@ -99,7 +113,7 @@ const Header = (props) => {
           <Typography
             variant="h6"
             component="a"
-            href="./"
+            href="../"
             textAlign={{ xs: "center", md: "inherit" }}
             flexGrow={{ xs: "1", md: "0" }}
             sx={{ color: "inherit", textDecoration: "none", pt: 1 }}
@@ -785,50 +799,76 @@ const Header = (props) => {
           </Menu>
 
           {/* Profile Setting Icon or Login ----------------------------- */}
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu}>
-                <Avatar alt="Nasif Jihan" src="" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
+          {user ? (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu}>
+                  <Avatar alt="Nasif Jihan" src="" />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Link
+                    style={{
+                      textAlign: "center",
+                      fontWeight: "bold",
+                      textDecoration: "none",
+                      color: "inherit",
+                      fontWeight: "600",
+                    }}
+                    to="/profile"
+                  >
+                    Profile
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center" fontWeight="bold">
+                    Account
+                  </Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center" fontWeight="bold">
+                    Dashboard
+                  </Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography
+                    onClick={handleLogout}
+                    textAlign="center"
+                    fontWeight="bold"
+                  >
+                    Logout
+                  </Typography>
+                </MenuItem>
+              </Menu>
+            </Box>
+          ) : (
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                fontWeight: "600",
               }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              to="/sign_in"
             >
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center" fontWeight="bold">
-                  Profile
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center" fontWeight="bold">
-                  Account
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center" fontWeight="bold">
-                  Dashboard
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center" fontWeight="bold">
-                  Logout
-                </Typography>
-              </MenuItem>
-            </Menu>
-          </Box>
+              Login
+            </Link>
+          )}
         </Toolbar>
       </AppBar>
 
