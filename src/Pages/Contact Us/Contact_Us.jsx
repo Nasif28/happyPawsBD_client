@@ -19,6 +19,7 @@ import {
   Email as EmailIcon,
   Phone as PhoneIcon,
   LocationOn as LocationIcon,
+  Margin,
 } from "@mui/icons-material";
 
 import { green } from "@mui/material/colors";
@@ -33,22 +34,21 @@ const Contact_Us = () => {
   return (
     <Box
       style={{
-        paddingTop: "2rem",
-        paddingBottom: "2rem",
         backgroundColor: "#f9f9f9",
       }}
+      my={5}
     >
       <Container maxWidth="lg">
         <Paper
           elevation={3}
           style={{
-            padding: "1.5rem",
+            padding: "2.5rem",
             backgroundColor: "#ffffff",
             borderRadius: "10px",
             boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
           }}
         >
-          <Grid container spacing={3}>
+          <Grid container spacing={5}>
             <Grid item xs={12} md={6}>
               <img
                 src={contactImage}
@@ -56,9 +56,9 @@ const Contact_Us = () => {
                 style={{
                   paddingTop: "30px",
                   width: "100%",
-                  maxHeight: "600px",
+                  // maxHeight: "600px",
                   objectFit: "cover",
-                  borderRadius: "10px",
+                  // borderRadius: "10px",
                 }}
               />
             </Grid>

@@ -6,7 +6,7 @@ const Adopted = () => {
   return (
     <Box
       className="myContainer"
-      mt={20}
+      my={10}
       p={6}
       sx={{
         backgroundImage: 'url("./../../../images/BackgroundCurve.png")',
@@ -32,10 +32,13 @@ const Adopted = () => {
             background: "#FBD062",
             top: "-35px",
             p: "8px",
-            right: "455px",
+            right: "550px",
+            // mx: "auto",
             width: 65,
             height: 65,
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
           }}
+          
         ></PetsIcon>
 
         <Typography

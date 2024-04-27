@@ -4,7 +4,7 @@ import AdoptHeader from "../../../../images/AdoptHeader.png";
 import React from "react";
 
 const BrandingWrapper = styled(Box)(({ theme }) => ({
-  height: "60vh",
+  height: "50vh",
   backgroundColor: "rgba(122, 178, 89, 0.15)",
   padding: theme.spacing(4),
   margin: "1rem 0",
@@ -30,7 +30,7 @@ const AdoptionBanner = () => {
           <Box>
             <Typography
               variant="h6"
-              pb={3}
+              pb={2}
               color="primary.para"
               sx={{ fontWeight: "700" }}
             >
@@ -41,7 +41,7 @@ const AdoptionBanner = () => {
               variant="contained"
               color="success"
               size="large"
-              sx={{ width: "70%" }}
+              sx={{ width: "40%" }}
               href="/adoption/adoptable_pets"
             >
               Explore Adoptable Pets

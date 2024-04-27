@@ -7,8 +7,7 @@ const About_Us = () => {
     <Box
       className="myContainer"
       sx={{
-        pt: 4,
-        pb: 4,
+        my: 5,
         backgroundColor: "#f9f9f9",
       }}
     >
@@ -16,14 +15,14 @@ const About_Us = () => {
         <Paper
           elevation={3}
           sx={{
-            p: 6,
+            p: 10,
             backgroundColor: "#e5e5e5",
             borderRadius: "10",
             boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
           }}
         >
           <Grid container spacing={3}>
-            <Grid item xs={12} md={7}>
+            <Grid item xs={12} md={8}>
               <Typography
                 variant="h4"
                 textAlign={"center"}
@@ -60,7 +59,7 @@ const About_Us = () => {
               </Typography>
             </Grid>
 
-            <Grid item xs={12} md={5} textAlign={"center"} mt={4}>
+            <Grid item xs={12} md={4} textAlign={"center"} mt={4}>
               <img src={aboutImage} alt="About Us" width="80%" />
             </Grid>
           </Grid>

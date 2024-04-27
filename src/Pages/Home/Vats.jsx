@@ -24,7 +24,7 @@ const Vats = () => {
 
       <Box mt={5}>
         <Carousel
-          show={3}
+          show={4}
           slide={3}
           transition={1}
           swiping={true}

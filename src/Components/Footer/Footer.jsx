@@ -24,11 +24,11 @@ const Footer = () => {
         mt: 10,
         textAlign: "center",
         backgroundColor: "primary.back",
-        minHeight: "50vh",
+        // minHeight: "50vh",
       }}
     >
-      <Box className="myContainer" pb={2}>
-        <Grid container spacing={3}>
+      <Box className="myContainer">
+        <Grid container spacing={3} py={2}>
           <Grid item xs={7} md={4}>
             {/* Contact Information */}
             {/* Logo Full Screen ------------------------------------- */}
@@ -51,7 +51,7 @@ const Footer = () => {
             <Typography
               color={"primary.para"}
               variant="body2"
-              textAlign={"left"}
+              // textAlign={"justify"}
             >
               The "Happy Paws BD" project is a comprehensive pet website aimed
               at promoting pet welfare and providing a range of services to pet

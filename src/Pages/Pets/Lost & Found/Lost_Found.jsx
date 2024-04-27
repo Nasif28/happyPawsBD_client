@@ -45,11 +45,11 @@ const Lost_Found = () => {
 
           <Stack
             backgroundColor="primary.back"
-            p={3}
+            p={4}
             // direction="row"
             justifyContent="space-evenly"
             alignItems="center"
-            spacing={2}
+            spacing={4}
             divider={<Divider orientation="horizental" flexItem />}
           >
             {/* 1 Box Starts -----------------------------------------------------------  */}
@@ -134,11 +134,11 @@ const Lost_Found = () => {
 
           <Stack
             backgroundColor="primary.back"
-            p={3}
+            p={4}
             // direction="row"
             justifyContent="space-evenly"
             alignItems="center"
-            spacing={2}
+            spacing={4}
             divider={<Divider orientation="horizental" flexItem />}
           >
             {/* 1 Box Starts -----------------------------------------------------------  */}
@@ -178,7 +178,9 @@ const Lost_Found = () => {
             {/* 2 Box Starts -----------------------------------------------------------  */}
             <a href="./lost_found/lost_pets" style={{ textDecoration: "none" }}>
               <Stack
-                p={3}
+              p={3}
+                px={5.6}
+                // py={1}
                 sx={{
                   // backgroundColor: "#DDB5F9",
                   borderLeft: "6px solid #7AB259",

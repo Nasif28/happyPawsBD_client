@@ -3,7 +3,7 @@ import { Box, Button, ButtonGroup, Stack, Typography } from "@mui/material";
 import React from "react";
 
 const BrandingWrapper = styled(Box)(({ theme }) => ({
-  height: "70vh",
+  height: "60vh",
   backgroundColor: "rgba(122, 178, 89, 0.15)",
   padding: theme.spacing(4),
   margin: "1rem 0",

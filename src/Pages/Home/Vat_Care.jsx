@@ -4,7 +4,7 @@ import React from "react";
 
 const Vat_Care = () => {
   const BrandingWrapper = styled(Box)(({ theme }) => ({
-    height: "70vh",
+    // height: "70vh",
     backgroundColor: "rgba(122, 178, 89, 0.15)",
     padding: theme.spacing(4),
     display: "flex",
@@ -13,9 +13,9 @@ const Vat_Care = () => {
   }));
 
   return (
-    <Box className="myContainer" my={20}>
+    <Box className="myContainer" my={10}>
       <BrandingWrapper>
-        <Stack spacing={5} sx={{ p: 4 }} flex={1}>
+        <Stack spacing={5} sx={{ p: 4 }} flex={1.4}>
           <Typography
             variant="h3"
             color="primary.headline"
@@ -40,11 +40,11 @@ const Vat_Care = () => {
           </Button>
         </Stack>
 
-        <Box flex={1.1}>
+        <Box flex={1}>
           <img
             src="./../../../images/vat-care.png"
             alt="Vat care"
-            style={{ width: "100%" }}
+            style={{ width: "80%" }}
           />
         </Box>
       </BrandingWrapper>

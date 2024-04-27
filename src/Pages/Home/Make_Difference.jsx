@@ -8,16 +8,17 @@ const Make_Difference = () => {
   return (
     <Box
       className="myContainer"
-      height="85vh"
+      // height="85vh"
       backgroundColor="primary.back"
-      my="20px"
+      my="10px"
       borderRadius=".3rem"
       textAlign={"center"}
     >
+      <Box padding={10}>
       <Typography
         variant="h4"
         color="primary.headline"
-        py={6}
+        pb={6}
         sx={{ lineHeight: 1.2, fontWeight: "900" }}
       >
         You Can Make a Difference
@@ -168,6 +169,7 @@ const Make_Difference = () => {
           </Stack>
         </a>
       </Stack>
+      </Box>
     </Box>
   );
 };
