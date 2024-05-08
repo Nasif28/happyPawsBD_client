@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const URL = 'https://happypawsbd-server.vercel.app';
+const URL = 'https://happypawsbd-server.onrender.com';
+// const URL = 'https://happypawsbd-server.vercel.app';
 // const URL = 'https://happypawsbd.vercel.app';
 // const URL = 'http://localhost:5000';
 
