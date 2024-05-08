@@ -10,7 +10,7 @@ import Home from "./Pages/Home/Home";
 
 // Pets -----------------------------
 import Pet_Info from "./Pages/Pets/Pet Info/Pet_Info";
-import PetServices from "./Pages/Pets/Pet Services/PetServices";
+import Pet_Training from "./Pages/Pets/Pet Training/Pet_Training";
 import Adoption from "./Pages/Pets/Adoption/Adoption";
 import AdoptablePets from "./Pages/Pets/Adoption/AdoptablePets";
 import AdoptionForm from "./Pages/Pets/Adoption/AdoptionForm";
@@ -64,7 +64,7 @@ const App = () => {
 
             {/* Pets --------------------------------  */}
             <Route path="/pet_info" element={<Pet_Info />} />
-            <Route path="/pet_services" element={<PetServices />} />
+            <Route path="/pet_training" element={<Pet_Training />} />
             <Route path="/adoption" element={<Adoption />} />
             <Route
               path="/adoption/adoptable_pets"
