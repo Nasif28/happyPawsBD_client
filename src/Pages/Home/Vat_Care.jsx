@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Button, Stack, Typography } from "@mui/material";
+import VatCare from "./../../images/vat-care.png"
 import React from "react";
 
 const Vat_Care = () => {
@@ -42,7 +43,7 @@ const Vat_Care = () => {
 
         <Box flex={1}>
           <img
-            src="./../../../src/images/vat-care.png"
+            src={VatCare}
             alt="Vat care"
             style={{ width: "80%" }}
           />
