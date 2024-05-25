@@ -10,6 +10,9 @@ import {
   Button,
 } from "@mui/material";
 import { green } from "@mui/material/colors";
+
+import NasifIcon from "./../../images/Nasif.png"
+import HPBDLogo from "./../../images/HPBD-Logo.png"
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -38,7 +41,7 @@ const Footer = () => {
               sx={{ color: "inherit", textDecoration: "none", pt: 1 }}
             >
               <img
-                src="./../../../src/images/HPBD-Logo.png"
+                src={HPBDLogo}
                 alt="Happy Paws BD"
                 width={150}
               />
@@ -307,7 +310,7 @@ const Footer = () => {
           </a>
           <Avatar
             alt="Remy Sharp"
-            src="./../../../src/images/Nasif.png"
+            src={NasifIcon}
 
             sx={{ width: 24, height: 24 }}
           />

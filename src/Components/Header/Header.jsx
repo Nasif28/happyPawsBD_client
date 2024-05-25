@@ -20,6 +20,7 @@ import { Stack } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../../context/UserAuthContext";
+import HPBDLogo from "./../../images/HPBD-Logo.png"
 
 const Header = (props) => {
   const { window } = props;
@@ -119,7 +120,7 @@ const Header = (props) => {
             sx={{ color: "inherit", textDecoration: "none", pt: 1 }}
           >
             <img
-              src="./../../../src/images/HPBD-Logo.png"
+              src={HPBDLogo}
               alt="Happy Paws BD"
               width={100}
             />
@@ -813,7 +814,7 @@ const Header = (props) => {
           <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
             <Typography variant="h6" sx={{ my: 1 }}>
               <img
-                src="./../../../images/HPBD-Logo.png"
+                src={HPBDLogo}
                 alt="Happy Paws BD"
                 width={100}
               />
