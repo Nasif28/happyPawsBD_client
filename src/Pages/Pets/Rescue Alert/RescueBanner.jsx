@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import RescueAlertBanner from "../../../../public/images/RescueAlertBanner.png";
+// import RescueAlertBanner from "./../../../src/images/RescueAlertBanner.png";
+import RescueAlertBanner from "./../../../images/RescueAlertBanner.png";
 import React from "react";
 // import AdoptionForm from "./AdoptionForm";
 

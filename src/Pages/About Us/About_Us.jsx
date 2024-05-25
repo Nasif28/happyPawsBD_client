@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Container, Typography, Paper, Grid } from "@mui/material";
-import aboutImage from "./../../../public/images/aboutUs.png";
+import aboutImage from "./../../../src/images/aboutUs.png";
 
 const About_Us = () => {
   return (

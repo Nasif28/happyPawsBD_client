@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import AdoptHeader from "../../../../public/images/AdoptHeader.png";
+import AdoptHeader from "./../../../images/AdoptHeader.png";
 import React from "react";
 
 const BrandingWrapper = styled(Box)(({ theme }) => ({

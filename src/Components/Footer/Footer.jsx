@@ -38,7 +38,7 @@ const Footer = () => {
               sx={{ color: "inherit", textDecoration: "none", pt: 1 }}
             >
               <img
-                src="./../../../public/images/HPBD-Logo.png"
+                src="./../../../src/images/HPBD-Logo.png"
                 alt="Happy Paws BD"
                 width={150}
               />
@@ -307,7 +307,7 @@ const Footer = () => {
           </a>
           <Avatar
             alt="Remy Sharp"
-            src="./../../../public/images/Nasif.png"
+            src="./../../../src/images/Nasif.png"
 
             sx={{ width: 24, height: 24 }}
           />

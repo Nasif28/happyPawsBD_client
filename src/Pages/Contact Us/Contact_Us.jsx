@@ -23,8 +23,7 @@ import {
 } from "@mui/icons-material";
 
 import { green } from "@mui/material/colors";
-// import contactImage from "/../../../public/images/contactUs.png";
-import contactImage from "./../../../public/images/contactUs.png";
+import contactImage from "./../../../src/images/contactUs.png";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
