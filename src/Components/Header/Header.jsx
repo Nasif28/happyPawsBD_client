@@ -119,7 +119,9 @@ const Header = (props) => {
             sx={{ color: "inherit", textDecoration: "none", pt: 1 }}
           >
             <img
-              src="./../../../images/HPBD-Logo.png"
+              // src="./../../../images/HPBD-Logo.png"
+              src="./../../../public/HPBD-Logo.png"
+       
               alt="Happy Paws BD"
               width={100}
             />
