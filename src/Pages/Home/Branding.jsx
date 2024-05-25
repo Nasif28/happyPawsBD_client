@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Button, ButtonGroup, Stack, Typography } from "@mui/material";
+import Banner from "./../../images/banner2.png"
 import React from "react";
 
 const BrandingWrapper = styled(Box)(({ theme }) => ({
@@ -58,7 +59,7 @@ const Branding = () => {
 
         <Box flex={1}>
           <img
-            src="./../../../src/images/banner2.png"
+            src={Banner}
             alt=""
             style={{ width: "100%" }}
           />
