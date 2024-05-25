@@ -42,7 +42,7 @@ const Vat_Care = () => {
 
         <Box flex={1}>
           <img
-            src="./../../../images/vat-care.png"
+            src="./../../../public/images/vat-care.png"
             alt="Vat care"
             style={{ width: "80%" }}
           />

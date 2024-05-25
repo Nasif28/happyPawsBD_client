@@ -9,7 +9,7 @@ const Adopted = () => {
       my={10}
       p={6}
       sx={{
-        backgroundImage: 'url("./../../../images/BackgroundCurve.png")',
+        backgroundImage: 'url("./../../../public/images/BackgroundCurve.png")',
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: "450px",

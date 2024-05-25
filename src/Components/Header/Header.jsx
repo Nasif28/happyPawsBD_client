@@ -119,9 +119,7 @@ const Header = (props) => {
             sx={{ color: "inherit", textDecoration: "none", pt: 1 }}
           >
             <img
-              // src="./../../../images/HPBD-Logo.png"
-              src="./../../../public/HPBD-Logo.png"
-       
+              src="./../../../public/images/HPBD-Logo.png"
               alt="Happy Paws BD"
               width={100}
             />
@@ -725,7 +723,7 @@ const Header = (props) => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu}>
-                  <Avatar alt="Nasif Jihan" src="" />
+                  <Avatar alt="Nasif Jihan" src="{user.photoURL}" />
                 </IconButton>
               </Tooltip>
               <Menu

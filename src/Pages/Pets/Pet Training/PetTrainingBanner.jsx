@@ -1,5 +1,5 @@
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
-import TrainingHero from "./../../../../images/Training Hero.png";
+import TrainingHero from "./../../../../public/images/Training Hero.png";
 import React from "react";
 
 const PetTrainingBanner = () => {

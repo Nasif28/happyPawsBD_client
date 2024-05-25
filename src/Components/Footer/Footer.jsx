@@ -10,7 +10,6 @@ import {
   Button,
 } from "@mui/material";
 import { green } from "@mui/material/colors";
-import contactImage from "./../../../images/contactUs.png";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -39,7 +38,7 @@ const Footer = () => {
               sx={{ color: "inherit", textDecoration: "none", pt: 1 }}
             >
               <img
-                src="./../../../images/HPBD-Logo.png"
+                src="./../../../public/images/HPBD-Logo.png"
                 alt="Happy Paws BD"
                 width={150}
               />
@@ -308,7 +307,8 @@ const Footer = () => {
           </a>
           <Avatar
             alt="Remy Sharp"
-            src="./../../../images/Nasif.png"
+            src="./../../../public/images/Nasif.png"
+
             sx={{ width: 24, height: 24 }}
           />
         </Stack>

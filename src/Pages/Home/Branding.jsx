@@ -58,7 +58,7 @@ const Branding = () => {
 
         <Box flex={1}>
           <img
-            src="./../../../images/banner2.png"
+            src="./../../../public/images/banner2.png"
             alt=""
             style={{ width: "100%" }}
           />

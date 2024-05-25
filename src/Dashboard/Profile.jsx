@@ -30,7 +30,7 @@ const Profile = () => {
         <Divider sx={{ my: 2 }} />
         <Typography variant="h6">User Information:</Typography>
         <Box>
-          <Typography variant="body1">Username: {user.username}</Typography>
+          <Typography variant="body1">Username: {user.displayName}</Typography>
           <Typography variant="body1">Location: {user.location}</Typography>
           {/* Add more user information fields as needed */}
         </Box>
