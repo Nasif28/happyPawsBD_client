@@ -15,13 +15,26 @@ import { getFoundPets } from "../../../API/api";
 const FoundPets = () => {
   const [foundPets, setFoundPets] = useState([]);
 
-  useEffect(
-    () => async () => {
-      let response = await getFoundPets();
-      setFoundPets(response.data);
-    },
-    []
-  );
+  // useEffect(
+  //   () => async () => {
+  //     let response = await getFoundPets();
+  //     setFoundPets(response.data);
+  //   },
+  //   []
+  // );
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let response = await getFoundPets();
+        setFoundPets(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <Box className="myContainer" my={5}>
