@@ -15,13 +15,26 @@ import { getLostPets } from "../../../API/api";
 const LostPets = () => {
   const [lostPets, setLostPets] = useState([]);
 
-  useEffect(
-    () => async () => {
-      let response = await getLostPets();
-      setLostPets(response.data);
-    },
-    []
-  );
+  // useEffect(
+  //   () => async () => {
+  //     let response = await getLostPets();
+  //     setLostPets(response.data);
+  //   },
+  //   []
+  // );
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let response = await getLostPets();
+        setLostPets(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <Box className="myContainer" my={5}>
