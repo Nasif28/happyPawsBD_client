@@ -26,18 +26,21 @@ const Vats = () => {
 
       <Box mt={5} sx={{ position: "relative" }}>
         <Carousel
+          width="100%"
+          containerClass="carousel-container"
+          itemClass="carousel-item"
           additionalTransfrom={0}
           arrows
           autoPlay
           autoPlaySpeed={2000}
           centerMode={true}
           className=""
-          containerClass="container-with-dots"
+          // containerClass="container-with-dots"
           dotListClass=""
           draggable
           focusOnSelect={false}
           infinite
-          itemClass=""
+          // itemClass=""
           keyBoardControl
           minimumTouchDrag={80}
           pauseOnHover
