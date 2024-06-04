@@ -1,4 +1,5 @@
 import "./App.css";
+import "react-multi-carousel/lib/styles.css";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./Theme/Theme";
 import { Route, Routes } from "react-router-dom";

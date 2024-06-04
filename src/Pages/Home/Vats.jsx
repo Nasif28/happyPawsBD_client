@@ -2,8 +2,6 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Box, Card, CardMedia, Stack, Typography } from "@mui/material";
-// import { Carousel } from "react-responsive-carousel";
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
 import vets from "./../../API/vets.json";
 import styled from "@emotion/styled";
 
