@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 import ProtectedRoute from "./Components/Authentication/ProtectedRoute";
 
-import Header from "./Components/Header/Header";
+// import Header from "./Components/Header/Header";
 import Header2 from "./Components/Header/Header2";
 import Home from "./Pages/Home/Home";
 

@@ -26,7 +26,7 @@ const Vats = () => {
 
       <Box mt={5} sx={{ position: "relative" }}>
         <Carousel
-          width="100%"
+          width="50%"
           containerClass="carousel-container"
           itemClass="carousel-item"
           additionalTransfrom={0}
