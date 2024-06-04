@@ -6,6 +6,7 @@ import { UserAuthContextProvider } from "./context/UserAuthContext";
 import ProtectedRoute from "./Components/Authentication/ProtectedRoute";
 
 import Header from "./Components/Header/Header";
+import Header2 from "./Components/Header/Header2";
 import Home from "./Pages/Home/Home";
 
 // Pets -----------------------------
@@ -49,6 +50,8 @@ import Footer from "./Components/Footer/Footer";
 import SignIn from "./Components/Authentication/SignIn";
 import SignUp from "./Components/Authentication/SignUp";
 import Profile from "./Dashboard/Profile";
+import Account from "./Dashboard/Account";
+import Dashboard from "./Dashboard/Dashboard";
 
 const App = () => {
   return (
@@ -57,7 +60,8 @@ const App = () => {
         <CssBaseline />
 
         <UserAuthContextProvider>
-          <Header />
+          {/* <Header /> */}
+          <Header2 />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
@@ -126,9 +130,11 @@ const App = () => {
             <Route path="/remembrance" element={<Remembrance />} />
             <Route path="/reviews" element={<Reviews />} />
 
+            {/* Single Route -----------------  */}
             <Route path="/about_us" element={<About_Us />} />
             <Route path="/contact_us" element={<Contact_Us />} />
 
+            {/* User Route -----------------  */}
             <Route path="/sign_in" element={<SignIn />} />
             <Route path="/sign_up" element={<SignUp />} />
 
@@ -137,6 +143,24 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <Profile />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/account"
+              element={
+                <ProtectedRoute>
+                  <Account />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
                 </ProtectedRoute>
               }
             />

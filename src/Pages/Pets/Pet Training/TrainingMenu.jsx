@@ -23,17 +23,27 @@ const TrainingMenu = () => {
       </Typography>
 
       {/* Traning Section Starts ----------------------------------------------------  */}
-      <Stack my={3}>
+      <Stack my={3} alignItems="center">
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
+          justifyContent="center"
+          alignItems="center"
+          columns={{ xs: 4, sm: 6, md: 12 }}
         >
           {Training.map((item) => (
-            <Grid item xs={2} sm={4} md={4} key={item.id}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              key={item.id}
+              sx={{ display: "flex", justifyContent: "center" }}
+            >
               <Card
                 sx={{
                   height: 400,
+                  width: '100%', // Ensure full width within the grid item
                   boxShadow: "none",
                   backgroundColor: "#FBFBFB",
                   "&:hover": {

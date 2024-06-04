@@ -5,11 +5,17 @@ const AdoptionDetails = () => {
   return (
     <Box className="myContainer" mt={5}>
       <Stack
-        direction="row"
+        direction={{ xs: "column", md: "row" }}
         spacing={6}
         sx={{ p: 4 }}
         flex={1}
-        divider={<Divider orientation="vertical" flexItem />}
+        divider={
+          <Divider
+            orientation="vertical"
+            flexItem
+            sx={{ display: { xs: "none", md: "block" } }}
+          />
+        }
       >
         <Box flex={1}>
           <Typography
@@ -21,7 +27,7 @@ const AdoptionDetails = () => {
             ADOPTERS WELCOME
           </Typography>
 
-          <Typography variant="body2" color="primary.para" mb={4}>
+          <Typography variant="body2" color="primary.para">
             Here at The Happy Paws BD, our Adoptions Department approaches
             adopting our homeless pets in need with an open end approach
             philosophy inspired by the coined term 'Adopters Welcome' by The
@@ -36,7 +42,7 @@ const AdoptionDetails = () => {
             variant="h5"
             color="primary.headline"
             fontWeight={700}
-            my={2}
+            // my={2}
           >
             ADOPTION REQUIREMENTS
           </Typography>
@@ -67,49 +73,56 @@ const AdoptionDetails = () => {
         </Box>
       </Stack>
 
-      <Typography variant="h5" color="primary.headline" fontWeight={700} my={2}>
-        HOW TO ADD A NEW PET TO YOUR FAMILY
-      </Typography>
+      <Box px={4}>
+        <Typography
+          variant="h5"
+          color="primary.headline"
+          fontWeight={700}
+          my={2}
+        >
+          HOW TO ADD A NEW PET TO YOUR FAMILY
+        </Typography>
 
-      <Typography variant="body2" color="primary.para" pl={5}>
-        <ul>
-          <li>
-            Visit{" "}
-            <a className="span1" href="/adoption/adoptable_pets">
-              Adoptable Pets
-            </a>{" "}
-            and write down the animal ID you want to adopt before you fill up
-            the{" "}
-            <a className="span1" href="/adoption/adoption_form">
-              Adoption Application
-            </a>
-            .
-          </li>
+        <Typography variant="body2" color="primary.para" pl={5}>
+          <ul>
+            <li>
+              Visit{" "}
+              <a className="span1" href="/adoption/adoptable_pets">
+                Adoptable Pets
+              </a>{" "}
+              and write down the animal ID you want to adopt before you fill up
+              the{" "}
+              <a className="span1" href="/adoption/adoption_form">
+                Adoption Application
+              </a>
+              .
+            </li>
 
-          <li>
-            Adoptions take place on a first-come, first-served basis for walk-in
-            traffic.
-          </li>
+            <li>
+              Adoptions take place on a first-come, first-served basis for
+              walk-in traffic.
+            </li>
 
-          <li>
-            Submitting the form, you will be added to a waiting list. You must
-            have at least one animal ID# to be added to the waiting list.
-          </li>
+            <li>
+              Submitting the form, you will be added to a waiting list. You must
+              have at least one animal ID# to be added to the waiting list.
+            </li>
 
-          <li>
-            Please note, patrons sometimes line up before we open to meet a pet,
-            especially during fee-waived adoption events.
-          </li>
+            <li>
+              Please note, patrons sometimes line up before we open to meet a
+              pet, especially during fee-waived adoption events.
+            </li>
 
-          <li>We do not place holds on pets.</li>
+            <li>We do not place holds on pets.</li>
 
-          <li>
-            Please do not bring your current pets with you to the shelter. We do
-            not allow in-shelter dog-to-dog introductions. The shelter is a
-            strange and stressful place for most pets.
-          </li>
-        </ul>
-      </Typography>
+            <li>
+              Please do not bring your current pets with you to the shelter. We
+              do not allow in-shelter dog-to-dog introductions. The shelter is a
+              strange and stressful place for most pets.
+            </li>
+          </ul>
+        </Typography>
+      </Box>
     </Box>
   );
 };

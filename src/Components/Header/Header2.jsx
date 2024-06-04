@@ -16,16 +16,21 @@ import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Stack } from "@mui/material";
+import { Stack, Collapse } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../../context/UserAuthContext";
-import HPBDLogo from "./../../images/HPBD-Logo.png"
+import HPBDLogo from "./../../images/HPBD-Logo.png";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 
-const Header = (props) => {
+const Header2 = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [openMenus, setOpenMenus] = React.useState({});
+
+  // Copied
   const [menu1AnchorEl, setMenu1AnchorEl] = React.useState(null);
   const [menu2AnchorEl, setMenu2AnchorEl] = React.useState(null);
   const [menu3AnchorEl, setMenu3AnchorEl] = React.useState(null);
@@ -36,9 +41,11 @@ const Header = (props) => {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
@@ -46,6 +53,14 @@ const Header = (props) => {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
+  const handleMenuToggle = (menu) => {
+    setOpenMenus((prevOpenMenus) => ({
+      ...prevOpenMenus,
+      [menu]: !prevOpenMenus[menu],
+    }));
+  };
+
+  // Copied
   // Full View Menu Nested Item Controller ----------------------------
   const handleMenu1Click = (event) => {
     setMenu1AnchorEl(event.currentTarget);
@@ -90,6 +105,165 @@ const Header = (props) => {
     }
   };
 
+  const drawer = (
+    <Box
+      // onClick={handleDrawerToggle}
+      sx={{ textAlign: "center" }}
+    >
+      <Typography variant="h6" sx={{ my: 1 }}>
+        <img src={HPBDLogo} alt="Happy Paws BD" width={100} />
+      </Typography>
+      <Divider />
+      <List>
+        <ListItem disablePadding onClick={handleDrawerToggle}>
+          <ListItemButton component={Link} to="/home">
+            <ListItemText primary="Home" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => handleMenuToggle("pets")}>
+            <ListItemText primary="Pets" />
+            {openMenus.pets ? <ExpandLess /> : <ExpandMore />}
+          </ListItemButton>
+        </ListItem>
+        <Collapse in={openMenus.pets} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding onClick={handleDrawerToggle}>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/pet_info">
+              <ListItemText primary="Pet Info" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/daycare">
+              <ListItemText primary="Daycare" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/boarding">
+              <ListItemText primary="Boarding" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/pet_training">
+              <ListItemText primary="Pet Training" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/adoption">
+              <ListItemText primary="Adoption" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/rescue_alert">
+              <ListItemText primary="Rescue Alert" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/lost_found">
+              <ListItemText primary="Lost & Found" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => handleMenuToggle("shop")}>
+            <ListItemText primary="Shop" />
+            {openMenus.shop ? <ExpandLess /> : <ExpandMore />}
+          </ListItemButton>
+        </ListItem>
+        <Collapse in={openMenus.shop} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding onClick={handleDrawerToggle}>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/food">
+              <ListItemText primary="Food" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/medicine">
+              <ListItemText primary="Medicine" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/accessories">
+              <ListItemText primary="Accessories" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => handleMenuToggle("veterinary")}>
+            <ListItemText primary="Veterinary" />
+            {openMenus.veterinary ? <ExpandLess /> : <ExpandMore />}
+          </ListItemButton>
+        </ListItem>
+        <Collapse in={openMenus.veterinary} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding onClick={handleDrawerToggle}>
+            <ListItemButton
+              sx={{ pl: 4 }}
+              component={Link}
+              to="/online_consultation"
+            >
+              <ListItemText primary="Online Consultation" />
+            </ListItemButton>
+            <ListItemButton
+              sx={{ pl: 4 }}
+              component={Link}
+              to="/in_person_consultation"
+            >
+              <ListItemText primary="In-Person Consultation" />
+            </ListItemButton>
+            <ListItemButton
+              sx={{ pl: 4 }}
+              component={Link}
+              to="/nearest_clinic"
+            >
+              <ListItemText primary="Nearest Clinic" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/house_calls">
+              <ListItemText primary="House Calls" />
+            </ListItemButton>
+            <ListItemButton
+              sx={{ pl: 4 }}
+              component={Link}
+              to="/health_care_blog"
+            >
+              <ListItemText primary="Health Care Blog" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/covid19_info">
+              <ListItemText primary="COVID-19 Info" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => handleMenuToggle("getInvolve")}>
+            <ListItemText primary="Get Involve" />
+            {openMenus.getInvolve ? <ExpandLess /> : <ExpandMore />}
+          </ListItemButton>
+        </ListItem>
+        <Collapse in={openMenus.getInvolve} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding onClick={handleDrawerToggle}>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/volunteer">
+              <ListItemText primary="Volunteer" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/make_donation">
+              <ListItemText primary="Make Donation" />
+            </ListItemButton>
+            <ListItemButton
+              sx={{ pl: 4 }}
+              component={Link}
+              to="/our_success_story"
+            >
+              <ListItemText primary="Our Success Story" />
+            </ListItemButton>
+            <ListItemButton
+              sx={{ pl: 4 }}
+              component={Link}
+              to="/share_your_story"
+            >
+              <ListItemText primary="Share Your Story" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/remembrance">
+              <ListItemText primary="Remembrance" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/reviews">
+              <ListItemText primary="Reviews" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <ListItem disablePadding onClick={handleDrawerToggle}>
+          <ListItemButton component={Link} to="/about_us">
+            <ListItemText primary="About Us" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding onClick={handleDrawerToggle}>
+          <ListItemButton component={Link} to="/contact_us">
+            <ListItemText primary="Contact Us" />
+          </ListItemButton>
+        </ListItem>
+      </List>
+    </Box>
+  );
+
   return (
     <Box className="myContainer" sx={{ display: "flex" }}>
       <AppBar
@@ -119,11 +293,7 @@ const Header = (props) => {
             flexGrow={{ xs: "1", md: "0" }}
             sx={{ color: "inherit", textDecoration: "none", pt: 1 }}
           >
-            <img
-              src={HPBDLogo}
-              alt="Happy Paws BD"
-              width={100}
-            />
+            <img src={HPBDLogo} alt="Happy Paws BD" width={100} />
           </Typography>
 
           <Stack
@@ -135,12 +305,7 @@ const Header = (props) => {
               display: { xs: "none", md: "flex" },
             }}
           >
-            <Button
-              // href="/"
-              sx={{
-                "&:hover": { backgroundColor: "primary.back" },
-              }}
-            >
+            <Button sx={{ "&:hover": { backgroundColor: "primary.back" } }}>
               <Link
                 style={{
                   textDecoration: "none",
@@ -154,7 +319,6 @@ const Header = (props) => {
             </Button>
 
             <Button
-              // endIcon={<KeyboardArrowDownIcon />}
               onClick={handleMenu1Click}
               sx={{
                 color: "inherit",
@@ -167,7 +331,6 @@ const Header = (props) => {
             </Button>
 
             <Button
-              // endIcon={<KeyboardArrowDownIcon />}
               onClick={handleMenu2Click}
               sx={{
                 color: "inherit",
@@ -180,7 +343,6 @@ const Header = (props) => {
             </Button>
 
             <Button
-              // endIcon={<KeyboardArrowDownIcon />}
               onClick={handleMenu3Click}
               sx={{
                 color: "inherit",
@@ -193,7 +355,6 @@ const Header = (props) => {
             </Button>
 
             <Button
-              // endIcon={<KeyboardArrowDownIcon />}
               onClick={handleMenu4Click}
               sx={{
                 color: "inherit",
@@ -205,11 +366,7 @@ const Header = (props) => {
               <KeyboardArrowDownIcon fontSize="12" />
             </Button>
 
-            <Button
-              sx={{
-                "&:hover": { backgroundColor: "primary.back" },
-              }}
-            >
+            <Button sx={{ "&:hover": { backgroundColor: "primary.back" } }}>
               <Link
                 style={{
                   textDecoration: "none",
@@ -222,11 +379,7 @@ const Header = (props) => {
               </Link>
             </Button>
 
-            <Button
-              sx={{
-                "&:hover": { backgroundColor: "primary.back" },
-              }}
-            >
+            <Button sx={{ "&:hover": { backgroundColor: "primary.back" } }}>
               <Link
                 style={{
                   textDecoration: "none",
@@ -240,7 +393,7 @@ const Header = (props) => {
             </Button>
           </Stack>
 
-          {/* Nasted Menu Items ----------------------------------------- */}
+          {/* Nested Menu Items ----------------------------------------- */}
           <Menu
             anchorEl={menu1AnchorEl}
             keepMounted
@@ -273,7 +426,6 @@ const Header = (props) => {
                 PET INFO
               </Link>
             </MenuItem>
-
             <MenuItem
               onClick={handleMenu1Close}
               sx={{
@@ -292,7 +444,6 @@ const Header = (props) => {
                 DAYCARE
               </Link>
             </MenuItem>
-
             <MenuItem
               onClick={handleMenu1Close}
               sx={{
@@ -311,7 +462,6 @@ const Header = (props) => {
                 BOARDING
               </Link>
             </MenuItem>
-
             <MenuItem
               onClick={handleMenu1Close}
               sx={{
@@ -330,7 +480,6 @@ const Header = (props) => {
                 PET TRAINING
               </Link>
             </MenuItem>
-
             <MenuItem
               onClick={handleMenu1Close}
               sx={{
@@ -349,7 +498,6 @@ const Header = (props) => {
                 ADOPTION
               </Link>
             </MenuItem>
-
             <MenuItem
               onClick={handleMenu1Close}
               sx={{
@@ -368,7 +516,6 @@ const Header = (props) => {
                 RESCUE ALERT
               </Link>
             </MenuItem>
-
             <MenuItem
               onClick={handleMenu1Close}
               sx={{
@@ -421,7 +568,6 @@ const Header = (props) => {
                 FOOD
               </Link>
             </MenuItem>
-
             <MenuItem
               onClick={handleMenu2Close}
               sx={{
@@ -440,7 +586,6 @@ const Header = (props) => {
                 MEDICINE
               </Link>
             </MenuItem>
-
             <MenuItem
               onClick={handleMenu2Close}
               sx={{
@@ -495,7 +640,8 @@ const Header = (props) => {
             </MenuItem>
 
             <MenuItem
-              onClick={handleMenu3Close}
+              on
+              Click={handleMenu3Close}
               sx={{
                 fontSize: "",
                 "&:hover": { backgroundColor: "primary.back" },
@@ -759,25 +905,37 @@ const Header = (props) => {
                 </MenuItem>
 
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center" fontWeight="bold" component={Link} to="/account" style={{
+                  <Typography
+                    textAlign="center"
+                    fontWeight="bold"
+                    component={Link}
+                    to="/account"
+                    style={{
                       textAlign: "center",
                       fontWeight: "bold",
                       textDecoration: "none",
                       color: "inherit",
                       fontWeight: "600",
-                    }}>
+                    }}
+                  >
                     Account
                   </Typography>
                 </MenuItem>
 
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center" fontWeight="bold" component={Link} to="/dashboard" style={{
+                  <Typography
+                    textAlign="center"
+                    fontWeight="bold"
+                    component={Link}
+                    to="/dashboard"
+                    style={{
                       textAlign: "center",
                       fontWeight: "bold",
                       textDecoration: "none",
                       color: "inherit",
                       fontWeight: "600",
-                    }}>
+                    }}
+                  >
                     Dashboard
                   </Typography>
                 </MenuItem>
@@ -826,92 +984,11 @@ const Header = (props) => {
             },
           }}
         >
-          <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-            <Typography variant="h6" sx={{ my: 1 }}>
-              <img
-                src={HPBDLogo}
-                alt="Happy Paws BD"
-                width={100}
-              />
-            </Typography>
-            <Divider />
-            <List>
-              <ListItem disablePadding>
-                <ListItemButton
-                  sx={{
-                    textAlign: "center",
-                    "&:hover": { backgroundColor: "#D3D3D3" },
-                  }}
-                >
-                  <ListItemText primary="Home" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton
-                  sx={{
-                    textAlign: "center",
-                    "&:hover": { backgroundColor: "#D3D3D3" },
-                  }}
-                >
-                  <ListItemText primary="Pets" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton
-                  sx={{
-                    textAlign: "center",
-                    "&:hover": { backgroundColor: "#D3D3D3" },
-                  }}
-                >
-                  <ListItemText primary="Shop" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton
-                  sx={{
-                    textAlign: "center",
-                    "&:hover": { backgroundColor: "#D3D3D3" },
-                  }}
-                >
-                  <ListItemText primary="Veterinary Services" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton
-                  sx={{
-                    textAlign: "center",
-                    "&:hover": { backgroundColor: "#D3D3D3" },
-                  }}
-                >
-                  <ListItemText primary="Get Involved" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton
-                  sx={{
-                    textAlign: "center",
-                    "&:hover": { backgroundColor: "#D3D3D3" },
-                  }}
-                >
-                  <ListItemText primary="About Us" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton
-                  sx={{
-                    textAlign: "center",
-                    "&:hover": { backgroundColor: "#D3D3D3" },
-                  }}
-                >
-                  <ListItemText primary="Contact Us" />
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Box>
+          {drawer}
         </Drawer>
       </Box>
     </Box>
   );
 };
 
-export default Header;
+export default Header2;

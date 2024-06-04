@@ -5,7 +5,7 @@ import React from "react";
 // import AdoptionForm from "./AdoptionForm";
 
 const BrandingWrapper = styled(Box)(({ theme }) => ({
-  height: "50vh",
+  // height: "50vh",
   backgroundColor: "rgba(122, 178, 89, 0.15)",
   padding: theme.spacing(4),
   margin: "1rem 0",
@@ -45,7 +45,7 @@ const RescueBanner = () => {
               variant="contained"
               color="success"
               size="large"
-              sx={{ width: "47%" }}
+              sx={{ width: { sx: "60%", md: "40%" } }}
               href="/volunteer"
             >
               Join Us
@@ -53,7 +53,13 @@ const RescueBanner = () => {
           </Box>
         </Stack>
 
-        <Box flex={1.2} pt={4}>
+        <Box
+          flex={1.2}
+          pt={4}
+          sx={{
+            display: { xs: "none", md: "block" }, // Hide the image on small screens
+          }}
+        >
           <img src={RescueAlertBanner} alt="" style={{ width: "80%" }} />
         </Box>
       </BrandingWrapper>

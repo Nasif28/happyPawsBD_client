@@ -91,7 +91,7 @@ const LostFormcopy = () => {
 
         my={3}
         borderRadius={5}
-        width={800}
+        // width={800}
         mx={"auto"}
         textAlign={"center"}
       >

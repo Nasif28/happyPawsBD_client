@@ -5,8 +5,19 @@ import React from "react";
 const PetTrainingBanner = () => {
   return (
     <Box my={5} p={5}>
-      <Grid container>
-        <Grid xs={4}>
+      <Grid container spacing={2} textAlign={"center"}   justifyContent="center"
+          alignItems="center">
+        <Grid
+          item
+          sm={8}
+          md={4}
+          lg={4}
+          justifyContent="center"
+          alignItems="center"
+          // sx={{
+          //   display: { sm: "none", lg: "block" }, // Hide the image on small screens
+          // }}
+        >
           <Box>
             <img
               src={TrainingHero}
@@ -16,8 +27,8 @@ const PetTrainingBanner = () => {
           </Box>
         </Grid>
 
-        <Grid xs={8}>
-          <Stack spacing={2}>
+        <Grid item sm={12} md={8} lg={8}>
+          <Stack spacing={2} sx={{ textAlign: { sm: "center", md: "left" } }}>
             <Typography
               variant="h4"
               pb={2}
@@ -60,7 +71,7 @@ const PetTrainingBanner = () => {
               variant="contained"
               color="success"
               size="large"
-              sx={{ width: "25%" }}
+              sx={{ width: { xs: "100%", md: "25%" } }}
               href="/adoption/adoptable_pets"
             >
               Book Now

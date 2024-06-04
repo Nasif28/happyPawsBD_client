@@ -1,35 +1,94 @@
-import { Box, Card, CardMedia, Link, Stack, Typography } from "@mui/material";
-import { Carousel } from "@trendyol-js/react-carousel";
-import vets from "./../../API/vets.json";
 import React from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { Box, Card, CardMedia, Stack, Typography } from "@mui/material";
+// import { Carousel } from "react-responsive-carousel";
+// import "react-responsive-carousel/lib/styles/carousel.min.css";
+import vets from "./../../API/vets.json";
+import styled from "@emotion/styled";
 
 const Vats = () => {
   return (
-    <Box className="myContainer" my={20} textAlign={"center"}>
+    <Box className="myContainer" my={10} textAlign={"center"}>
       <Typography
         variant="h4"
         color="primary.headline"
-        m={4}
+        p={4}
         sx={{ lineHeight: 1.2, fontWeight: "900" }}
       >
         Meet Our Veterinary Authors
       </Typography>
 
-      <Typography variant="body1" color="primary.para">
+      <Typography variant="body1" color="primary.para" px={4}>
         Veterinarians are at the core of Great Pet Care. These caring
         professionals write articles, review content <br /> for medical
         accuracy, and provide trusted information and insight. Meet some of our
-        pet health partners.{" "}
+        pet health partners.
       </Typography>
 
-      <Box mt={5}>
+      <Box mt={5} sx={{ position: "relative" }}>
         <Carousel
-          show={4}
-          slide={3}
-          transition={1}
-          swiping={true}
-          leftArrow="←"
-          rightArrow="→"
+          additionalTransfrom={0}
+          arrows
+          autoPlay
+          autoPlaySpeed={2000}
+          centerMode={true}
+          className=""
+          containerClass="container-with-dots"
+          dotListClass=""
+          draggable
+          focusOnSelect={false}
+          infinite
+          itemClass=""
+          keyBoardControl
+          minimumTouchDrag={80}
+          pauseOnHover
+          renderArrowsWhenDisabled={false}
+          renderButtonGroupOutside={false}
+          renderDotsOutside={false}
+          responsive={{
+            desktop: {
+              breakpoint: {
+                max: 3000,
+                min: 1224,
+              },
+              items: 3,
+              partialVisibilityGutter: 40,
+            },
+            mobile: {
+              breakpoint: {
+                max: 900,
+                min: 600,
+              },
+              items: 1,
+              partialVisibilityGutter: 30,
+            },
+            minimobile: {
+              breakpoint: {
+                max: 600,
+                min: 0,
+              },
+
+              items: 0.6,
+              partialVisibilityGutter: 30,
+            },
+            tablet: {
+              breakpoint: {
+                max: 1224,
+                min: 900,
+              },
+              items: 2,
+              partialVisibilityGutter: 30,
+            },
+          }}
+          rewind={false}
+          rewindWithAnimation={false}
+          rtl={false}
+          shouldResetAutoplay
+          showDots={true}
+          sliderClass=""
+          slidesToSlide={1}
+          swipeable
         >
           {vets.map((item) => (
             <Box

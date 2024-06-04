@@ -4,13 +4,18 @@ import AdoptHeader from "./../../../images/AdoptHeader.png";
 import React from "react";
 
 const BrandingWrapper = styled(Box)(({ theme }) => ({
-  height: "50vh",
+  // height: "60vh",
   backgroundColor: "rgba(122, 178, 89, 0.15)",
   padding: theme.spacing(4),
   margin: "1rem 0",
-  clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 100%)",
+  // clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 100%)",
   display: "flex",
   justifyContent: "space-between",
+  flexDirection: "column",
+  [theme.breakpoints.up("md")]: {
+    flexDirection: "row",
+    clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 100%)",
+  },
 }));
 
 const AdoptionBanner = () => {
@@ -41,7 +46,7 @@ const AdoptionBanner = () => {
               variant="contained"
               color="success"
               size="large"
-              sx={{ width: "40%" }}
+              sx={{ width: { sm: "80%", md: "60%", lg: "40%" } }}
               href="/adoption/adoptable_pets"
             >
               Explore Adoptable Pets
@@ -49,7 +54,12 @@ const AdoptionBanner = () => {
           </Box>
         </Stack>
 
-        <Box flex={1}>
+        <Box
+          flex={1}
+          sx={{
+            display: { xs: "none", md: "block" }, // Hide the image on small screens
+          }}
+        >
           <img src={AdoptHeader} alt="" style={{ width: "100%" }} />
         </Box>
       </BrandingWrapper>

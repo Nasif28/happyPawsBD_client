@@ -4,7 +4,7 @@ import React from "react";
 const RescueDetails = () => {
   return (
     <Box className="myContainer" mt={5}>
-      <Box textAlign={"center"} my={4}>
+      <Box textAlign={"center"} p={4}>
         <Typography
           variant="h5"
           color="primary.headline"
@@ -111,7 +111,7 @@ const RescueDetails = () => {
         </Box>
       </Stack>
 
-      <Box textAlign={"center"} my={4}>
+      <Box textAlign={"center"} p={4}>
         <Typography
           variant="h5"
           color="primary.headline"

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import VatCare from "./../../images/vat-care.png"
+import VatCare from "./../../images/vat-care.png";
 import React from "react";
 
 const Vat_Care = () => {
@@ -11,12 +11,22 @@ const Vat_Care = () => {
     display: "flex",
     justifyContent: "space-between",
     borderRadius: ".6rem",
+    flexDirection: "column", // Flex direction column for mobile view
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row", // Change to row for larger screens
+    },
   }));
 
   return (
     <Box className="myContainer" my={10}>
       <BrandingWrapper>
-        <Stack spacing={5} sx={{ p: 4 }} flex={1.4}>
+        <Stack
+          spacing={5}
+          sx={{ p: 4 }}
+          flex={1.4}
+          alignItems={{ xs: "center", md: "flex-start" }}
+          textAlign={{ xs: "center", md: "left" }}
+        >
           <Typography
             variant="h3"
             color="primary.headline"
@@ -25,9 +35,13 @@ const Vat_Care = () => {
             Great Pet Care at your fingertips
           </Typography>
 
-          <Typography variant="body1" color="primary.para" sx={{ lineHeight: 1.5 }}>
-            With vet-backed petcare products, guidance, and Rewards – <br />we’re here
-            to support your pet’s health in every way we can.
+          <Typography
+            variant="body1"
+            color="primary.para"
+            sx={{ lineHeight: 1.5 }}
+          >
+            With vet-backed petcare products, guidance, and Rewards – <br />
+            we’re here to support your pet’s health in every way we can.
           </Typography>
 
           <Button
@@ -41,12 +55,13 @@ const Vat_Care = () => {
           </Button>
         </Stack>
 
-        <Box flex={1}>
-          <img
-            src={VatCare}
-            alt="Vat care"
-            style={{ width: "80%" }}
-          />
+        <Box
+          flex={1}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <img src={VatCare} alt="Vat care" style={{ width: "80%" }} />
         </Box>
       </BrandingWrapper>
     </Box>

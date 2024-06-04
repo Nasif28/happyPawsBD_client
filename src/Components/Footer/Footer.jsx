@@ -11,8 +11,8 @@ import {
 } from "@mui/material";
 import { green } from "@mui/material/colors";
 
-import NasifIcon from "./../../images/Nasif.png"
-import HPBDLogo from "./../../images/HPBD-Logo.png"
+import NasifIcon from "./../../images/Nasif.png";
+import HPBDLogo from "./../../images/HPBD-Logo.png";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -31,7 +31,7 @@ const Footer = () => {
     >
       <Box className="myContainer">
         <Grid container spacing={3} py={2}>
-          <Grid item xs={7} md={4}>
+          <Grid item xs={12} md={4}>
             {/* Contact Information */}
             {/* Logo Full Screen ------------------------------------- */}
             <Typography
@@ -40,11 +40,7 @@ const Footer = () => {
               href="../"
               sx={{ color: "inherit", textDecoration: "none", pt: 1 }}
             >
-              <img
-                src={HPBDLogo}
-                alt="Happy Paws BD"
-                width={150}
-              />
+              <img src={HPBDLogo} alt="Happy Paws BD" width={150} />
             </Typography>
             <Typography fontWeight={900} variant="h5" gutterBottom>
               HAPPY PAWS BD{" "}
@@ -115,7 +111,7 @@ const Footer = () => {
             </Box>
           </Grid>
 
-          <Grid item xs={5} md={2}>
+          <Grid item xs={6} md={2}>
             {/* Contact Information */}
             <Typography variant="h5" fontWeight={700} mb={2} gutterBottom>
               Sitemap
@@ -191,7 +187,7 @@ const Footer = () => {
             </Stack>
           </Grid>
 
-          <Grid item xs={5} md={2}>
+          <Grid item xs={6} md={2}>
             {/* Contact Information */}
             <Typography variant="h5" fontWeight={700} mb={2} gutterBottom>
               Support
@@ -298,8 +294,14 @@ const Footer = () => {
           textAlign: "center",
         }}
       >
-        <Stack direction={"row"} variant="body2" justifyContent={"center"}>
-          {" © "} {new Date().getFullYear()} Happy Paws BD. Developed by{" "}
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={1}
+          alignItems="center"
+          justifyContent="center"
+          variant="body2"
+        >
+          <span>© {new Date().getFullYear()} Happy Paws BD. Developed by</span>
           <a
             className="span2"
             href="https://www.facebook.com/nasif28/"
@@ -309,9 +311,8 @@ const Footer = () => {
             &nbsp; Nasif Jihan &nbsp;
           </a>
           <Avatar
-            alt="Remy Sharp"
+            alt="Nasif Jihan"
             src={NasifIcon}
-
             sx={{ width: 24, height: 24 }}
           />
         </Stack>
