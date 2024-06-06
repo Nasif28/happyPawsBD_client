@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Card,
@@ -8,10 +9,16 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import Training from "./../../../API/training.json";
-import React from "react";
 
 const TrainingMenu = () => {
+  const navigate = useNavigate();
+
+  const handleCardClick = (id) => {
+    navigate(`/training/${id}`);
+  };
+
   return (
     <Box bgcolor={"rgba(122, 178, 89, 0.15)"} p={5}>
       <Typography
@@ -33,6 +40,7 @@ const TrainingMenu = () => {
         >
           {Training.map((item) => (
             <Grid
+            id="TrainingMenu"
               item
               xs={12}
               sm={6}
@@ -42,8 +50,8 @@ const TrainingMenu = () => {
             >
               <Card
                 sx={{
-                  height: 400,
-                  width: '100%', // Ensure full width within the grid item
+                  // height: 400,
+                  width: "100%", // Ensure full width within the grid item
                   boxShadow: "none",
                   backgroundColor: "#FBFBFB",
                   "&:hover": {
@@ -51,14 +59,22 @@ const TrainingMenu = () => {
                   },
                 }}
               >
-                <CardActionArea>
+                <CardActionArea onClick={() => handleCardClick(item.id)}>
                   <CardMedia
                     component="img"
                     image={item.picture}
                     alt={item.title}
                     height="200"
                   />
-                  <CardContent>
+                  <CardContent
+                    sx={{
+                      height: 250, // Set your desired height here
+                      overflow: "hidden",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                    }}
+                  >
                     <Typography
                       gutterBottom
                       variant="h6"
@@ -92,6 +108,26 @@ const TrainingMenu = () => {
                     >
                       {item.dis2}
                     </Typography>
+                    <Stack
+                      direction="row"
+                      justifyContent="space-between"
+                      alignItems="center"
+                      spacing={2}
+                      mt={2}
+                    >
+                      <Typography
+                        variant="body2"
+                        color="primary.green"
+                        textAlign={"left"}
+                      ></Typography>
+                      <Typography
+                        variant="body2"
+                        color="primary.green"
+                        textAlign={"right"}
+                      >
+                        - Read More
+                      </Typography>
+                    </Stack>
                   </CardContent>
                 </CardActionArea>
               </Card>

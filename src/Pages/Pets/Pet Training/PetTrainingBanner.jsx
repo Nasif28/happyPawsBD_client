@@ -1,12 +1,18 @@
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import TrainingHero from "./../../../images/Training Hero.png";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import React from "react";
 
 const PetTrainingBanner = () => {
   return (
     <Box my={5} p={5}>
-      <Grid container spacing={2} textAlign={"center"}   justifyContent="center"
-          alignItems="center">
+      <Grid
+        container
+        spacing={2}
+        textAlign={"center"}
+        justifyContent="center"
+        alignItems="center"
+      >
         <Grid
           item
           sm={8}
@@ -71,10 +77,14 @@ const PetTrainingBanner = () => {
               variant="contained"
               color="success"
               size="large"
-              sx={{ width: { xs: "100%", md: "25%" } }}
-              href="/adoption/adoptable_pets"
+              sx={{ width: { xs: "100%", md: "30%" } }}
+              onClick={() =>
+                document
+                  .getElementById("TrainingMenu")
+                  .scrollIntoView({ behavior: "smooth" })
+              }
             >
-              Book Now
+              Programs Details <KeyboardArrowDownIcon />
             </Button>
           </Stack>
         </Grid>
