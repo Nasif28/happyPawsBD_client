@@ -13,6 +13,13 @@ import Home from "./Pages/Home/Home";
 
 // Pets -----------------------------
 import Pet_Info from "./Pages/Pets/Pet Info/Pet_Info";
+import PetCare from "./Pages/Pets/Pet Care/PetCare";
+import DayCareAll from "./Pages/Pets/Pet Care/DayCareAll";
+import DayCareDetails from "./Pages/Pets/Pet Care/DayCareDetails";
+import PetBoardingAll from "./Pages/Pets/Pet Care/PetBoardingAll";
+import PetBoardingDetails from "./Pages/Pets/Pet Care/PetBoardingDetails";
+import PetGroomingAll from "./Pages/Pets/Pet Care/PetGroomingAll";
+import PetGroomingDetails from "./Pages/Pets/Pet Care/PetGroomingDetails";
 import Pet_Training from "./Pages/Pets/Pet Training/Pet_Training";
 import TrainingDetail from "./Pages/Pets/Pet Training/TrainingDetail";
 import Adoption from "./Pages/Pets/Adoption/Adoption";
@@ -71,6 +78,19 @@ const App = () => {
 
             {/* Pets --------------------------------  */}
             <Route path="/pet_info" element={<Pet_Info />} />
+            <Route path="/petcare" element={<PetCare />} />
+            <Route path="/petcare/daycare" element={<DayCareAll />} />
+            <Route path="/petcare/daycare/:id" element={<DayCareDetails />} />
+            <Route path="/petcare/boarding" element={<PetBoardingAll />} />
+            <Route
+              path="/petcare/boarding/:id"
+              element={<PetBoardingDetails />}
+            />
+            <Route path="/petcare/grooming" element={<PetGroomingAll />} />
+            <Route
+              path="/petcare/grooming/:id"
+              element={<PetGroomingDetails />}
+            />
             <Route path="/pet_training" element={<Pet_Training />} />
             <Route path="/training/:id" element={<TrainingDetail />} />
             <Route path="/adoption" element={<Adoption />} />

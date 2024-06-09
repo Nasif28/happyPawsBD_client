@@ -131,11 +131,8 @@ const Header2 = (props) => {
             <ListItemButton sx={{ pl: 4 }} component={Link} to="/pet_info">
               <ListItemText primary="Pet Info" />
             </ListItemButton>
-            <ListItemButton sx={{ pl: 4 }} component={Link} to="/daycare">
-              <ListItemText primary="Daycare" />
-            </ListItemButton>
-            <ListItemButton sx={{ pl: 4 }} component={Link} to="/boarding">
-              <ListItemText primary="Boarding" />
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/petcare">
+              <ListItemText primary="Pet Care" />
             </ListItemButton>
             <ListItemButton sx={{ pl: 4 }} component={Link} to="/pet_training">
               <ListItemText primary="Pet Training" />
@@ -439,27 +436,9 @@ const Header2 = (props) => {
                   color: "inherit",
                   fontWeight: "600",
                 }}
-                to="/daycare"
+                to="/petcare"
               >
-                DAYCARE
-              </Link>
-            </MenuItem>
-            <MenuItem
-              onClick={handleMenu1Close}
-              sx={{
-                fontSize: "",
-                "&:hover": { backgroundColor: "primary.back" },
-              }}
-            >
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "inherit",
-                  fontWeight: "600",
-                }}
-                to="/boarding"
-              >
-                BOARDING
+                Pet Care
               </Link>
             </MenuItem>
             <MenuItem
