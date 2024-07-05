@@ -33,14 +33,15 @@ import LostForm from "./Pages/Pets/Lost & Found/LostForm";
 import FoundForm from "./Pages/Pets/Lost & Found/FoundForm";
 
 // Shop -----------------------------------
+import Shop from "./Pages/Shop/Shop";
 import Food from "./Pages/Shop/Food/Food";
-import Medicine from "./Pages/Shop/Medicine/Medicine";
+// import Medicine from "./Pages/Shop/Medicine/Medicine";
 import Accessories from "./Pages/Shop/Accessories/Accessories";
 
 // Veterinary ----------------------------------
 import Online_Consultation from "./Pages/Veterinary/Online Consultation/Online_Consultation";
 import In_Person_Consultation from "./Pages/Veterinary/In Person Consultation/In_Person_Consultation";
-import Nearest_Clinic from "./Pages/Veterinary/Nearest Clinic/Nearest_Clinic";
+import FindVet from "./Pages/Veterinary/Find Vet/FindVet";
 import House_Calls from "./Pages/Veterinary/House Calls/House_Calls";
 import Health_Care_Blog from "./Pages/Veterinary/Health Care Blog/Health_Care_Blog";
 import Covid19_Info from "./Pages/Veterinary/Covid19 Info/Covid19_Info";
@@ -62,8 +63,15 @@ import SignUp from "./Components/Authentication/SignUp";
 import Profile from "./Dashboard/Profile";
 import Account from "./Dashboard/Account";
 import Dashboard from "./Dashboard/Dashboard";
+import ShopCategories from "./Pages/Shop/ShopCategories";
+import ShopNav from "./Pages/Shop/ShopNav";
+import { useState } from "react";
 
 const App = () => {
+  const [cartItems, setCartItems] = useState([]);
+  const handleCartClick = () => setCartOpen(true);
+  const handleCartClose = () => setCartOpen(false);
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -72,6 +80,10 @@ const App = () => {
         <UserAuthContextProvider>
           {/* <Header /> */}
           <Header2 />
+          <ShopNav
+            handleCartClick={handleCartClick}
+            cartItemsCount={cartItems.length}
+          />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
@@ -129,7 +141,9 @@ const App = () => {
 
             {/* Shop ---------------------------------------  */}
             <Route path="/food" element={<Food />} />
-            <Route path="/medicine" element={<Medicine />} />
+            <Route path="/shop" element={<Shop />} />
+
+            <Route path="/category/:category" component={ShopCategories} />
             <Route path="/accessories" element={<Accessories />} />
 
             {/* Veterinary --------------------------------------  */}
@@ -141,7 +155,7 @@ const App = () => {
               path="/in_person_consultation"
               element={<In_Person_Consultation />}
             />
-            <Route path="/nearest_clinic" element={<Nearest_Clinic />} />
+            <Route path="/findvet" element={<FindVet />} />
             <Route path="/house_calls" element={<House_Calls />} />
             <Route path="/health_care_blog" element={<Health_Care_Blog />} />
             <Route path="/covid19_info" element={<Covid19_Info />} />

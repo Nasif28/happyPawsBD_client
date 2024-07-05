@@ -189,12 +189,8 @@ const Header2 = (props) => {
             >
               <ListItemText primary="In-Person Consultation" />
             </ListItemButton>
-            <ListItemButton
-              sx={{ pl: 4 }}
-              component={Link}
-              to="/nearest_clinic"
-            >
-              <ListItemText primary="Nearest Clinic" />
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/findvet">
+              <ListItemText primary="Find Vet" />
             </ListItemButton>
             <ListItemButton sx={{ pl: 4 }} component={Link} to="/house_calls">
               <ListItemText primary="House Calls" />
@@ -390,7 +386,7 @@ const Header2 = (props) => {
             </Button>
           </Stack>
 
-          {/* Nested Menu Items ----------------------------------------- */}
+          {/* Main Sub Menu Items ----------------------------------------- */}
           <Menu
             anchorEl={menu1AnchorEl}
             keepMounted
@@ -560,7 +556,7 @@ const Header2 = (props) => {
                   color: "inherit",
                   fontWeight: "600",
                 }}
-                to="/medicine"
+                to="/shop"
               >
                 MEDICINE
               </Link>
@@ -651,9 +647,9 @@ const Header2 = (props) => {
                   color: "inherit",
                   fontWeight: "600",
                 }}
-                to="/nearest_clinic"
+                to="/findvet"
               >
-                NEAREST CLINIC
+                FIND VET
               </Link>
             </MenuItem>
 

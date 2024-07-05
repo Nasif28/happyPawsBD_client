@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Dog Food",
+    "description": "Nutritious dog food.",
+    "price": 20,
+    "category": "Food",
+    "type": "Dry Food",
+    "image": "https://i.ibb.co/RY2WrWx/Pet-Food-Trends-Main-Banner-png.webp"
+  },
+  {
+    "id": 2,
+    "name": "Cat Food",
+    "description": "Delicious cat food.",
+    "price": 15,
+    "category": "Food",
+    "type": "Wet Food",
+    "image": "https://i.ibb.co/RY2WrWx/Pet-Food-Trends-Main-Banner-png.webp"
+  },
+  {
+    "id": 3,
+    "name": "Bird Food",
+    "description": "Healthy bird food.",
+    "price": 10,
+    "category": "Food",
+    "type": "Seeds",
+    "image": "https://i.ibb.co/RY2WrWx/Pet-Food-Trends-Main-Banner-png.webp"
+  },
+  {
+    "id": 4,
+    "name": "Dog Medicine",
+    "description": "Effective dog medicine.",
+    "price": 25,
+    "category": "Medicines",
+    "type": "Antibiotic",
+    "image": "https://i.ibb.co/RY2WrWx/Pet-Food-Trends-Main-Banner-png.webp"
+  },
+  {
+    "id": 5,
+    "name": "Cat Medicine",
+    "description": "Effective cat medicine.",
+    "price": 30,
+    "category": "Medicines",
+    "type": "Vitamin",
+    "image": "https://i.ibb.co/RY2WrWx/Pet-Food-Trends-Main-Banner-png.webp"
+  },
+  {
+    "id": 6,
+    "name": "Bird Medicine",
+    "description": "Effective bird medicine.",
+    "price": 18,
+    "category": "Medicines",
+    "type": "Antibiotic",
+    "image": "https://i.ibb.co/RY2WrWx/Pet-Food-Trends-Main-Banner-png.webp"
+  },
+  {
+    "id": 7,
+    "name": "Dog Collar",
+    "description": "Stylish dog collar.",
+    "price": 12,
+    "category": "Accessories",
+    "type": "Collar",
+    "image": "https://i.ibb.co/RY2WrWx/Pet-Food-Trends-Main-Banner-png.webp"
+  },
+  {
+    "id": 8,
+    "name": "Cat Collar",
+    "description": "Stylish cat collar.",
+    "price": 10,
+    "category": "Accessories",
+    "type": "Collar",
+    "image": "https://i.ibb.co/RY2WrWx/Pet-Food-Trends-Main-Banner-png.webp"
+  },
+  {
+    "id": 9,
+    "name": "Bird Cage",
+    "description": "Spacious bird cage.",
+    "price": 45,
+    "category": "Accessories",
+    "type": "Cage",
+    "image": "https://i.ibb.co/RY2WrWx/Pet-Food-Trends-Main-Banner-png.webp"
+  },
+  {
+    "id": 10,
+    "name": "Fish Tank",
+    "description": "Modern fish tank.",
+    "price": 70,
+    "category": "Other",
+    "type": "Tank",
+    "image": "https://i.ibb.co/RY2WrWx/Pet-Food-Trends-Main-Banner-png.webp"
+  }
+]
