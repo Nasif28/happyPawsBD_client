@@ -8,6 +8,7 @@ import {
   Slider,
   Typography,
   Button,
+  Divider,
 } from "@mui/material";
 
 const Filters = ({ categories, productTypes, priceRange, setFilters }) => {
@@ -16,36 +17,49 @@ const Filters = ({ categories, productTypes, priceRange, setFilters }) => {
   const [selectedPriceRange, setSelectedPriceRange] = useState(priceRange);
 
   const handleCategoryChange = (category) => {
-    setSelectedCategories((prev) =>
-      prev.includes(category)
-        ? prev.filter((c) => c !== category)
-        : [...prev, category]
-    );
-  };
-
-  const handleProductTypeChange = (type) => {
-    setSelectedProductTypes((prev) =>
-      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
-    );
-  };
-
-  const handlePriceRangeChange = (event, newValue) => {
-    setSelectedPriceRange(newValue);
-  };
-
-  const applyFilters = () => {
+    const newSelectedCategories = selectedCategories.includes(category)
+      ? selectedCategories.filter((c) => c !== category)
+      : [...selectedCategories, category];
+    setSelectedCategories(newSelectedCategories);
     setFilters({
-      categories: selectedCategories,
+      categories: newSelectedCategories,
       productTypes: selectedProductTypes,
       priceRange: selectedPriceRange,
     });
   };
 
+  const handleProductTypeChange = (type) => {
+    const newSelectedProductTypes = selectedProductTypes.includes(type)
+      ? selectedProductTypes.filter((t) => t !== type)
+      : [...selectedProductTypes, type];
+    setSelectedProductTypes(newSelectedProductTypes);
+    setFilters({
+      categories: selectedCategories,
+      productTypes: newSelectedProductTypes,
+      priceRange: selectedPriceRange,
+    });
+  };
+
+  const handlePriceRangeChange = (event, newValue) => {
+    setSelectedPriceRange(newValue);
+    setFilters({
+      categories: selectedCategories,
+      productTypes: selectedProductTypes,
+      priceRange: newValue,
+    });
+  };
+
   return (
     <Box>
-      <Typography variant="h6">Filters</Typography>
+      <Typography variant="h6" fontWeight={700} mb={2}>
+        Filters
+        <Divider />
+      </Typography>
+
       <FormControl component="fieldset">
-        <Typography variant="subtitle1">Categories</Typography>
+        <Typography variant="subtitle1" fontWeight={700}>
+          Categories
+        </Typography>
         <FormGroup>
           {categories.map((category) => (
             <FormControlLabel
@@ -61,8 +75,13 @@ const Filters = ({ categories, productTypes, priceRange, setFilters }) => {
           ))}
         </FormGroup>
       </FormControl>
+
+      <br />
+
       <FormControl component="fieldset">
-        <Typography variant="subtitle1">Product Types</Typography>
+        <Typography variant="subtitle1" fontWeight={700} mt={3}>
+          Product Types
+        </Typography>
         <FormGroup>
           {productTypes.map((type) => (
             <FormControlLabel
@@ -78,18 +97,19 @@ const Filters = ({ categories, productTypes, priceRange, setFilters }) => {
           ))}
         </FormGroup>
       </FormControl>
-      <Typography variant="subtitle1">Price Range</Typography>
+
+      <Typography variant="subtitle1" fontWeight={700} mt={3}>
+        Price Range
+      </Typography>
       <Slider
         value={selectedPriceRange}
         onChange={handlePriceRangeChange}
         valueLabelDisplay="auto"
         min={0}
-        max={100}
+        max={2000}
       />
       <Box sx={{ mt: 2 }}>
-        <Button variant="contained" onClick={applyFilters}>
-          Apply Filters
-        </Button>
+      
       </Box>
     </Box>
   );

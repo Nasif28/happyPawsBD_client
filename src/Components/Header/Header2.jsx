@@ -120,6 +120,7 @@ const Header2 = (props) => {
             <ListItemText primary="Home" />
           </ListItemButton>
         </ListItem>
+
         <ListItem disablePadding>
           <ListItemButton onClick={() => handleMenuToggle("pets")}>
             <ListItemText primary="Pets" />
@@ -148,25 +149,13 @@ const Header2 = (props) => {
             </ListItemButton>
           </List>
         </Collapse>
-        <ListItem disablePadding>
-          <ListItemButton onClick={() => handleMenuToggle("shop")}>
+
+        <ListItem disablePadding onClick={handleDrawerToggle}>
+          <ListItemButton component={Link} to="/shop">
             <ListItemText primary="Shop" />
-            {openMenus.shop ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
         </ListItem>
-        <Collapse in={openMenus.shop} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding onClick={handleDrawerToggle}>
-            <ListItemButton sx={{ pl: 4 }} component={Link} to="/food">
-              <ListItemText primary="Food" />
-            </ListItemButton>
-            <ListItemButton sx={{ pl: 4 }} component={Link} to="/medicine">
-              <ListItemText primary="Medicine" />
-            </ListItemButton>
-            <ListItemButton sx={{ pl: 4 }} component={Link} to="/accessories">
-              <ListItemText primary="Accessories" />
-            </ListItemButton>
-          </List>
-        </Collapse>
+
         <ListItem disablePadding>
           <ListItemButton onClick={() => handleMenuToggle("veterinary")}>
             <ListItemText primary="Veterinary" />
@@ -207,6 +196,7 @@ const Header2 = (props) => {
             </ListItemButton>
           </List>
         </Collapse>
+
         <ListItem disablePadding>
           <ListItemButton onClick={() => handleMenuToggle("getInvolve")}>
             <ListItemText primary="Get Involve" />
@@ -243,11 +233,13 @@ const Header2 = (props) => {
             </ListItemButton>
           </List>
         </Collapse>
+
         <ListItem disablePadding onClick={handleDrawerToggle}>
           <ListItemButton component={Link} to="/about_us">
             <ListItemText primary="About Us" />
           </ListItemButton>
         </ListItem>
+
         <ListItem disablePadding onClick={handleDrawerToggle}>
           <ListItemButton component={Link} to="/contact_us">
             <ListItemText primary="Contact Us" />
@@ -323,16 +315,17 @@ const Header2 = (props) => {
               <KeyboardArrowDownIcon fontSize="12" />
             </Button>
 
-            <Button
-              onClick={handleMenu2Click}
-              sx={{
-                color: "inherit",
-                fontWeight: "600",
-                "&:hover": { backgroundColor: "primary.back" },
-              }}
-            >
-              Shop
-              <KeyboardArrowDownIcon fontSize="12" />
+            <Button sx={{ "&:hover": { backgroundColor: "primary.back" } }}>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  fontWeight: "600",
+                }}
+                to="/shop"
+              >
+                Shop
+              </Link>
             </Button>
 
             <Button
@@ -507,76 +500,6 @@ const Header2 = (props) => {
                 to="/lost_found"
               >
                 LOST & FOUND
-              </Link>
-            </MenuItem>
-          </Menu>
-
-          <Menu
-            anchorEl={menu2AnchorEl}
-            keepMounted
-            open={Boolean(menu2AnchorEl)}
-            onClose={handleMenu2Close}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "left",
-            }}
-          >
-            <MenuItem
-              onClick={handleMenu2Close}
-              sx={{
-                fontSize: "",
-                "&:hover": { backgroundColor: "primary.back" },
-              }}
-            >
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "inherit",
-                  fontWeight: "600",
-                }}
-                to="/food"
-              >
-                FOOD
-              </Link>
-            </MenuItem>
-            <MenuItem
-              onClick={handleMenu2Close}
-              sx={{
-                fontSize: "",
-                "&:hover": { backgroundColor: "primary.back" },
-              }}
-            >
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "inherit",
-                  fontWeight: "600",
-                }}
-                to="/shop"
-              >
-                MEDICINE
-              </Link>
-            </MenuItem>
-            <MenuItem
-              onClick={handleMenu2Close}
-              sx={{
-                fontSize: "",
-                "&:hover": { backgroundColor: "primary.back" },
-              }}
-            >
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "inherit",
-                  fontWeight: "600",
-                }}
-                to="/accessories"
-              >
-                ACCESSORIES
               </Link>
             </MenuItem>
           </Menu>

@@ -6,6 +6,9 @@ import {
   ListItemText,
   ListItemSecondaryAction,
   IconButton,
+  Typography,
+  Button,
+  Box,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -17,6 +20,15 @@ const CartDrawer = ({
 }) => (
   <Drawer anchor="right" open={cartOpen} onClose={handleCartClose}>
     <List sx={{ width: 250 }}>
+      <Box
+        sx={{ display: "flex", justifyContent: "flex-end", my: 2 }}
+        onClick={handleCartClose}
+      >
+        <Button variant="contained" color="primary">
+          Close
+        </Button>
+      </Box>
+
       {cartItems.length === 0 ? (
         <ListItem>
           <ListItemText primary="Cart is empty" />

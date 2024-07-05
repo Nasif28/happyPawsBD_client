@@ -1,20 +1,29 @@
 import React, { useState } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import {
+  Badge,
+  Box,
+  Grid,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import products from "./../../API/shopItems.json";
 import SearchBar from "./SearchBar";
 import CartDrawer from "./CartDrawer";
 import Filters from "./Filters";
 import ProductList from "./ProductList";
 import ProductDetailDialog from "./ProductDetailDialog";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ShopBanner from "./ShopBanner";
 
-const Shop = () => {
+const Shop = ({ cartItemsCount }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [filters, setFilters] = useState({
     categories: [],
     productTypes: [],
-    priceRange: [0, 100],
+    priceRange: [0, 2000],
   });
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [detailDialogOpen, setDetailDialogOpen] = useState(false);
@@ -43,23 +52,38 @@ const Shop = () => {
 
   return (
     <Box className="myContainer">
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <ShopBanner />
+      <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
+        <Typography variant="h6" color="initial">
+          Search
+        </Typography>
+        <Box mx={5} sx={{ flexGrow: 1 }}>
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        </Box>
+        <IconButton color="inherit" onClick={handleCartClick}>
+          <Badge badgeContent={cartItemsCount} color="secondary">
+            <ShoppingCartIcon />
+          </Badge>
+        </IconButton>
+      </Box>
+
       <CartDrawer
         cartOpen={cartOpen}
         handleCartClose={handleCartClose}
         cartItems={cartItems}
         removeFromCart={handleRemoveFromCart}
       />
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={4} md={3}>
+
+      <Grid container spacing={5} pt={2} id="ShopProducts">
+        <Grid item xs={12} sm={4} md={2}>
           <Filters
             categories={[...new Set(products.map((p) => p.category))]}
             productTypes={[...new Set(products.map((p) => p.type))]}
-            priceRange={[0, 100]}
+            priceRange={[0, 2000]}
             setFilters={setFilters}
           />
         </Grid>
-        <Grid item xs={12} sm={8} md={9}>
+        <Grid item xs={12} sm={8} md={10}>
           <Typography variant="h5" gutterBottom>
             Products
           </Typography>
