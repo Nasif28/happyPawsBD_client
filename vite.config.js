@@ -11,4 +11,5 @@ export default defineConfig({
     open: true, // Automatically open the app in the browser
   },
   plugins: [react()],
+
 })

@@ -19,14 +19,9 @@ const CartDrawer = ({
   removeFromCart,
 }) => (
   <Drawer anchor="right" open={cartOpen} onClose={handleCartClose}>
-    <List sx={{ width: 250 }}>
-      <Box
-        sx={{ display: "flex", justifyContent: "flex-end", my: 2 }}
-        onClick={handleCartClose}
-      >
-        <Button variant="contained" color="primary">
-          Close
-        </Button>
+    <List sx={{ width: 300 }}>
+      <Box onClick={handleCartClose}>
+        <Button color="primary">Close</Button>
       </Box>
 
       {cartItems.length === 0 ? (

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, TextField, IconButton } from "@mui/material";
+import { Box, TextField, IconButton, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBar = ({ searchTerm, setSearchTerm }) => (
@@ -10,10 +10,16 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => (
       placeholder="Search..."
       value={searchTerm}
       onChange={(e) => setSearchTerm(e.target.value)}
+      InputProps={{
+        endAdornment: (
+          <InputAdornment position="end">
+            <IconButton>
+              <SearchIcon />
+            </IconButton>
+          </InputAdornment>
+        ),
+      }}
     />
-    <IconButton>
-      <SearchIcon />
-    </IconButton>
   </Box>
 );
 

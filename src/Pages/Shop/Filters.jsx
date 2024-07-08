@@ -7,7 +7,6 @@ import {
   Checkbox,
   Slider,
   Typography,
-  Button,
   Divider,
 } from "@mui/material";
 
@@ -108,9 +107,7 @@ const Filters = ({ categories, productTypes, priceRange, setFilters }) => {
         min={0}
         max={2000}
       />
-      <Box sx={{ mt: 2 }}>
-      
-      </Box>
+      <Box sx={{ mt: 2 }}></Box>
     </Box>
   );
 };

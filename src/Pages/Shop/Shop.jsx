@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Badge,
-  Box,
-  Grid,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { Badge, Box, Grid, IconButton, Typography } from "@mui/material";
 import products from "./../../API/shopItems.json";
 import SearchBar from "./SearchBar";
 import CartDrawer from "./CartDrawer";
@@ -84,7 +77,7 @@ const Shop = ({ cartItemsCount }) => {
           />
         </Grid>
         <Grid item xs={12} sm={8} md={10}>
-          <Typography variant="h5" gutterBottom>
+          <Typography variant="h5" fontWeight={700} gutterBottom>
             Products
           </Typography>
           <ProductList
