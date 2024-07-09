@@ -34,6 +34,7 @@ import FoundForm from "./Pages/Pets/Lost & Found/FoundForm";
 
 // Shop -----------------------------------
 import Shop from "./Pages/Shop/Shop";
+import Cart from "./Pages/Shop/Cart/Cart";
 
 // Veterinary ----------------------------------
 import Online_Consultation from "./Pages/Veterinary/Online Consultation/Online_Consultation";
@@ -128,6 +129,7 @@ const App = () => {
 
             {/* Shop ---------------------------------------  */}
             <Route path="/shop" element={<Shop />} />
+            <Route path="/cart" element={<Cart />} />
 
             {/* Veterinary --------------------------------------  */}
             <Route

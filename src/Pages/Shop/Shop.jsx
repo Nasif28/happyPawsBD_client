@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Badge, Box, Grid, IconButton, Typography } from "@mui/material";
 import products from "./../../API/shopItems.json";
 import SearchBar from "./SearchBar";
-import CartDrawer from "./CartDrawer";
 import Filters from "./Filters";
 import ProductList from "./ProductList";
 import ProductDetailDialog from "./ProductDetailDialog";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ShopBanner from "./ShopBanner";
+import { Link } from "react-router-dom";
 
 const Shop = ({ cartItemsCount }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [filters, setFilters] = useState({
     categories: [],
@@ -21,16 +20,52 @@ const Shop = ({ cartItemsCount }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [detailDialogOpen, setDetailDialogOpen] = useState(false);
 
-  const handleCartClick = () => setCartOpen(true);
-  const handleCartClose = () => setCartOpen(false);
-  const handleAddToCart = (product) => setCartItems([...cartItems, product]);
-  const handleRemoveFromCart = (product) =>
-    setCartItems(cartItems.filter((item) => item.id !== product.id));
+  // Load cart items from Local Storage on initial render
+  useEffect(() => {
+    const savedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    setCartItems(savedCartItems);
+  }, []);
+
+  // Save cart items to Local Storage whenever they change
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  const handleAddToCart = (product) => {
+    setCartItems((prevItems) => {
+      const existingItem = prevItems.find((item) => item.id === product.id);
+      if (existingItem) {
+        return prevItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      return [...prevItems, { ...product, quantity: 1 }];
+    });
+  };
+  console.log(cartItems);
+  const handleRemoveItem = (productId) => {
+    setCartItems((prevItems) =>
+      prevItems.filter((item) => item.id !== productId)
+    );
+  };
+
+  const handleQuantityChange = (productId, quantity) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === productId ? { ...item, quantity: quantity } : item
+      )
+    );
+  };
+
   const handleViewDetails = (product) => {
     setSelectedProduct(product);
     setDetailDialogOpen(true);
   };
-  const handleDetailDialogClose = () => setDetailDialogOpen(false);
+  const handleDetailDialogClose = () => {
+    setDetailDialogOpen(false);
+  };
 
   const filteredProducts = products.filter(
     (product) =>
@@ -42,10 +77,11 @@ const Shop = ({ cartItemsCount }) => {
       product.price <= filters.priceRange[1] &&
       product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  cartItems;
   return (
     <Box className="myContainer">
       <ShopBanner />
+
       <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
         <Typography variant="h6" color="initial">
           Search
@@ -53,19 +89,13 @@ const Shop = ({ cartItemsCount }) => {
         <Box mx={5} sx={{ flexGrow: 1 }}>
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </Box>
-        <IconButton color="inherit" onClick={handleCartClick}>
-          <Badge badgeContent={cartItemsCount} color="secondary">
+
+        <IconButton color="inherit" component={Link} to="/cart">
+          <Badge badgeContent={cartItems.length} color="secondary">
             <ShoppingCartIcon />
           </Badge>
         </IconButton>
       </Box>
-
-      <CartDrawer
-        cartOpen={cartOpen}
-        handleCartClose={handleCartClose}
-        cartItems={cartItems}
-        removeFromCart={handleRemoveFromCart}
-      />
 
       <Grid container spacing={5} pt={2} id="ShopProducts">
         <Grid item xs={12} sm={4} md={2}>
@@ -100,35 +130,3 @@ const Shop = ({ cartItemsCount }) => {
 };
 
 export default Shop;
-
-// import React from "react";
-// import ShopCategories from "./ShopCategories";
-// import ShopBanner from "./ShopBanner";
-// import ShopItem from "./../../API/shopItems.json";
-// import { Box } from "@mui/material";
-
-// const categories = [
-//     'Food',
-//     'Medicines',
-//     'Accessories',
-//     'Other',
-//     'All'
-//   ];
-
-// const Shop = () => {
-//   return (
-// <Box className="myContainer">
-// <ShopBanner />
-//     {categories.map((category) => (
-//       <ShopCategories
-//         key={category}
-//         category={category}
-//         items={ShopItem.filter(item => item.category === category)}
-//       />
-//     ))}
-//   </Box>
-
-//   );
-// };
-
-// export default Shop;

@@ -24,6 +24,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import EmailIcon from "@mui/icons-material/Email";
+import Rating from "@mui/material/Rating";
 
 const ProductDetailDialog = ({
   product,
@@ -144,10 +145,27 @@ const ProductDetailDialog = ({
               </Typography>
             </Box>
 
-            <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-              <StarIcon color="action" />
-              <Typography variant="body2" sx={{ ml: 1 }}>
-                {product.rating}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                mt: 1,
+                width: 200,
+                display: "flex",
+              }}
+            >
+              <Rating
+                name="text-feedback"
+                value={product.rating}
+                size="small"
+                readOnly
+                precision={0.5}
+                emptyIcon={
+                  <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                }
+              />
+              <Typography variant="caption" sx={{ ml: 1, pt: 0.3 }}>
+                42 reviews
               </Typography>
             </Box>
 

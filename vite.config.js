@@ -11,5 +11,7 @@ export default defineConfig({
     open: true, // Automatically open the app in the browser
   },
   plugins: [react()],
-
+  optimizeDeps: {
+    include: ['@mui/material', '@mui/x-date-pickers', '@emotion/react', '@emotion/styled'],
+  },
 })
