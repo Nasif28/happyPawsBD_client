@@ -9,7 +9,7 @@ import {
   Divider,
   CardActionArea,
 } from "@mui/material";
-import Training from "./../../../API/training.json";
+import PetBoardingAPI from "./../../../API/petBoarding.json";
 import { Link, useNavigate } from "react-router-dom";
 
 const PetBoarding = () => {
@@ -20,9 +20,9 @@ const PetBoarding = () => {
   };
 
   return (
-    <Box pt={6}>
+    <Box my={6}>
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Typography variant="h5" gutterBottom fontWeight={700}>
+        <Typography variant="h4" gutterBottom fontWeight={900}>
           Boarding
         </Typography>
         <Typography
@@ -40,7 +40,7 @@ const PetBoarding = () => {
 
       <Grid container spacing={4} pt={3}>
         {/* Main Article */}
-        {Training.slice(0, 1).map((item) => (
+        {PetBoardingAPI.slice(0, 1).map((item) => (
           <Grid item xs={12} md={6} key={item.id}>
             <Card
               sx={{
@@ -51,19 +51,16 @@ const PetBoarding = () => {
               <CardActionArea onClick={() => handledaycare(item.id)}>
                 <CardMedia
                   component="img"
-                  height="400"
+                  height="420"
                   image={item.picture}
                   alt="Main Article"
-                  sx={{
-                    borderRadius: "2%",
-                  }}
                 />
                 <CardContent sx={{ padding: "0 !important" }}>
-                  <Typography variant="h5" gutterBottom pt={2}>
+                  <Typography variant="h6" fontWeight={700} gutterBottom pt={2}>
                     {item.title}
                   </Typography>
                   <Typography variant="body1" color="primary.para">
-                    {item.dis1}
+                    {item.shortDescription}
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -74,7 +71,7 @@ const PetBoarding = () => {
         {/* Side Articles */}
         <Grid item xs={12} md={6}>
           <Grid container spacing={4}>
-            {Training.slice(1, 5).map((item) => (
+            {PetBoardingAPI.slice(1, 5).map((item) => (
               <Grid item xs={6} key={item.id}>
                 <Card
                   sx={{
@@ -93,11 +90,16 @@ const PetBoarding = () => {
                       }}
                     />
                     <CardContent sx={{ padding: "0 !important" }}>
-                      <Typography variant="body1" gutterBottom pt={2}>
+                      <Typography
+                        variant="body1"
+                        fontWeight={700}
+                        gutterBottom
+                        pt={2}
+                      >
                         {item.title}
                       </Typography>
                       <Typography variant="body2" color="primary.para">
-                        {item.dis1}
+                        {item.shortDescription}
                       </Typography>
                     </CardContent>
                   </CardActionArea>

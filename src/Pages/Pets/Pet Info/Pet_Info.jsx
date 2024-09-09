@@ -5,7 +5,7 @@ const Pet_Info = () => {
   return (
     <Box className="myContainer">
       <Typography variant="h4" color="initial" textAlign={"center"} pt={5}>
-        Pet Info Section in Under Constraction
+        <strong>Pet Info</strong> Section in Under Constraction
       </Typography>
     </Box>
   );

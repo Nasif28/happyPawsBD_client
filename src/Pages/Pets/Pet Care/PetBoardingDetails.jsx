@@ -13,7 +13,7 @@ import {
   Alert,
 } from "@mui/material";
 import { useUserAuth } from "../../../context/UserAuthContext";
-import Training from "./../../../API/training.json";
+import PetBoardingAPI from "./../../../API/petBoarding.json";
 
 const PetBoardingDetails = () => {
   const { id } = useParams();
@@ -23,7 +23,7 @@ const PetBoardingDetails = () => {
   const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
-    const selectedProgram = Training.find((p) => p.id === parseInt(id));
+    const selectedProgram = PetBoardingAPI.find((p) => p.id === parseInt(id));
     setItem(selectedProgram);
   }, [id]);
 
@@ -42,7 +42,7 @@ const PetBoardingDetails = () => {
     <Box className="myContainer">
       <Typography
         variant="h4"
-        fontWeight={700}
+        fontWeight={900}
         my={5}
         gutterBottom
         textAlign="center"
@@ -55,7 +55,7 @@ const PetBoardingDetails = () => {
         <Grid item xs={12} md={6}>
           <Card
             sx={{
-              borderRadius: "0",
+              borderRadius: "2% 2% 0",
               boxShadow: "none",
             }}
           >
@@ -66,25 +66,24 @@ const PetBoardingDetails = () => {
             />
             <CardContent>
               <Typography variant="h5" gutterBottom color="green"></Typography>
-              <Typography variant="body1" color="primary.para" pl={4} mb={2}>
-                <ul>
-                  <li>{item.dis1}</li>
-
-                  <li>{item.dis2}</li>
-
-                  <li>{item.dis3}</li>
-                </ul>
+              <Typography variant="body1" color="primary.para" mb={2}>
+                {item.description}
               </Typography>
 
               <Typography variant="body1" paragraph>
-                <strong>Duration:</strong> 8 weeks
+                <strong>Duration:</strong> {item.duration}
               </Typography>
               <Typography variant="body1" paragraph>
-                <strong>Price:</strong> $300
+                <strong>Price:</strong> {item.price}
               </Typography>
               <Typography variant="body1" paragraph>
-                <strong>Program Covers:</strong> Basic commands, socialization,
-                leash training, etc.
+                <strong>Program Covers:</strong> {item.programCovers}
+              </Typography>
+              <Typography variant="body1" paragraph>
+                <strong>Additional Services:</strong> {item.additionalServices}
+              </Typography>
+              <Typography variant="body1" paragraph>
+                <strong>Special Features:</strong> {item.specialFeatures}
               </Typography>
             </CardContent>
           </Card>
@@ -98,7 +97,7 @@ const PetBoardingDetails = () => {
             }}
           >
             <CardContent>
-              <Typography variant="h5" gutterBottom color="primary.main">
+              <Typography variant="h5" fontWeight={700} gutterBottom color="primary.main">
                 Enroll in this Program
               </Typography>
 

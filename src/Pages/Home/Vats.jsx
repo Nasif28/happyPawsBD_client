@@ -246,11 +246,7 @@ const Vats = () => {
                       cursor: "pointer",
                     }}
                   >
-                    <Link
-                      href="https://www.google.com"
-                      underline="none"
-                      color="inherit"
-                    >
+                    <Link href={item.details} underline="none" color="inherit">
                       - Learn More
                     </Link>
                   </Box>

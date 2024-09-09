@@ -9,7 +9,7 @@ import {
   Divider,
   CardActionArea,
 } from "@mui/material";
-import Training from "./../../../API/training.json";
+import PetGroomingAPI from "./../../../API/petGrooming.json";
 import { useNavigate } from "react-router-dom";
 
 const PetGroomingAll = () => {
@@ -22,14 +22,14 @@ const PetGroomingAll = () => {
   return (
     <Box className="myContainer" py={3}>
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Typography variant="h4" gutterBottom fontWeight={700} pt={2}>
+        <Typography variant="h4" gutterBottom fontWeight={900} pt={2}>
           Grooming
         </Typography>
       </Box>
 
       <Grid container spacing={4} pt={3}>
         {/* Main Article */}
-        {Training.map((item) => (
+        {PetGroomingAPI.map((item) => (
           <Grid item xs={12} sm={6} md={4} key={item.id}>
             <Card
               sx={{
@@ -45,7 +45,7 @@ const PetGroomingAll = () => {
                   alt="Main Article"
                 />
                 <CardContent>
-                  <Typography variant="h5" gutterBottom>
+                  <Typography variant="h6" fontWeight={700} gutterBottom>
                     {item.title}
                   </Typography>
                   <Typography variant="body1" color="primary.para">

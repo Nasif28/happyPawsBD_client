@@ -9,7 +9,7 @@ import {
   Divider,
   CardActionArea,
 } from "@mui/material";
-import Training from "./../../../API/training.json";
+import PetBoardingAPI from "./../../../API/petBoarding.json";
 import { useNavigate } from "react-router-dom";
 
 const PetBoardingAll = () => {
@@ -22,18 +22,18 @@ const PetBoardingAll = () => {
   return (
     <Box className="myContainer" py={3}>
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Typography variant="h4" gutterBottom fontWeight={700} pt={2}>
+        <Typography variant="h4" gutterBottom fontWeight={900} pt={2}>
           Boarding
         </Typography>
       </Box>
 
       <Grid container spacing={4} pt={3}>
         {/* Main Article */}
-        {Training.map((item) => (
+        {PetBoardingAPI.map((item) => (
           <Grid item xs={12} sm={6} md={4} key={item.id}>
             <Card
               sx={{
-                borderRadius: "2%",
+                borderRadius: "2",
                 boxShadow: "0px 0px 10px rgba(0,0,0,0.2)",
               }}
             >
@@ -45,11 +45,11 @@ const PetBoardingAll = () => {
                   alt="Main Article"
                 />
                 <CardContent>
-                  <Typography variant="h5" gutterBottom>
+                  <Typography variant="h6" fontWeight={700} gutterBottom>
                     {item.title}
                   </Typography>
                   <Typography variant="body1" color="primary.para">
-                    {item.dis1}
+                    {item.shortDescription}
                   </Typography>
                 </CardContent>
               </CardActionArea>
