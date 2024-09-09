@@ -1,9 +1,85 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Box, Card, CardMedia, Stack, Typography } from "@mui/material";
+import { Box, Card, CardMedia, Link, Stack, Typography } from "@mui/material";
 import vets from "./../../API/vets.json";
-import styled from "@emotion/styled";
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+
+// Custom Left Arrow
+const CustomLeftArrow = ({ onClick }) => (
+  <Box
+    onClick={onClick}
+    sx={{
+      position: "absolute",
+      left: "10px",
+      top: "50%",
+      transform: "translateY(-50%)",
+      backgroundColor: "rgba(0, 0, 0, 0.6)",
+      color: "#fff",
+      borderRadius: "50%",
+      width: "50px",
+      height: "50px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      paddingLeft: "8px",
+      cursor: "pointer",
+      zIndex: 1,
+      "&:hover": {
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
+      },
+    }}
+  >
+    <ArrowBackIos />
+  </Box>
+);
+
+// Custom Right Arrow
+const CustomRightArrow = ({ onClick }) => (
+  <Box
+    onClick={onClick}
+    sx={{
+      position: "absolute",
+      right: "10px",
+      top: "50%",
+      transform: "translateY(-50%)",
+      backgroundColor: "rgba(0, 0, 0, 0.6)",
+      color: "#fff",
+      borderRadius: "50%",
+      width: "50px",
+      height: "50px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      zIndex: 1,
+      "&:hover": {
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
+      },
+    }}
+  >
+    <ArrowForwardIos />
+  </Box>
+);
+
+// Custom Dot
+const CustomDot = ({ onClick, ...rest }) => {
+  const { active } = rest;
+  return (
+    <li
+      onClick={onClick}
+      style={{
+        backgroundColor: active ? "green" : "#E0E0E0",
+        width: "12px",
+        height: "12px",
+        borderRadius: "50%",
+        display: "inline-block",
+        margin: "0 8px",
+        cursor: "pointer",
+      }}
+    />
+  );
+};
 
 const Vats = () => {
   return (
@@ -24,8 +100,11 @@ const Vats = () => {
         pet health partners.
       </Typography>
 
-      <Box mt={5} sx={{ position: "relative" }}>
+      <Box sx={{ position: "relative" }}>
         <Carousel
+          customLeftArrow={<CustomLeftArrow />}
+          customRightArrow={<CustomRightArrow />}
+          customDot={<CustomDot />}
           width="50%"
           containerClass="carousel-container"
           itemClass="carousel-item"
@@ -34,19 +113,15 @@ const Vats = () => {
           autoPlay
           autoPlaySpeed={2000}
           centerMode={true}
-          className=""
-          // containerClass="container-with-dots"
-          dotListClass=""
           draggable
           focusOnSelect={false}
           infinite
-          // itemClass=""
           keyBoardControl
           minimumTouchDrag={80}
           pauseOnHover
-          renderArrowsWhenDisabled={false}
-          renderButtonGroupOutside={false}
-          renderDotsOutside={false}
+          showDots={true}
+          slidesToSlide={1}
+          swipeable
           responsive={{
             desktop: {
               breakpoint: {
@@ -69,7 +144,6 @@ const Vats = () => {
                 max: 600,
                 min: 0,
               },
-
               items: 0.6,
               partialVisibilityGutter: 30,
             },
@@ -82,14 +156,6 @@ const Vats = () => {
               partialVisibilityGutter: 30,
             },
           }}
-          rewind={false}
-          rewindWithAnimation={false}
-          rtl={false}
-          shouldResetAutoplay
-          showDots={true}
-          sliderClass=""
-          slidesToSlide={1}
-          swipeable
         >
           {vets.map((item) => (
             <Box
@@ -98,7 +164,7 @@ const Vats = () => {
               sx={{
                 width: 250,
                 height: 150,
-                margin: "20px 60px",
+                margin: "40px 0px",
               }}
             >
               <CardMedia
@@ -177,10 +243,16 @@ const Vats = () => {
                     color={"primary.green"}
                     sx={{
                       textDecoration: "none",
+                      cursor: "pointer",
                     }}
-                    // href="www.google.com"
                   >
-                    - Learn More
+                    <Link
+                      href="https://www.google.com"
+                      underline="none"
+                      color="inherit"
+                    >
+                      - Learn More
+                    </Link>
                   </Box>
                 </Stack>
               </Card>

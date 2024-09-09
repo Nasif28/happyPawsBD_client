@@ -5,7 +5,6 @@ import OrderSummary from "./OrderSummary";
 import PaymentMethod from "./PaymentMethod";
 
 const Cart = ({
-
   handleQuantityChange,
   handleRemoveItem,
   handleOrderConfirm,
@@ -21,7 +20,7 @@ const Cart = ({
   console.log(cartItems);
 
   return (
-    <Box sx={{ padding: 3 }}>
+    <Box className="myContainer" sx={{ padding: 3 }}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}>
           <DeliveryInformation />
