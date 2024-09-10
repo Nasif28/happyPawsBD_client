@@ -80,15 +80,30 @@ const App = () => {
             <Route path="/petcare/boarding" element={<PetBoardingAll />} />
             <Route
               path="/petcare/boarding/:id"
-              element={<PetBoardingDetails />}
+              element={
+                <ProtectedRoute>
+                  <PetBoardingDetails />
+                </ProtectedRoute>
+              }
             />
             <Route path="/petcare/grooming" element={<PetGroomingAll />} />
             <Route
               path="/petcare/grooming/:id"
-              element={<PetGroomingDetails />}
+              element={
+                <ProtectedRoute>
+                  <PetGroomingDetails />
+                </ProtectedRoute>
+              }
             />
             <Route path="/pet_training" element={<Pet_Training />} />
-            <Route path="/training/:id" element={<TrainingDetail />} />
+            <Route
+              path="/training/:id"
+              element={
+                <ProtectedRoute>
+                  <TrainingDetail />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/adoption" element={<Adoption />} />
             <Route
               path="/adoption/adoptable_pets"

@@ -7,7 +7,9 @@ const ProtectedRoute = ({ children }) => {
 
   console.log("Check user in Private: ", user);
   if (!user) {
-    return <Navigate to="/sign_in" />;
+    // return <Navigate to="/sign_in" />;
+    return <Navigate to={`/sign_in?redirect=${location.pathname}`} />;
+
   }
   return children;
 };

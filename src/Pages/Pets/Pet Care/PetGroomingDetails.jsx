@@ -13,30 +13,70 @@ import {
 } from "@mui/material";
 import { useUserAuth } from "../../../context/UserAuthContext";
 import PetGroomingAPI from "./../../../API/petGrooming.json";
+import { groomingApplication } from "../../../API/api";
 
 const PetGroomingDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useUserAuth();
   const [item, setItem] = useState(null);
+  const [grooming, setGrooming] = useState({
+    name: "",
+    contactEmail: "",
+    contactPhone: "",
+    address: "",
+  });
   const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
     const selectedProgram = PetGroomingAPI.find((p) => p.id === parseInt(id));
     setItem(selectedProgram);
-  }, [id]);
 
-  const handleSubmit = () => {
     if (user) {
-      setShowSuccess(true);
-    } else {
+      setGrooming({
+        ...grooming,
+        name: user.displayName || "",
+        contactEmail: user.email || "",
+      });
+    }
+  }, [id, user]);
+
+  const handleChange = (e) => {
+    setGrooming({ ...grooming, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!user) {
       navigate(`/login?redirect=/petcare/grooming/${id}`);
+      return;
+    }
+
+    try {
+      const updatedGrooming = {
+        ...grooming,
+        programId: item.id,
+      };
+
+      await groomingApplication(updatedGrooming, item.id);
+
+      // Reset the form but keep name and email from user
+      setGrooming({
+        name: user.displayName || "",
+        contactEmail: user.email || "",
+        contactPhone: "",
+        address: "",
+      });
+      setShowSuccess(true);
+    } catch (error) {
+      console.error("Error submitting form:", error);
     }
   };
 
   if (!item) {
     return <Typography>Loading...</Typography>;
   }
+
   return (
     <Box className="myContainer">
       <Typography
@@ -68,9 +108,7 @@ const PetGroomingDetails = () => {
               <Typography variant="body1" color="primary.para" pl={2} mb={2}>
                 <ul>
                   <li>{item.dis1}</li>
-
                   <li>{item.dis2}</li>
-
                   <li>{item.dis3}</li>
                 </ul>
               </Typography>
@@ -96,17 +134,24 @@ const PetGroomingDetails = () => {
             }}
           >
             <CardContent>
-              <Typography variant="h5" fontWeight={700} gutterBottom color="primary.main">
+              <Typography
+                variant="h5"
+                fontWeight={700}
+                gutterBottom
+                color="primary.main"
+              >
                 Enroll in this Program
               </Typography>
 
-              <Box component="form" mt={2}>
+              <Box component="form" mt={2} onSubmit={handleSubmit}>
                 <TextField
                   fullWidth
                   label="Full Name"
                   margin="normal"
                   required
-                  defaultValue={user ? user.displayName : ""}
+                  name="name"
+                  value={grooming.name}
+                  onChange={handleChange}
                 />
                 <TextField
                   fullWidth
@@ -114,7 +159,9 @@ const PetGroomingDetails = () => {
                   type="email"
                   margin="normal"
                   required
-                  defaultValue={user ? user.email : ""}
+                  name="contactEmail"
+                  value={grooming.contactEmail}
+                  onChange={handleChange}
                 />
                 <TextField
                   fullWidth
@@ -122,30 +169,40 @@ const PetGroomingDetails = () => {
                   type="tel"
                   margin="normal"
                   required
+                  name="contactPhone"
+                  value={grooming.contactPhone}
+                  onChange={handleChange}
                 />
-                <TextField fullWidth label="Address" margin="normal" required />
+                <TextField
+                  fullWidth
+                  label="Address"
+                  margin="normal"
+                  required
+                  name="address"
+                  value={grooming.address}
+                  onChange={handleChange}
+                />
                 <Button
                   variant="contained"
                   color="success"
                   sx={{ mt: 3, fontWeight: "700" }}
-                  // fullWidth
-                  onClick={handleSubmit}
+                  type="submit"
                 >
-                  Accept Training Program
+                  Accept Grooming Program
                 </Button>
                 {/* Snackbar for showing the success message */}
                 <Snackbar
                   open={showSuccess}
-                  autoHideDuration={4000} // Duration in milliseconds
-                  onClose={() => setShowSuccess(false)} // Function to handle Snackbar close event
+                  autoHideDuration={4000}
+                  onClose={() => setShowSuccess(false)}
                   anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                 >
                   <Alert
-                    onClose={() => setShowSuccess(false)} // Function to handle Snackbar close event
+                    onClose={() => setShowSuccess(false)}
                     severity="success"
                     sx={{ width: "100%" }}
                   >
-                    Your form has been submitted successfully!
+                    Your grooming enrollment has been successfully submitted!
                   </Alert>
                 </Snackbar>
               </Box>
@@ -156,4 +213,5 @@ const PetGroomingDetails = () => {
     </Box>
   );
 };
+
 export default PetGroomingDetails;

@@ -5,7 +5,6 @@ import {
   Typography,
   Button,
   TextField,
-  Avatar,
   Grid,
   Card,
   CardContent,
@@ -14,24 +13,60 @@ import {
 } from "@mui/material";
 import { useUserAuth } from "../../../context/UserAuthContext";
 import Training from "./../../../API/training.json";
+import { trainingApplication } from "../../../API/api";
 
 const TrainingDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useUserAuth();
   const [item, setItem] = useState(null);
+  const [training, setTraining] = useState({
+    name: "",
+    contactEmail: "",
+    contactPhone: "",
+    address: "",
+  });
   const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
+    // Find the selected program
     const selectedProgram = Training.find((p) => p.id === parseInt(id));
     setItem(selectedProgram);
-  }, [id]);
 
-  const handleSubmit = () => {
+    // Auto-fill name and email from the logged-in user
     if (user) {
+      setTraining((prevTraining) => ({
+        ...prevTraining,
+        name: user.displayName || "",
+        contactEmail: user.email || "",
+      }));
+    }
+  }, [id, user]);
+
+  const handleChange = (e) => {
+    setTraining({ ...training, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const updatedTraining = {
+        ...training,
+        programId: item.id,
+      };
+
+      await trainingApplication(updatedTraining, item.id);
+
+      // Reset the form but keep name and email from user
+      setTraining({
+        name: user.displayName || "",
+        contactEmail: user.email || "",
+        contactPhone: "",
+        address: "",
+      });
       setShowSuccess(true);
-    } else {
-      navigate(`/login?redirect=/training/${id}`);
+    } catch (error) {
+      console.error("Error submitting form:", error);
     }
   };
 
@@ -59,7 +94,6 @@ const TrainingDetail = () => {
               src={item.picture}
               alt={item.title}
               style={{ width: "100%" }}
-              // style={{ width: "100%", maxHeight: "400px", objectFit: "cover" }}
             />
           </Card>
         </Grid>
@@ -73,13 +107,10 @@ const TrainingDetail = () => {
               <Typography variant="body1" color="primary.para" pl={4} mb={2}>
                 <ul>
                   <li>{item.dis1}</li>
-
                   <li>{item.dis2}</li>
-
                   <li>{item.dis3}</li>
                 </ul>
               </Typography>
-
               <Typography variant="body1" paragraph>
                 <strong>Duration:</strong> 8 weeks
               </Typography>
@@ -102,13 +133,15 @@ const TrainingDetail = () => {
                 Enroll in this Program
               </Typography>
 
-              <Box component="form" mt={2}>
+              <Box component="form" mt={2} onSubmit={handleSubmit}>
                 <TextField
                   fullWidth
                   label="Full Name"
                   margin="normal"
                   required
-                  defaultValue={user ? user.displayName : ""}
+                  name="name"
+                  value={training.name}
+                  onChange={handleChange}
                 />
                 <TextField
                   fullWidth
@@ -116,7 +149,9 @@ const TrainingDetail = () => {
                   type="email"
                   margin="normal"
                   required
-                  defaultValue={user ? user.email : ""}
+                  name="contactEmail"
+                  value={training.contactEmail}
+                  onChange={handleChange}
                 />
                 <TextField
                   fullWidth
@@ -124,30 +159,42 @@ const TrainingDetail = () => {
                   type="tel"
                   margin="normal"
                   required
+                  name="contactPhone"
+                  value={training.contactPhone}
+                  onChange={handleChange}
                 />
-                <TextField fullWidth label="Address" margin="normal" required />
+                <TextField
+                  fullWidth
+                  label="Address"
+                  margin="normal"
+                  required
+                  name="address"
+                  value={training.address}
+                  onChange={handleChange}
+                />
+
                 <Button
                   variant="contained"
                   color="success"
                   sx={{ mt: 3, fontWeight: "700" }}
-                  // fullWidth
-                  onClick={handleSubmit}
+                  type="submit"
                 >
                   Accept Training Program
                 </Button>
+
                 {/* Snackbar for showing the success message */}
                 <Snackbar
                   open={showSuccess}
-                  autoHideDuration={4000} // Duration in milliseconds
-                  onClose={() => setShowSuccess(false)} // Function to handle Snackbar close event
+                  autoHideDuration={4000}
+                  onClose={() => setShowSuccess(false)}
                   anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                 >
                   <Alert
-                    onClose={() => setShowSuccess(false)} // Function to handle Snackbar close event
+                    onClose={() => setShowSuccess(false)}
                     severity="success"
                     sx={{ width: "100%" }}
                   >
-                    Your form has been submitted successfully!
+                    Your training enrollment has been successfully submitted!
                   </Alert>
                 </Snackbar>
               </Box>

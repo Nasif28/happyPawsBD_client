@@ -15,6 +15,11 @@ import { Link, useNavigate } from "react-router-dom";
 const PetGrooming = () => {
   const navigate = useNavigate();
 
+  const handleViewAll = () => {
+    window.scrollTo(0, 0); // Scroll to top
+    navigate("/petcare/grooming");
+  };
+
   const handledaycare = (id) => {
     navigate(`/petcare/grooming/${id}`);
   };
@@ -25,7 +30,25 @@ const PetGrooming = () => {
         <Typography variant="h4" gutterBottom fontWeight={900}>
           Grooming
         </Typography>
+
         <Typography
+          component="button"
+          onClick={handleViewAll}
+          variant="body1"
+          gutterBottom
+          fontWeight={700}
+          sx={{
+            textDecoration: "none",
+            color: "inherit",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          View All
+        </Typography>
+
+        {/* <Typography
           component={Link}
           to="/petcare/grooming"
           variant="body1"
@@ -34,7 +57,7 @@ const PetGrooming = () => {
           sx={{ textDecoration: "none", color: "inherit" }} // Optional: to remove underline and inherit text color
         >
           View All
-        </Typography>
+        </Typography> */}
       </Box>
       <Divider />
 

@@ -5,7 +5,6 @@ import {
   Typography,
   Button,
   TextField,
-  Avatar,
   Grid,
   Card,
   CardContent,
@@ -14,30 +13,72 @@ import {
 } from "@mui/material";
 import { useUserAuth } from "../../../context/UserAuthContext";
 import PetBoardingAPI from "./../../../API/petBoarding.json";
+import { boardingApplication } from "../../../API/api";
 
 const PetBoardingDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useUserAuth();
   const [item, setItem] = useState(null);
+  const [boarding, setBoarding] = useState({
+    name: "",
+    contactEmail: "",
+    contactPhone: "",
+    address: "",
+  });
   const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
+    // Find the selected program
     const selectedProgram = PetBoardingAPI.find((p) => p.id === parseInt(id));
     setItem(selectedProgram);
-  }, [id]);
 
-  const handleSubmit = () => {
+    // Auto-fill name and email from the logged-in user
     if (user) {
+      setBoarding({
+        ...boarding,
+        name: user.displayName || "",
+        contactEmail: user.email || "",
+      });
+    }
+  }, [id, user]);
+
+  const handleChange = (e) => {
+    setBoarding({ ...boarding, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // if (!user) {
+    //   navigate(`/login?redirect=/petcare/boarding/${id}`);
+    //   return;
+    // }
+
+    try {
+      const updatedBoarding = {
+        ...boarding,
+        programId: item.id,
+      };
+
+      await boardingApplication(updatedBoarding, item.id);
+
+      // Reset the form but keep name and email from user
+      setBoarding({
+        name: user.displayName || "",
+        contactEmail: user.email || "",
+        contactPhone: "",
+        address: "",
+      });
       setShowSuccess(true);
-    } else {
-      navigate(`/login?redirect=/petcare/boarding/${id}`);
+    } catch (error) {
+      console.error("Error submitting form:", error);
     }
   };
 
   if (!item) {
     return <Typography>Loading...</Typography>;
   }
+
   return (
     <Box className="myContainer">
       <Typography
@@ -65,7 +106,6 @@ const PetBoardingDetails = () => {
               style={{ width: "100%" }}
             />
             <CardContent>
-              <Typography variant="h5" gutterBottom color="green"></Typography>
               <Typography variant="body1" color="primary.para" mb={2}>
                 {item.description}
               </Typography>
@@ -97,17 +137,24 @@ const PetBoardingDetails = () => {
             }}
           >
             <CardContent>
-              <Typography variant="h5" fontWeight={700} gutterBottom color="primary.main">
+              <Typography
+                variant="h5"
+                fontWeight={700}
+                gutterBottom
+                color="primary.main"
+              >
                 Enroll in this Program
               </Typography>
 
-              <Box component="form" mt={2}>
+              <Box component="form" mt={2} onSubmit={handleSubmit}>
                 <TextField
                   fullWidth
                   label="Full Name"
                   margin="normal"
                   required
-                  defaultValue={user ? user.displayName : ""}
+                  name="name"
+                  value={boarding.name}
+                  onChange={handleChange}
                 />
                 <TextField
                   fullWidth
@@ -115,7 +162,9 @@ const PetBoardingDetails = () => {
                   type="email"
                   margin="normal"
                   required
-                  defaultValue={user ? user.email : ""}
+                  name="contactEmail"
+                  value={boarding.contactEmail}
+                  onChange={handleChange}
                 />
                 <TextField
                   fullWidth
@@ -123,30 +172,40 @@ const PetBoardingDetails = () => {
                   type="tel"
                   margin="normal"
                   required
+                  name="contactPhone"
+                  value={boarding.contactPhone}
+                  onChange={handleChange}
                 />
-                <TextField fullWidth label="Address" margin="normal" required />
+                <TextField
+                  fullWidth
+                  label="Address"
+                  margin="normal"
+                  required
+                  name="address"
+                  value={boarding.address}
+                  onChange={handleChange}
+                />
                 <Button
                   variant="contained"
                   color="success"
                   sx={{ mt: 3, fontWeight: "700" }}
-                  // fullWidth
-                  onClick={handleSubmit}
+                  type="submit"
                 >
-                  Accept Training Program
+                  Accept Boarding Program
                 </Button>
                 {/* Snackbar for showing the success message */}
                 <Snackbar
                   open={showSuccess}
-                  autoHideDuration={4000} // Duration in milliseconds
-                  onClose={() => setShowSuccess(false)} // Function to handle Snackbar close event
+                  autoHideDuration={4000}
+                  onClose={() => setShowSuccess(false)}
                   anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                 >
                   <Alert
-                    onClose={() => setShowSuccess(false)} // Function to handle Snackbar close event
+                    onClose={() => setShowSuccess(false)}
                     severity="success"
                     sx={{ width: "100%" }}
                   >
-                    Your form has been submitted successfully!
+                    Your boarding enrollment has been successfully submitted!
                   </Alert>
                 </Snackbar>
               </Box>

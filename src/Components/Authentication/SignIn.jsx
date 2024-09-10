@@ -27,6 +27,19 @@ const SignIn = () => {
   const { logIn, googleSignIn } = useUserAuth();
   const navigate = useNavigate();
 
+
+  // const from = location.state?.from?.pathname || "/dashboard"; // Default to "/dashboard" after login
+
+  // const handleLogin = async () => {
+  //   try {
+  //     await login();  // Perform login
+  //     navigate(from); // Redirect to the original page or the default "/dashboard"
+  //   } catch (error) {
+  //     setError(error.message); // Handle error
+  //   }
+  // };
+
+
   const redirectPath =
     new URLSearchParams(location.search).get("redirect") || "/";
 
