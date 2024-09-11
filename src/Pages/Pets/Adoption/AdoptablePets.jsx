@@ -16,7 +16,7 @@ const AdoptablePets = () => {
   const navigate = useNavigate();
 
   const handleCardClick = (code) => {
-    navigate(`/adoption/${code}`);
+    navigate(`/adoption/adoptable_pets/${code}`);
   };
 
   return (
@@ -33,13 +33,11 @@ const AdoptablePets = () => {
         <Typography
           mt={1}
           variant="body1"
-          color="primary.para"
-          fontWeight={500}
+          color="primary.green"
+          fontWeight={700}
           textAlign={"center"}
         >
-          <a className="span1" href="/adoption/adoption_form">
-            Click Here to FillUp the Adoption Application Form
-          </a>
+          Click and see more info about the pets and adoption process
         </Typography>
       </Box>
       {/* Card Section Starts ----------------------------------------------------  */}
@@ -70,13 +68,19 @@ const AdoptablePets = () => {
                     <Typography gutterBottom variant="h6" fontWeight={700}>
                       {item.name}
                     </Typography>
-                    <Typography variant="body2" fontSize={11}>
-                      - {item.origin}
+                    <Typography variant="body2" fontSize={12}>
+                      {item.breed} - {item.origin}
                     </Typography>
+                    <Typography variant="body2" pt={2} color="primary.para">
+                      {item.age} Year <span style={{ color: "green" }}>|</span>{" "}
+                      {item.gender} <span style={{ color: "green" }}>|</span>{" "}
+                      {item.weight}
+                    </Typography>
+
                     <Typography
                       variant="body2"
                       color="primary.para"
-                      p={2}
+                      // p={2}
                       maxHeight="140px"
                       overflow="hidden"
                       textOverflow="ellipsis"

@@ -12,31 +12,30 @@ import {
   Alert,
   Typography,
   Divider,
+  Grid,
 } from "@mui/material";
+import { useUserAuth } from "../../../context/UserAuthContext";
 
-const initialValue = {
-  animalCode: "",
-  animalType: "",
-  adopterName: "",
-  contactPhone: "",
-  contactEmail: "",
-  address: "",
-  experience: "",
-};
+const AdoptionForm = ({
+  adopterName,
+  contactEmail,
+  animalCode,
+  animalType,
+}) => {
+  const { user } = useUserAuth();
 
-const AdoptionForm = () => {
-  const [adoption, setAdoption] = useState(initialValue);
-  const [showSuccess, setShowSuccess] = useState(false);
-
-  const {
+  const initialValue = {
     animalCode,
     animalType,
-    adopterName,
-    contactPhone,
-    contactEmail,
-    address,
-    experience,
-  } = adoption;
+    adopterName: user.displayName || "",
+    contactEmail: user.email || "",
+    contactPhone: "",
+    address: "",
+    experience: "",
+  };
+
+  const [adoption, setAdoption] = useState(initialValue);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleChange = (e) => {
     setAdoption({ ...adoption, [e.target.name]: e.target.value });
@@ -48,7 +47,12 @@ const AdoptionForm = () => {
 
   const handleSubmit = async () => {
     try {
-      await adoptionApplication(adoption);
+      const updatedAdoption = {
+        ...adoption,
+      };
+
+      await adoptionApplication(updatedAdoption, adoption.animalCode);
+
       setAdoption(initialValue);
       setShowSuccess(true);
     } catch (error) {
@@ -61,10 +65,10 @@ const AdoptionForm = () => {
       <Box
         sx={{
           background: "linear-gradient(135deg, #f0f4f8, #d9e4f5)",
-          p: 4,
+          p: 5,
           my: 4,
           borderRadius: "12px",
-          maxWidth: 600,
+          // maxWidth: 600,
           mx: "auto",
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           textAlign: "center",
@@ -80,183 +84,201 @@ const AdoptionForm = () => {
           Adoption Application Form
         </Typography>
 
-        <Box component="form">
-          <TextField
-            variant="outlined"
-            label="Animal Code"
-            name="animalCode"
-            value={animalCode}
-            size="medium"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-            sx={{
-              borderRadius: "8px",
-              background: "#f8f9fa",
-            }}
-          />
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              variant="outlined"
+              label="Animal Code"
+              name="animalCode"
+              value={adoption.animalCode}
+              size="medium"
+              required
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              color="success"
+              focused
+              sx={{
+                borderRadius: "8px",
+                background: "#f8f9fa",
+              }}
+            />
+          </Grid>
 
-          <FormControl
-            variant="outlined"
-            name="animalType"
-            size="medium"
-            required
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-            sx={{
-              background: "#f8f9fa",
-              borderRadius: "8px",
-            }}
-          >
-            <InputLabel id="animalType">Type of Animal</InputLabel>
-            <Select
-              labelId="animalType"
-              id="animalType"
-              value={animalType}
-              label="Type of Animal"
-              onChange={handleAnimalType}
+          <Grid item xs={12} sm={4}>
+            <FormControl
+              variant="outlined"
+              name="animalType"
+              size="medium"
+              required
+              fullWidth
+              margin="normal"
+              color="success"
+              focused
+              sx={{
+                background: "#f8f9fa",
+                borderRadius: "8px",
+              }}
             >
-              <MenuItem value="Cat">Cat</MenuItem>
-              <MenuItem value="Dog">Dog</MenuItem>
-              <MenuItem value="Bird">Bird</MenuItem>
-              <MenuItem value="Rabbit">Rabbit</MenuItem>
-              <MenuItem value="GuineaPig">Guinea Pig</MenuItem>
-              <MenuItem value="Horse">Horse</MenuItem>
-              <MenuItem value="Turtle">Turtle</MenuItem>
-              <MenuItem value="Hamster">Hamster</MenuItem>
-              <MenuItem value="Hedgehog">Hedgehog</MenuItem>
-            </Select>
-          </FormControl>
+              <InputLabel id="animalType">Type of Animal</InputLabel>
+              <Select
+                labelId="animalType"
+                id="animalType"
+                value={adoption.animalType}
+                label="Type of Animal"
+                onChange={handleAnimalType}
+                sx={{
+                  textAlign: "left",
+                }}
+              >
+                <MenuItem value="Cat">Cat</MenuItem>
+                <MenuItem value="Dog">Dog</MenuItem>
+                <MenuItem value="Bird">Bird</MenuItem>
+                <MenuItem value="Rabbit">Rabbit</MenuItem>
+                <MenuItem value="GuineaPig">Guinea Pig</MenuItem>
+                <MenuItem value="Horse">Horse</MenuItem>
+                <MenuItem value="Turtle">Turtle</MenuItem>
+                <MenuItem value="Hamster">Hamster</MenuItem>
+                <MenuItem value="Hedgehog">Hedgehog</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Your Name"
-            name="adopterName"
-            value={adopterName}
-            size="medium"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-            sx={{
-              borderRadius: "8px",
-              background: "#f8f9fa",
-            }}
-          />
+          <Grid item xs={12} sm={4}>
+            <TextField
+              variant="outlined"
+              label="Your Name"
+              name="adopterName"
+              value={adoption.adopterName}
+              size="medium"
+              required
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              color="success"
+              focused
+              sx={{
+                borderRadius: "8px",
+                background: "#f8f9fa",
+              }}
+            />
+          </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Contact Number"
-            name="contactPhone"
-            value={contactPhone}
-            size="medium"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-            sx={{
-              borderRadius: "8px",
-              background: "#f8f9fa",
-            }}
-          />
+          <Grid item xs={12} sm={4}>
+            <TextField
+              variant="outlined"
+              label="Email"
+              name="contactEmail"
+              value={adoption.contactEmail}
+              size="medium"
+              required
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              color="success"
+              focused
+              sx={{
+                borderRadius: "8px",
+                background: "#f8f9fa",
+              }}
+            />
+          </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Email"
-            name="contactEmail"
-            value={contactEmail}
-            size="medium"
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-            sx={{
-              borderRadius: "8px",
-              background: "#f8f9fa",
-            }}
-          />
+          <Grid item xs={12} sm={4}>
+            <TextField
+              variant="outlined"
+              label="Contact Number"
+              name="contactPhone"
+              value={adoption.contactPhone}
+              size="medium"
+              required
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              color="success"
+              focused
+              sx={{
+                borderRadius: "8px",
+                background: "#f8f9fa",
+              }}
+            />
+          </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Your Address"
-            name="address"
-            value={address}
-            size="medium"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-            sx={{
-              borderRadius: "8px",
-              background: "#f8f9fa",
-            }}
-          />
+          <Grid item xs={12} sm={4}>
+            <TextField
+              variant="outlined"
+              label="Your Address"
+              name="address"
+              value={adoption.address}
+              size="medium"
+              required
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              color="success"
+              focused
+              sx={{
+                borderRadius: "8px",
+                background: "#f8f9fa",
+              }}
+            />
+          </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Experience with Pets"
-            name="experience"
-            value={experience}
-            size="medium"
-            onChange={handleChange}
-            fullWidth
-            multiline
-            rows={4}
-            margin="normal"
-            color="success"
-            focused
-            sx={{
-              borderRadius: "8px",
-              background: "#f8f9fa",
-            }}
-          />
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              label="Experience with Pets"
+              name="experience"
+              value={adoption.experience}
+              size="medium"
+              onChange={handleChange}
+              fullWidth
+              multiline
+              rows={2}
+              margin="normal"
+              color="success"
+              focused
+              sx={{
+                borderRadius: "8px",
+                background: "#f8f9fa",
+              }}
+            />
+          </Grid>
+        </Grid>
 
-          <Button
-            variant="contained"
-            fullWidth
-            sx={{
-              background: "linear-gradient(90deg, #e67e22, #d35400)",
-              color: "#fff",
-              fontWeight: "bold",
-              borderRadius: "8px",
-              my: 3,
-              "&:hover": {
-                background: "linear-gradient(90deg, #d35400, #e67e22)",
-              },
-            }}
-            onClick={handleSubmit}
-          >
-            Submit Adoption Application
-          </Button>
+        <Button
+          variant="contained"
+          fullWidth
+          sx={{
+            background: "linear-gradient(90deg, #e67e22, #d35400)",
+            color: "#fff",
+            fontWeight: "bold",
+            borderRadius: "8px",
+            my: 3,
+            "&:hover": {
+              background: "linear-gradient(90deg, #d35400, #e67e22)",
+            },
+          }}
+          onClick={handleSubmit}
+        >
+          Submit Adoption Application
+        </Button>
 
-          {/* Snackbar for showing the success message */}
-          <Snackbar
-            open={showSuccess}
-            autoHideDuration={4000}
+        {/* Snackbar for showing the success message */}
+        <Snackbar
+          open={showSuccess}
+          autoHideDuration={4000}
+          onClose={() => setShowSuccess(false)}
+          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        >
+          <Alert
             onClose={() => setShowSuccess(false)}
-            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+            severity="success"
+            sx={{ width: "100%" }}
           >
-            <Alert
-              onClose={() => setShowSuccess(false)}
-              severity="success"
-              sx={{ width: "100%" }}
-            >
-              Your application has been submitted successfully!
-            </Alert>
-          </Snackbar>
-        </Box>
+            Your application has been submitted successfully!
+          </Alert>
+        </Snackbar>
       </Box>
     </Box>
   );

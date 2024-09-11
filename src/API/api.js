@@ -24,8 +24,8 @@ export const getFoundPets = async () => {
 };
 
 // Adoption Application From Data
-export const adoptionApplication = async (adoption) => {
-  return await axios.post(`${URL}/adoption/adoption_form`, adoption);
+export const adoptionApplication = async (adoption, code) => {
+  return await axios.post(`${URL}/adoption/adoptable_pets/${code}`, adoption);
 };
 
 // Training Application From Data

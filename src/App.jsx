@@ -110,12 +110,11 @@ const App = () => {
               path="/adoption/adoptable_pets"
               element={<AdoptablePets />}
             />
-            <Route path="/adoption/:code" element={<AdoptablePetDetails />} />
             <Route
-              path="/adoption/adoption_form"
+              path="/adoption/adoptable_pets/:code"
               element={
                 <ProtectedRoute>
-                  <AdoptionForm />
+                  <AdoptablePetDetails />
                 </ProtectedRoute>
               }
             />

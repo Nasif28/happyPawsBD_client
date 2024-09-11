@@ -11,7 +11,6 @@ import {
   Stack,
   Divider,
   Button,
-  Paper,
 } from "@mui/material";
 import {
   Vaccines,
@@ -36,22 +35,22 @@ const AdoptablePetDetails = () => {
   }
 
   return (
-    <Box className="myContainer" sx={{ margin: "auto", p: 2 }}>
-      <Typography
-        variant="h4"
-        fontWeight={900}
-        my={5}
-        gutterBottom
-        textAlign="center"
-        color="primary.main"
-        sx={{ fontSize: { xs: "2rem", md: "3rem" } }}
-      >
-        Meet "{pet.name}"
-      </Typography>
-
+    <Box className="myContainer" sx={{ margin: "auto", p: 2, mt: 4 }}>
       <Grid container spacing={4}>
         {/* Pet Image Section */}
         <Grid item xs={12} md={6}>
+          <Typography
+            variant="h4"
+            fontWeight={900}
+            my={3}
+            gutterBottom
+            textAlign="center"
+            color="primary.main"
+            sx={{ fontSize: { xs: "2rem", md: "3rem" } }}
+          >
+            Meet "{pet.name}"
+          </Typography>
+
           <Card
             sx={{
               borderRadius: "15px",
@@ -73,7 +72,14 @@ const AdoptablePetDetails = () => {
 
         {/* Pet Details Section */}
         <Grid item xs={12} md={6}>
-          <Card sx={{ p: 4, backgroundColor: "#f3f3f3", borderRadius: "15px" }}>
+          <Card
+            sx={{
+              py: 2,
+              px: 4,
+              backgroundColor: "#f3f3f3",
+              borderRadius: "15px",
+            }}
+          >
             <CardContent>
               <Stack spacing={2}>
                 <Typography
@@ -163,8 +169,8 @@ const AdoptablePetDetails = () => {
       {/* Adoption Form Section */}
       <Box
         mt={8}
-        p={5}
-        sx={{ backgroundColor: "#e0f7fa", borderRadius: "15px" }}
+
+        // sx={{ backgroundColor: "#e0f7fa", borderRadius: "15px" }}
       >
         <Typography
           variant="h5"
@@ -176,7 +182,7 @@ const AdoptablePetDetails = () => {
           Ready to Adopt? Fill out the form below!
         </Typography>
         <Divider sx={{ mb: 4 }} />
-        <AdoptionForm />
+        <AdoptionForm animalCode={pet.code} animalType={pet.species} />
       </Box>
     </Box>
   );
