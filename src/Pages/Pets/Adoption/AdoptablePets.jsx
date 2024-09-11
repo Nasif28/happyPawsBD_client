@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Card,
   CardActionArea,
   CardContent,
@@ -11,8 +10,15 @@ import {
 } from "@mui/material";
 import React from "react";
 import adoptableAnimals from "./../../../API/adoptableAnimals.json";
+import { useNavigate } from "react-router-dom";
 
 const AdoptablePets = () => {
+  const navigate = useNavigate();
+
+  const handleCardClick = (code) => {
+    navigate(`/adoption/${code}`);
+  };
+
   return (
     <Box className="myContainer" mt={5} textAlign={"center"}>
       <Box mb={5}>
@@ -44,7 +50,7 @@ const AdoptablePets = () => {
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {adoptableAnimals.map((item) => (
-            <Grid item xs={2} sm={4} md={4} key={item.rank}>
+            <Grid item xs={2} sm={4} md={4} key={item.code}>
               <Card
                 sx={{
                   boxShadow: "none",
@@ -54,8 +60,12 @@ const AdoptablePets = () => {
                   },
                 }}
               >
-                <CardActionArea>
-                  <CardMedia component="img" image={item.img} alt={item.name} />
+                <CardActionArea onClick={() => handleCardClick(item.code)}>
+                  <CardMedia
+                    component="img"
+                    image={item.photos}
+                    alt={item.name}
+                  />
                   <CardContent>
                     <Typography gutterBottom variant="h6" fontWeight={700}>
                       {item.name}
@@ -72,7 +82,7 @@ const AdoptablePets = () => {
                       textOverflow="ellipsis"
                       wordWrap="break-word"
                     >
-                      {item.shortDescription}
+                      {item.breeddescription}
                     </Typography>
 
                     <Stack

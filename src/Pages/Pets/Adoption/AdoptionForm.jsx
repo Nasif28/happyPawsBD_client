@@ -26,7 +26,7 @@ const initialValue = {
 
 const AdoptionForm = () => {
   const [adoption, setAdoption] = useState(initialValue);
-  const [showSuccess, setShowSuccess] = useState(false); // State to control Snackbar visibility
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const {
     animalCode,
@@ -49,7 +49,6 @@ const AdoptionForm = () => {
   const handleSubmit = async () => {
     try {
       await adoptionApplication(adoption);
-
       setAdoption(initialValue);
       setShowSuccess(true);
     } catch (error) {
@@ -60,114 +59,96 @@ const AdoptionForm = () => {
   return (
     <Box className="myContainer">
       <Box
-        // backgroundColor="primary.back"
-        // p={3}
-        my={3}
-        borderRadius={5}
-        width={800}
-        mx={"auto"}
-        textAlign={"center"}
-      >
-        <Typography variant="h4" fontWeight={900}>
-      ADOPTION APPLICATION FORM
-        </Typography>
-
-        <Typography variant="h6" fontWeight={700} py={1}>
-          See all the Available Pet for Adoption
-        </Typography>
-
-        <Button href="/adoption/adoptable_pets" variant="contained" color="success">
-          All Adoptable Pets
-        </Button>
-      </Box>
-
-      <Divider variant="middle" />
-
-      <Box
-        style={{
-          // border: "20px solid green",
-          borderRadius: "10px",
-          padding: 10,
-          // margin: "10 150",
+        sx={{
+          background: "linear-gradient(135deg, #f0f4f8, #d9e4f5)",
+          p: 4,
+          my: 4,
+          borderRadius: "12px",
+          maxWidth: 600,
+          mx: "auto",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+          textAlign: "center",
         }}
-        // sx={}
-        mx={{ xs: 5, md: 30 }}
       >
         <Typography
-          variant="h6"
-          p={1}
-          color="green"
-          fontWeight={500}
-          textAlign={"center"}
+          variant="h4"
+          fontWeight={900}
+          color="#34495e"
+          pb={2}
+          gutterBottom
         >
-          Fill the Adoption Application
+          Adoption Application Form
         </Typography>
 
-        <Box
-          component="form"
-          mx={"auto"}
-          sx={{
-            width: 500,
-            maxWidth: "100%",
-            px: 4,
-          }}
-        >
+        <Box component="form">
           <TextField
             variant="outlined"
-            label="Adopting Animal Code"
+            label="Animal Code"
             name="animalCode"
             value={animalCode}
-            size="small"
+            size="medium"
             required
             onChange={handleChange}
             fullWidth
             margin="normal"
             color="success"
             focused
+            sx={{
+              borderRadius: "8px",
+              background: "#f8f9fa",
+            }}
           />
 
           <FormControl
             variant="outlined"
             name="animalType"
-            size="small"
+            size="medium"
             required
             fullWidth
             margin="normal"
             color="success"
             focused
+            sx={{
+              background: "#f8f9fa",
+              borderRadius: "8px",
+            }}
           >
             <InputLabel id="animalType">Type of Animal</InputLabel>
             <Select
               labelId="animalType"
               id="animalType"
               value={animalType}
-              label="animalType"
+              label="Type of Animal"
               onChange={handleAnimalType}
             >
               <MenuItem value="Cat">Cat</MenuItem>
               <MenuItem value="Dog">Dog</MenuItem>
               <MenuItem value="Bird">Bird</MenuItem>
-              <MenuItem value="Rabbits">Rabbits</MenuItem>
+              <MenuItem value="Rabbit">Rabbit</MenuItem>
               <MenuItem value="GuineaPig">Guinea Pig</MenuItem>
               <MenuItem value="Horse">Horse</MenuItem>
               <MenuItem value="Turtle">Turtle</MenuItem>
-              <MenuItem value="Hamsters">Hamsters</MenuItem>
-              <MenuItem value="Hedgehogs">Hedgehogs</MenuItem>
+              <MenuItem value="Hamster">Hamster</MenuItem>
+              <MenuItem value="Hedgehog">Hedgehog</MenuItem>
             </Select>
           </FormControl>
 
           <TextField
             variant="outlined"
-            label="Adopter Name"
+            label="Your Name"
             name="adopterName"
             value={adopterName}
-            size="small"
+            size="medium"
             required
             onChange={handleChange}
             fullWidth
             margin="normal"
             color="success"
             focused
+            sx={{
+              borderRadius: "8px",
+              background: "#f8f9fa",
+            }}
           />
 
           <TextField
@@ -175,13 +156,17 @@ const AdoptionForm = () => {
             label="Contact Number"
             name="contactPhone"
             value={contactPhone}
-            size="small"
+            size="medium"
             required
             onChange={handleChange}
             fullWidth
             margin="normal"
             color="success"
             focused
+            sx={{
+              borderRadius: "8px",
+              background: "#f8f9fa",
+            }}
           />
 
           <TextField
@@ -189,33 +174,42 @@ const AdoptionForm = () => {
             label="Email"
             name="contactEmail"
             value={contactEmail}
-            size="small"
+            size="medium"
             onChange={handleChange}
             fullWidth
             margin="normal"
             color="success"
             focused
+            sx={{
+              borderRadius: "8px",
+              background: "#f8f9fa",
+            }}
           />
+
           <TextField
             variant="outlined"
             label="Your Address"
             name="address"
             value={address}
-            size="small"
+            size="medium"
             required
             onChange={handleChange}
             fullWidth
             margin="normal"
             color="success"
             focused
+            sx={{
+              borderRadius: "8px",
+              background: "#f8f9fa",
+            }}
           />
 
           <TextField
             variant="outlined"
-            label="Your Experience Details"
+            label="Experience with Pets"
             name="experience"
             value={experience}
-            size="small"
+            size="medium"
             onChange={handleChange}
             fullWidth
             multiline
@@ -223,28 +217,39 @@ const AdoptionForm = () => {
             margin="normal"
             color="success"
             focused
+            sx={{
+              borderRadius: "8px",
+              background: "#f8f9fa",
+            }}
           />
 
-          {/* Submit Button */}
           <Button
             variant="contained"
-            color="success"
-            sx={{ my: 3, fontWeight: "700" }}
             fullWidth
+            sx={{
+              background: "linear-gradient(90deg, #e67e22, #d35400)",
+              color: "#fff",
+              fontWeight: "bold",
+              borderRadius: "8px",
+              my: 3,
+              "&:hover": {
+                background: "linear-gradient(90deg, #d35400, #e67e22)",
+              },
+            }}
             onClick={handleSubmit}
           >
-            Submit Pet Adoption Application
+            Submit Adoption Application
           </Button>
 
           {/* Snackbar for showing the success message */}
           <Snackbar
             open={showSuccess}
-            autoHideDuration={4000} // Duration in milliseconds
-            onClose={() => setShowSuccess(false)} // Function to handle Snackbar close event
+            autoHideDuration={4000}
+            onClose={() => setShowSuccess(false)}
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
           >
             <Alert
-              onClose={() => setShowSuccess(false)} // Function to handle Snackbar close event
+              onClose={() => setShowSuccess(false)}
               severity="success"
               sx={{ width: "100%" }}
             >

@@ -59,6 +59,7 @@ import SignUp from "./Components/Authentication/SignUp";
 import Profile from "./Dashboard/Profile";
 import Account from "./Dashboard/Account";
 import Dashboard from "./Dashboard/Dashboard";
+import AdoptablePetDetails from "./Pages/Pets/Adoption/AdoptablePetDetails";
 
 const App = () => {
   return (
@@ -109,6 +110,7 @@ const App = () => {
               path="/adoption/adoptable_pets"
               element={<AdoptablePets />}
             />
+            <Route path="/adoption/:code" element={<AdoptablePetDetails />} />
             <Route
               path="/adoption/adoption_form"
               element={

@@ -1,220 +1,264 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { adoptionApplication } from "../../../API/api";
 import {
   Box,
-  Typography,
   Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
   TextField,
-  Grid,
-  Card,
-  CardContent,
   Snackbar,
   Alert,
+  Typography,
+  Divider,
 } from "@mui/material";
-import { useUserAuth } from "../../../context/UserAuthContext";
-import PetBoardingAPI from "./../../../API/petBoarding.json";
-import { boardingApplication } from "./src/API/api";
 
-const PetBoardingDetails = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const { user } = useUserAuth();
-  const [item, setItem] = useState(null);
-  const [boarding, setBoarding] = useState({
-    name: "",
-    contactEmail: "",
-    contactPhone: "",
-    address: "",
-  });
-  const [showSuccess, setShowSuccess] = useState(false);
+const initialValue = {
+  animalCode: "",
+  animalType: "",
+  adopterName: "",
+  contactPhone: "",
+  contactEmail: "",
+  address: "",
+  experience: "",
+};
 
-  useEffect(() => {
-    // Find the selected program
-    const selectedProgram = PetBoardingAPI.find((p) => p.id === parseInt(id));
-    setItem(selectedProgram);
+const AdoptionForm = () => {
+  const [adoption, setAdoption] = useState(initialValue);
+  const [showSuccess, setShowSuccess] = useState(false); // State to control Snackbar visibility
 
-    // Auto-fill name and email from the logged-in user
-    if (user) {
-      setFormData({
-        ...formData,
-        name: user.displayName || "",
-        contactEmail: user.email || "",
-      });
-    }
-  }, [id, user]);
+  const {
+    animalCode,
+    animalType,
+    adopterName,
+    contactPhone,
+    contactEmail,
+    address,
+    experience,
+  } = adoption;
 
   const handleChange = (e) => {
-    setBoarding({ ...formData, [e.target.name]: e.target.value });
+    setAdoption({ ...adoption, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // if (!user) {
-    //   navigate(`/login?redirect=/petcare/boarding/${id}`);
-    //   return;
-    // }
+  const handleAnimalType = (e) => {
+    setAdoption({ ...adoption, animalType: e.target.value });
+  };
 
+  const handleSubmit = async () => {
     try {
-      const updatedBoarding = {
-        ...boarding,
-        programId: item.id,
-      };
+      await adoptionApplication(adoption);
 
-      await boardingApplication(updatedBoarding, item.id);
-
-      // Reset the form but keep name and email from user
-      setFormData({
-        name: user.displayName || "",
-        contactEmail: user.email || "",
-        contactPhone: "",
-        address: "",
-      });
+      setAdoption(initialValue);
       setShowSuccess(true);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
   };
 
-  if (!item) {
-    return <Typography>Loading...</Typography>;
-  }
-
   return (
     <Box className="myContainer">
-      <Typography
-        variant="h4"
-        fontWeight={900}
-        my={5}
-        gutterBottom
-        textAlign="center"
-        color="primary"
+      <Box
+        // backgroundColor="primary.back"
+        // p={3}
+        my={3}
+        borderRadius={5}
+        width={800}
+        mx={"auto"}
+        textAlign={"center"}
       >
-        {item.title}
-      </Typography>
+        <Typography variant="h4" fontWeight={900}>
+          ADOPTION APPLICATION FORM
+        </Typography>
 
-      <Grid container spacing={4}>
-        <Grid item xs={12} md={6}>
-          <Card
-            sx={{
-              borderRadius: "2% 2% 0",
-              boxShadow: "none",
-            }}
+        <Typography variant="h6" fontWeight={700} py={1}>
+          See all the Available Pet for Adoption
+        </Typography>
+
+        <Button
+          href="/adoption/adoptable_pets"
+          variant="contained"
+          color="success"
+        >
+          All Adoptable Pets
+        </Button>
+      </Box>
+
+      <Divider variant="middle" />
+
+      <Box
+        style={{
+          // border: "20px solid green",
+          borderRadius: "10px",
+          padding: 10,
+          // margin: "10 150",
+        }}
+        // sx={}
+        mx={{ xs: 5, md: 30 }}
+      >
+        <Typography
+          variant="h6"
+          p={1}
+          color="green"
+          fontWeight={500}
+          textAlign={"center"}
+        >
+          Fill the Adoption Application
+        </Typography>
+
+        <Box
+          component="form"
+          mx={"auto"}
+          sx={{
+            width: 500,
+            maxWidth: "100%",
+            px: 4,
+          }}
+        >
+          <TextField
+            variant="outlined"
+            label="Adopting Animal Code"
+            name="animalCode"
+            value={animalCode}
+            size="small"
+            required
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            color="success"
+            focused
+          />
+
+          <FormControl
+            variant="outlined"
+            name="animalType"
+            size="small"
+            required
+            fullWidth
+            margin="normal"
+            color="success"
+            focused
           >
-            <img
-              src={item.picture}
-              alt={item.title}
-              style={{ width: "100%" }}
-            />
-            <CardContent>
-              <Typography variant="body1" color="primary.para" mb={2}>
-                {item.description}
-              </Typography>
+            <InputLabel id="animalType">Type of Animal</InputLabel>
+            <Select
+              labelId="animalType"
+              id="animalType"
+              value={animalType}
+              label="animalType"
+              onChange={handleAnimalType}
+            >
+              <MenuItem value="Cat">Cat</MenuItem>
+              <MenuItem value="Dog">Dog</MenuItem>
+              <MenuItem value="Bird">Bird</MenuItem>
+              <MenuItem value="Rabbits">Rabbits</MenuItem>
+              <MenuItem value="GuineaPig">Guinea Pig</MenuItem>
+              <MenuItem value="Horse">Horse</MenuItem>
+              <MenuItem value="Turtle">Turtle</MenuItem>
+              <MenuItem value="Hamsters">Hamsters</MenuItem>
+              <MenuItem value="Hedgehogs">Hedgehogs</MenuItem>
+            </Select>
+          </FormControl>
 
-              <Typography variant="body1" paragraph>
-                <strong>Duration:</strong> {item.duration}
-              </Typography>
-              <Typography variant="body1" paragraph>
-                <strong>Price:</strong> {item.price}
-              </Typography>
-              <Typography variant="body1" paragraph>
-                <strong>Program Covers:</strong> {item.programCovers}
-              </Typography>
-              <Typography variant="body1" paragraph>
-                <strong>Additional Services:</strong> {item.additionalServices}
-              </Typography>
-              <Typography variant="body1" paragraph>
-                <strong>Special Features:</strong> {item.specialFeatures}
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
+          <TextField
+            variant="outlined"
+            label="Adopter Name"
+            name="adopterName"
+            value={adopterName}
+            size="small"
+            required
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            color="success"
+            focused
+          />
 
-        {/* Enroll Form */}
-        <Grid item xs={12} md={6}>
-          <Card
-            sx={{
-              boxShadow: "none",
-            }}
+          <TextField
+            variant="outlined"
+            label="Contact Number"
+            name="contactPhone"
+            value={contactPhone}
+            size="small"
+            required
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            color="success"
+            focused
+          />
+
+          <TextField
+            variant="outlined"
+            label="Email"
+            name="contactEmail"
+            value={contactEmail}
+            size="small"
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            color="success"
+            focused
+          />
+          <TextField
+            variant="outlined"
+            label="Your Address"
+            name="address"
+            value={address}
+            size="small"
+            required
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            color="success"
+            focused
+          />
+
+          <TextField
+            variant="outlined"
+            label="Your Experience Details"
+            name="experience"
+            value={experience}
+            size="small"
+            onChange={handleChange}
+            fullWidth
+            multiline
+            rows={4}
+            margin="normal"
+            color="success"
+            focused
+          />
+
+          {/* Submit Button */}
+          <Button
+            variant="contained"
+            color="success"
+            sx={{ my: 3, fontWeight: "700" }}
+            fullWidth
+            onClick={handleSubmit}
           >
-            <CardContent>
-              <Typography
-                variant="h5"
-                fontWeight={700}
-                gutterBottom
-                color="primary.main"
-              >
-                Enroll in this Program
-              </Typography>
+            Submit Pet Adoption Application
+          </Button>
 
-              <Box component="form" mt={2} onSubmit={handleSubmit}>
-                <TextField
-                  fullWidth
-                  label="Full Name"
-                  margin="normal"
-                  required
-                  name="name"
-                  value={boarding.name}
-                  onChange={handleChange}
-                />
-                <TextField
-                  fullWidth
-                  label="Email"
-                  type="email"
-                  margin="normal"
-                  required
-                  name="contactEmail"
-                  value={boarding.contactEmail}
-                  onChange={handleChange}
-                />
-                <TextField
-                  fullWidth
-                  label="Phone Number"
-                  type="tel"
-                  margin="normal"
-                  required
-                  name="contactPhone"
-                  value={boarding.contactPhone}
-                  onChange={handleChange}
-                />
-                <TextField
-                  fullWidth
-                  label="Address"
-                  margin="normal"
-                  required
-                  name="address"
-                  value={boarding.address}
-                  onChange={handleChange}
-                />
-                <Button
-                  variant="contained"
-                  color="success"
-                  sx={{ mt: 3, fontWeight: "700" }}
-                  type="submit"
-                >
-                  Accept Boarding Program
-                </Button>
-                {/* Snackbar for showing the success message */}
-                <Snackbar
-                  open={showSuccess}
-                  autoHideDuration={4000}
-                  onClose={() => setShowSuccess(false)}
-                  anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                >
-                  <Alert
-                    onClose={() => setShowSuccess(false)}
-                    severity="success"
-                    sx={{ width: "100%" }}
-                  >
-                    Your boarding enrollment has been successfully submitted!
-                  </Alert>
-                </Snackbar>
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
+          {/* Snackbar for showing the success message */}
+          <Snackbar
+            open={showSuccess}
+            autoHideDuration={4000} // Duration in milliseconds
+            onClose={() => setShowSuccess(false)} // Function to handle Snackbar close event
+            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          >
+            <Alert
+              onClose={() => setShowSuccess(false)} // Function to handle Snackbar close event
+              severity="success"
+              sx={{ width: "100%" }}
+            >
+              Your application has been submitted successfully!
+            </Alert>
+          </Snackbar>
+        </Box>
+      </Box>
     </Box>
   );
 };
 
-export default PetBoardingDetails;
+export default AdoptionForm;
