@@ -197,12 +197,12 @@ const Header2 = (props) => {
           </List>
         </Collapse>
 
-        <ListItem disablePadding>
+        {/* <ListItem disablePadding>
           <ListItemButton onClick={() => handleMenuToggle("getInvolve")}>
             <ListItemText primary="Get Involve" />
             {openMenus.getInvolve ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
-        </ListItem>
+        </ListItem> */}
         <Collapse in={openMenus.getInvolve} timeout="auto" unmountOnExit>
           <List component="div" disablePadding onClick={handleDrawerToggle}>
             <ListItemButton sx={{ pl: 4 }} component={Link} to="/volunteer">
@@ -340,7 +340,7 @@ const Header2 = (props) => {
               <KeyboardArrowDownIcon fontSize="12" />
             </Button>
 
-            <Button
+            {/* <Button
               onClick={handleMenu4Click}
               sx={{
                 color: "inherit",
@@ -350,7 +350,7 @@ const Header2 = (props) => {
             >
               Get Involve
               <KeyboardArrowDownIcon fontSize="12" />
-            </Button>
+            </Button> */}
 
             <Button sx={{ "&:hover": { backgroundColor: "primary.back" } }}>
               <Link
@@ -394,7 +394,7 @@ const Header2 = (props) => {
               horizontal: "left",
             }}
           >
-            <MenuItem
+            {/* <MenuItem
               onClick={handleMenu1Close}
               sx={{
                 fontSize: "",
@@ -411,7 +411,8 @@ const Header2 = (props) => {
               >
                 PET INFO
               </Link>
-            </MenuItem>
+            </MenuItem> */}
+
             <MenuItem
               onClick={handleMenu1Close}
               sx={{
@@ -537,7 +538,7 @@ const Header2 = (props) => {
               </Link>
             </MenuItem>
 
-            <MenuItem
+            {/* <MenuItem
               on
               Click={handleMenu3Close}
               sx={{
@@ -555,7 +556,7 @@ const Header2 = (props) => {
               >
                 IN-PERSON CONSULTATION
               </Link>
-            </MenuItem>
+            </MenuItem> */}
 
             <MenuItem
               onClick={handleMenu3Close}
@@ -576,7 +577,7 @@ const Header2 = (props) => {
               </Link>
             </MenuItem>
 
-            <MenuItem
+            {/* <MenuItem
               onClick={handleMenu3Close}
               sx={{
                 fontSize: "",
@@ -593,7 +594,7 @@ const Header2 = (props) => {
               >
                 HOUSE CALLS
               </Link>
-            </MenuItem>
+            </MenuItem> */}
 
             <MenuItem
               onClick={handleMenu3Close}
@@ -614,7 +615,7 @@ const Header2 = (props) => {
               </Link>
             </MenuItem>
 
-            <MenuItem
+            {/* <MenuItem
               onClick={handleMenu3Close}
               sx={{
                 fontSize: "",
@@ -631,7 +632,7 @@ const Header2 = (props) => {
               >
                 COVID-19 INFO
               </Link>
-            </MenuItem>
+            </MenuItem> */}
           </Menu>
 
           <Menu
@@ -802,7 +803,7 @@ const Header2 = (props) => {
                   </Link>
                 </MenuItem>
 
-                <MenuItem onClick={handleCloseUserMenu}>
+                {/* <MenuItem onClick={handleCloseUserMenu}>
                   <Typography
                     textAlign="center"
                     fontWeight="bold"
@@ -818,7 +819,7 @@ const Header2 = (props) => {
                   >
                     Account
                   </Typography>
-                </MenuItem>
+                </MenuItem> */}
 
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography
