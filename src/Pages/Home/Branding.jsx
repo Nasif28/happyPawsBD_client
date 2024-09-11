@@ -60,11 +60,11 @@ const Branding = () => {
             >
               Adopt
             </Button>
-            <Button href="/make_donation" sx={{ flex: "1", fontWeight: "700" }}>
-              Donate
+            <Button href="/petcare" sx={{ flex: "1", fontWeight: "700" }}>
+              Service
             </Button>
-            <Button href="/volunteer" sx={{ flex: "1", fontWeight: "700" }}>
-              Join Us
+            <Button href="/findvet" sx={{ flex: "1", fontWeight: "700" }}>
+              Find Vet
             </Button>
           </ButtonGroup>
         </Stack>
