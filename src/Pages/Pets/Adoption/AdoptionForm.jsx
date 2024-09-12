@@ -16,12 +16,7 @@ import {
 } from "@mui/material";
 import { useUserAuth } from "../../../context/UserAuthContext";
 
-const AdoptionForm = ({
-  adopterName,
-  contactEmail,
-  animalCode,
-  animalType,
-}) => {
+const AdoptionForm = ({ animalCode, animalType }) => {
   const { user } = useUserAuth();
 
   const initialValue = {
@@ -66,7 +61,7 @@ const AdoptionForm = ({
         sx={{
           background: "linear-gradient(135deg, #f0f4f8, #d9e4f5)",
           p: 5,
-          my: 4,
+          my: 3,
           borderRadius: "12px",
           // maxWidth: 600,
           mx: "auto",
@@ -248,16 +243,12 @@ const AdoptionForm = ({
 
         <Button
           variant="contained"
+          color="success"
           fullWidth
           sx={{
-            background: "linear-gradient(90deg, #e67e22, #d35400)",
-            color: "#fff",
             fontWeight: "bold",
             borderRadius: "8px",
             my: 3,
-            "&:hover": {
-              background: "linear-gradient(90deg, #d35400, #e67e22)",
-            },
           }}
           onClick={handleSubmit}
         >

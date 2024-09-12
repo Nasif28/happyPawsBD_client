@@ -19,6 +19,12 @@ import {
   MonitorHeart,
   Place,
   Event,
+  Wc,
+  Scale,
+  Pets,
+  ChildCare,
+  Money,
+  AttachMoney,
 } from "@mui/icons-material";
 import AdoptionForm from "./AdoptionForm";
 
@@ -55,19 +61,49 @@ const AdoptablePetDetails = () => {
             sx={{
               borderRadius: "15px",
               boxShadow: "10px 10px 30px rgba(0,0,0,0.15)",
+              position: "relative",
             }}
           >
+            <Box
+              sx={{
+                position: "absolute",
+                top: 16,
+                left: 16,
+                backgroundColor: "rgba(0, 0, 0, 0.6)",
+                color: "#fff",
+                padding: "5px 10px",
+                borderRadius: "8px",
+                zIndex: 1,
+              }}
+            >
+              <Typography variant="h6" fontWeight={700}>
+                {pet.code}
+              </Typography>
+            </Box>
+
             <CardMedia
               component="img"
               image={pet.photos}
               alt={pet.name}
               sx={{
                 borderRadius: "15px 15px 0 0",
-                // height: 400,
                 objectFit: "cover",
               }}
             />
           </Card>
+
+          <Typography variant="body2" mt={2} mb={1} paragraph>
+            <strong>Breed:</strong> {pet.breeddescription}
+          </Typography>
+          <Typography variant="body2" mb={1} paragraph>
+            <strong>Temperament:</strong> {pet.temperament}
+          </Typography>
+          <Typography variant="body2" mb={1} paragraph>
+            <strong>Adoption Requirements:</strong> {pet.adoptionrequirements}
+          </Typography>
+          <Typography variant="body2" mb={1} paragraph>
+            <strong>Background Story:</strong> {pet.storybackground}
+          </Typography>
         </Grid>
 
         {/* Pet Details Section */}
@@ -82,15 +118,25 @@ const AdoptablePetDetails = () => {
           >
             <CardContent>
               <Stack spacing={2}>
-                <Typography
-                  variant="h5"
-                  fontWeight={700}
-                  color="primary.dark"
-                  textAlign="center"
-                  sx={{ fontSize: { xs: "1.5rem", md: "2rem" } }}
-                >
-                  {pet.breed} - {pet.species}
-                </Typography>
+                <Box textAlign="center">
+                  <Typography
+                    variant="h5"
+                    fontWeight={700}
+                    color="primary.dark"
+                    sx={{ fontSize: { xs: "1.5rem", md: "2rem" } }}
+                  >
+                    {pet.breed}
+                  </Typography>
+
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    // textAlign="right"
+                    sx={{ fontSize: { xs: "0.875rem", md: "1rem" } }}
+                  >
+                    {pet.origin}
+                  </Typography>
+                </Box>
 
                 <Divider sx={{ mb: 2 }} />
 
@@ -103,9 +149,23 @@ const AdoptablePetDetails = () => {
                 </Stack>
 
                 <Stack direction="row" spacing={2} alignItems="center">
+                  <Wc color="info" />
+                  <Typography variant="body1">
+                    <strong>Gender:</strong> {pet.gender}
+                  </Typography>
+                </Stack>
+
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <Scale color="secondary" />
+                  <Typography variant="body1">
+                    <strong>Weight:</strong> {pet.weight}
+                  </Typography>
+                </Stack>
+
+                <Stack direction="row" spacing={2} alignItems="center">
                   <Vaccines color="success" />
                   <Typography variant="body1">
-                    <strong>Vaccinated:</strong> {pet.vaccinationstatus}
+                    <strong>Vaccine:</strong> {pet.vaccinationstatus}
                   </Typography>
                 </Stack>
 
@@ -119,7 +179,29 @@ const AdoptablePetDetails = () => {
                 <Stack direction="row" spacing={2} alignItems="center">
                   <MonitorHeart color="error" />
                   <Typography variant="body1">
-                    <strong>Health:</strong> {pet.healthconditions}
+                    <strong>Health Issue:</strong> {pet.healthconditions}
+                  </Typography>
+                </Stack>
+
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <AttachMoney color="success" />
+                  <Typography variant="body1">
+                    <strong>Adoption Fee:</strong> {pet.adoptionfee} BDT
+                  </Typography>
+                </Stack>
+
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <Pets color="primary" />
+                  <Typography variant="body1">
+                    <strong>Good with Other Pets:</strong>{" "}
+                    {pet.goodwithotherpets}
+                  </Typography>
+                </Stack>
+
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <ChildCare color="warning" />
+                  <Typography variant="body1">
+                    <strong>Good with Children:</strong> {pet.goodwithchildren}
                   </Typography>
                 </Stack>
 
@@ -137,26 +219,15 @@ const AdoptablePetDetails = () => {
                   </Typography>
                 </Stack>
 
-                <Typography variant="body2" paragraph>
-                  <strong>Temperament:</strong> {pet.temperament}
-                </Typography>
-                <Typography variant="body2" paragraph>
-                  <strong>Adoption Requirements:</strong>{" "}
-                  {pet.adoptionrequirements}
-                </Typography>
-                <Typography variant="body2" paragraph>
-                  <strong>Background Story:</strong> {pet.storybackground}
-                </Typography>
-
                 <Button
                   variant="contained"
-                  color="primary"
+                  color="success"
                   href={pet.medicalrecords}
                   target="_blank"
-                  sx={{
-                    backgroundColor: "#1976D2",
-                    "&:hover": { backgroundColor: "#1565C0" },
-                  }}
+                  // sx={{
+                  //   backgroundColor: "#1976D2",
+                  //   "&:hover": { backgroundColor: "#1565C0" },
+                  // }}
                 >
                   View Medical Records
                 </Button>
@@ -175,13 +246,13 @@ const AdoptablePetDetails = () => {
         <Typography
           variant="h5"
           fontWeight={700}
-          color="secondary.main"
-          mb={4}
+          color="green"
+          mb={2}
           textAlign="center"
         >
           Ready to Adopt? Fill out the form below!
         </Typography>
-        <Divider sx={{ mb: 4 }} />
+        <Divider />
         <AdoptionForm animalCode={pet.code} animalType={pet.species} />
       </Box>
     </Box>
