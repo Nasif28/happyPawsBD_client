@@ -332,8 +332,8 @@ const Footer = () => {
           variant="body2"
         >
           <span>
-            Copyright © {new Date().getFullYear()} Happy Paws BD. All rights
-            reserved.
+            Copyright © {new Date().getFullYear()} Happy Paws BD. All rights 
+            reserved <br />Developed by Mahmudul 
           </span>
         </Stack>
       </Box>
