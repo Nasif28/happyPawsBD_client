@@ -15,14 +15,6 @@ import { getFoundPets } from "../../../API/api";
 const FoundPets = () => {
   const [foundPets, setFoundPets] = useState([]);
 
-  // useEffect(
-  //   () => async () => {
-  //     let response = await getFoundPets();
-  //     setFoundPets(response.data);
-  //   },
-  //   []
-  // );
-
   useEffect(() => {
     const fetchData = async () => {
       try {

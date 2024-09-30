@@ -12,7 +12,7 @@ import {
   Snackbar,
   Alert,
   Typography,
-  Divider,
+  Grid,
 } from "@mui/material";
 
 const initialValue = {
@@ -32,15 +32,12 @@ const initialValue = {
 
 const LostFormcopy = () => {
   const [lostPet, setLostPet] = useState(initialValue);
-  // const [petPicture, setPetPicture] = useState(null);
   const [showSuccess, setShowSuccess] = useState(false);
 
   const {
     petName,
     animalType,
-    age,
     colors,
-    gender,
     ownerName,
     contactPhone,
     contactEmail,
@@ -56,10 +53,6 @@ const LostFormcopy = () => {
 
   const handleAnimalType = (e) => {
     setLostPet({ ...lostPet, animalType: e.target.value });
-  };
-
-  const handleAnimalGender = (e) => {
-    setLostPet({ ...lostPet, gender: e.target.value });
   };
 
   const handlePictureChange = async (e) => {
@@ -85,269 +78,208 @@ const LostFormcopy = () => {
   };
 
   return (
-    <Box className="myContainer">
-      <Box
-        // backgroundColor="primary.back"
-
-        my={3}
-        borderRadius={5}
-        // width={800}
-        mx={"auto"}
-        textAlign={"center"}
-      >
-        <Typography variant="h4" fontWeight={700} my={2}>
+    <Box>
+      <Box mx={"auto"} textAlign={"center"}>
+        <Typography variant="h5" fontWeight={700}>
           LOST PET REGISTRATION
         </Typography>
-
-        <Typography variant="h6" fontWeight={700} py={1}>
-          To See All the Found Pets -
-        </Typography>
-
-        <Button href="/lost_found/found_pets" variant="contained" color="success">
-          See All Found Pets
-        </Button>
       </Box>
 
-      <Divider variant="middle" />
-
-      <Box
-        style={{
-          // border: "20px solid green",
-          borderRadius: "10px",
-          padding: 10,
-          // margin: "10 150",
-        }}
-        // sx={}
-        mx={{ xs: 5, md: 30 }}
-      >
-        <Typography
-          variant="h6"
-          p={1}
-          color="green"
-          fontWeight={500}
-          textAlign={"center"}
-        >
-          Fill the Form About Your Lost Pet
-        </Typography>
-
+      <Box>
         <Box
           component="form"
           mx={"auto"}
           sx={{
-            width: 500,
-            maxWidth: "100%",
-            px: 4,
+            p: 2,
           }}
         >
-          <TextField
-            variant="outlined"
-            label="Pet's Name"
-            name="petName"
-            value={petName}
-            size="small"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                label="Pet's Name"
+                name="petName"
+                value={petName}
+                size="small"
+                required
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <FormControl
-            variant="outlined"
-            name="animalType"
-            size="small"
-            required
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          >
-            <InputLabel id="animalType">Type of Animal</InputLabel>
-            <Select
-              labelId="animalType"
-              id="animalType"
-              value={animalType}
-              label="animalType"
-              onChange={handleAnimalType}
-            >
-              <MenuItem value="Cat">Cat</MenuItem>
-              <MenuItem value="Dog">Dog</MenuItem>
-              <MenuItem value="Bird">Bird</MenuItem>
-              <MenuItem value="Rabbits">Rabbits</MenuItem>
-              <MenuItem value="GuineaPig">Guinea Pig</MenuItem>
-              <MenuItem value="Horse">Horse</MenuItem>
-              <MenuItem value="Turtle">Turtle</MenuItem>
-              <MenuItem value="Hamsters">Hamsters</MenuItem>
-              <MenuItem value="Hedgehogs">Hedgehogs</MenuItem>
-            </Select>
-          </FormControl>
+            <Grid item xs={12} sm={6}>
+              <FormControl
+                variant="outlined"
+                name="animalType"
+                size="small"
+                required
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              >
+                <InputLabel id="animalType">Type of Animal</InputLabel>
+                <Select
+                  labelId="animalType"
+                  id="animalType"
+                  value={animalType}
+                  label="animalType"
+                  onChange={handleAnimalType}
+                >
+                  <MenuItem value="Cat">Cat</MenuItem>
+                  <MenuItem value="Dog">Dog</MenuItem>
+                  <MenuItem value="Bird">Bird</MenuItem>
+                  <MenuItem value="Rabbits">Rabbits</MenuItem>
+                  <MenuItem value="GuineaPig">Guinea Pig</MenuItem>
+                  <MenuItem value="Horse">Horse</MenuItem>
+                  <MenuItem value="Turtle">Turtle</MenuItem>
+                  <MenuItem value="Hamsters">Hamsters</MenuItem>
+                  <MenuItem value="Hedgehogs">Hedgehogs</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Age"
-            name="age"
-            value={age}
-            size="small"
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                label="Pet's Colors"
+                name="colors"
+                value={colors}
+                size="small"
+                required
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Pet's Colors"
-            name="colors"
-            value={colors}
-            size="small"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                label="Owner Name"
+                name="ownerName"
+                value={ownerName}
+                size="small"
+                required
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <FormControl
-            variant="outlined"
-            name="gender"
-            size="small"
-            required
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          >
-            <InputLabel id="gender">Gender</InputLabel>
-            <Select
-              labelId="gender"
-              id="gender"
-              value={gender}
-              label="Gender"
-              onChange={handleAnimalGender}
-            >
-              <MenuItem value="Male">Male</MenuItem>
-              <MenuItem value="Female">Female</MenuItem>
-              <MenuItem value="Not Sure">Not Sure</MenuItem>
-            </Select>
-          </FormControl>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                label="Contact Number"
+                name="contactPhone"
+                value={contactPhone}
+                size="small"
+                required
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Owner Name"
-            name="ownerName"
-            value={ownerName}
-            size="small"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                label="Email"
+                name="contactEmail"
+                value={contactEmail}
+                size="small"
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Contact Number"
-            name="contactPhone"
-            value={contactPhone}
-            size="small"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                label="Last Seen Area"
+                name="lastSeenLocation"
+                value={lastSeenLocation}
+                size="small"
+                required
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Email"
-            name="contactEmail"
-            value={contactEmail}
-            size="small"
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
-          <TextField
-            variant="outlined"
-            label="Last Seen Area"
-            name="lastSeenLocation"
-            value={lastSeenLocation}
-            size="small"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                label="Date of Lost"
+                name="lostDate"
+                value={lostDate}
+                size="small"
+                required
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Date of Lost"
-            name="lostDate"
-            value={lostDate}
-            size="small"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                label="Description of Circumstances"
+                name="description"
+                value={description}
+                size="small"
+                onChange={handleChange}
+                fullWidth
+                multiline
+                rows={2}
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Description of Circumstances"
-            name="description"
-            value={description}
-            size="small"
-            onChange={handleChange}
-            fullWidth
-            multiline
-            rows={3}
-            margin="normal"
-            color="success"
-            focused
-          />
+            {/* Picture Upload */}
+            <Grid item xs={12}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <Button
+                  variant="contained"
+                  component="label"
+                  color="success"
+                  sx={{ textTransform: "none", fontWeight: 600 }}
+                >
+                  Upload Picture
+                  <input
+                    type="file"
+                    hidden
+                    accept=".jpeg, .png, .jpg"
+                    onChange={handlePictureChange}
+                  />
+                </Button>
 
-          {/* Picture Upload */}
-          <TextField
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-            name="petPicture"
-            type="file"
-            // accept="image/*"
-            accept=".jpeg, .png, .jpg"
-            label="Attach Picture of Your Pet"
-            onChange={handlePictureChange}
-          />
-
-          {/* Picture Upload */}
-          {/* <input
-            style={{
-              border: "2px solid green",
-              borderRadius: "5px",
-              padding: 6,
-              marginTop: 5,
-              cursor: "pointer",
-            }}
-            name="petPicture"
-            type="file"
-            // accept="image/*"
-            accept=".jpeg, .png, .jpg"
-            label="Attach Picture of Your Pet"
-            onChange={handlePictureChange}
-          /> */}
+                {petPicture && (
+                  <Typography variant="body2" color="textSecondary">
+                    Picture attached
+                  </Typography>
+                )}
+              </Box>
+            </Grid>
+          </Grid>
 
           {/* Submit Button */}
           <Button

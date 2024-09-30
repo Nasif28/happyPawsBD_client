@@ -287,7 +287,7 @@ const Footer = () => {
       <Divider variant="body">All Rights Reserved</Divider>
 
       {/* Footer */}
-      <Box
+      {/* <Box
         component="footer"
         sx={{
           py: 2,
@@ -315,6 +315,26 @@ const Footer = () => {
             src={NasifIcon}
             sx={{ width: 24, height: 24 }}
           />
+        </Stack>
+      </Box> */}
+      <Box
+        component="footer"
+        sx={{
+          py: 2,
+          textAlign: "center",
+        }}
+      >
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={1}
+          alignItems="center"
+          justifyContent="center"
+          variant="body2"
+        >
+          <span>
+            Copyright © {new Date().getFullYear()} Happy Paws BD. All rights
+            reserved.
+          </span>
         </Stack>
       </Box>
     </Box>

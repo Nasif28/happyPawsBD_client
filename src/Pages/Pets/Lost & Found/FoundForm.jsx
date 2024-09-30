@@ -11,7 +11,7 @@ import {
   Snackbar,
   Alert,
   Typography,
-  Divider,
+  Grid,
 } from "@mui/material";
 
 const initialValue = {
@@ -30,8 +30,7 @@ const initialValue = {
 
 const FoundForm = () => {
   const [foundPet, setFoundPet] = useState(initialValue);
-  // const [petPicture, setPetPicture] = useState(null);
-  const [showSuccess, setShowSuccess] = useState(false); // State to control Snackbar visibility
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const {
     animalType,
@@ -40,7 +39,6 @@ const FoundForm = () => {
     gender,
     founderName,
     contactPhone,
-    contactEmail,
     foundLocation,
     foundDate,
     description,
@@ -69,9 +67,6 @@ const FoundForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const formData = new FormData();
-      formData.append("foundPet", foundPet);
-
       await addFoundPet(foundPet);
 
       setFoundPet(initialValue);
@@ -82,241 +77,218 @@ const FoundForm = () => {
   };
 
   return (
-    <Box className="myContainer">
-      <Box
-        // backgroundColor="primary.back"
-        // p={3}
-        my={3}
-        borderRadius={5}
-        // width={800}
-        mx={"auto"}
-        textAlign={"center"}
-      >
-        <Typography variant="h4" fontWeight={700} mb={2}>
+    <Box>
+      <Box mx={"auto"} textAlign={"center"}>
+        <Typography variant="h5" fontWeight={700}>
           FOUND PET REGISTRATION
         </Typography>
-
-        <Typography variant="h6" fontWeight={700} py={1}>
-          To See All the Lost Pets -
-        </Typography>
-
-        <Button href="/lost_found/lost_pets" variant="contained" color="success">
-          See All Lost Pets
-        </Button>
       </Box>
 
-      <Divider variant="middle" />
-
-      <Box
-        style={{
-          // border: "20px solid green",
-          borderRadius: "10px",
-          padding: 10,
-          // margin: "10 150",
-        }}
-        // sx={}
-        mx={{ xs: 5, md: 30 }}
-      >
-        <Typography
-          variant="h6"
-          p={1}
-          color="green"
-          fontWeight={500}
-          textAlign={"center"}
-        >
-          Fill the Form About The Pet You Found
-        </Typography>
-
+      <Box>
         <Box
           component="form"
           mx={"auto"}
           sx={{
-            width: 500,
-            maxWidth: "100%",
-            px: 4,
+            p: 2,
           }}
         >
-          <FormControl
-            variant="outlined"
-            name="animalType"
-            size="small"
-            required
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          >
-            <InputLabel id="animalType">Type of Animal</InputLabel>
-            <Select
-              labelId="animalType"
-              id="animalType"
-              value={animalType}
-              label="animalType"
-              onChange={handleAnimalType}
-            >
-              <MenuItem value="Cat">Cat</MenuItem>
-              <MenuItem value="Dog">Dog</MenuItem>
-              <MenuItem value="Bird">Bird</MenuItem>
-              <MenuItem value="Rabbits">Rabbits</MenuItem>
-              <MenuItem value="GuineaPig">Guinea Pig</MenuItem>
-              <MenuItem value="Horse">Horse</MenuItem>
-              <MenuItem value="Turtle">Turtle</MenuItem>
-              <MenuItem value="Hamsters">Hamsters</MenuItem>
-              <MenuItem value="Hedgehogs">Hedgehogs</MenuItem>
-            </Select>
-          </FormControl>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <FormControl
+                variant="outlined"
+                name="animalType"
+                size="small"
+                required
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              >
+                <InputLabel id="animalType">Type of Animal</InputLabel>
+                <Select
+                  labelId="animalType"
+                  id="animalType"
+                  value={animalType}
+                  label="animalType"
+                  onChange={handleAnimalType}
+                >
+                  <MenuItem value="Cat">Cat</MenuItem>
+                  <MenuItem value="Dog">Dog</MenuItem>
+                  <MenuItem value="Bird">Bird</MenuItem>
+                  <MenuItem value="Rabbits">Rabbits</MenuItem>
+                  <MenuItem value="GuineaPig">Guinea Pig</MenuItem>
+                  <MenuItem value="Horse">Horse</MenuItem>
+                  <MenuItem value="Turtle">Turtle</MenuItem>
+                  <MenuItem value="Hamsters">Hamsters</MenuItem>
+                  <MenuItem value="Hedgehogs">Hedgehogs</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Breed Type"
-            name="breed"
-            value={breed}
-            size="small"
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                label="Breed Type"
+                name="breed"
+                value={breed}
+                size="small"
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Pet's Colors"
-            name="colors"
-            value={colors}
-            size="small"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                label="Pet's Colors"
+                name="colors"
+                value={colors}
+                size="small"
+                required
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <FormControl
-            variant="outlined"
-            name="gender"
-            size="small"
-            required
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          >
-            <InputLabel id="gender">Gender</InputLabel>
-            <Select
-              labelId="gender"
-              id="gender"
-              value={gender}
-              label="Gender"
-              onChange={handleAnimalGender}
-            >
-              <MenuItem value="Male">Male</MenuItem>
-              <MenuItem value="Female">Female</MenuItem>
-              <MenuItem value="Not Sure">Not Sure</MenuItem>
-            </Select>
-          </FormControl>
+            <Grid item xs={12} sm={6}>
+              <FormControl
+                variant="outlined"
+                name="gender"
+                size="small"
+                required
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              >
+                <InputLabel id="gender">Gender</InputLabel>
+                <Select
+                  labelId="gender"
+                  id="gender"
+                  value={gender}
+                  label="Gender"
+                  onChange={handleAnimalGender}
+                >
+                  <MenuItem value="Male">Male</MenuItem>
+                  <MenuItem value="Female">Female</MenuItem>
+                  <MenuItem value="Not Sure">Not Sure</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Your Name"
-            name="founderName"
-            value={founderName}
-            size="small"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                label="Your Name"
+                name="founderName"
+                value={founderName}
+                size="small"
+                required
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Contact Number"
-            name="contactPhone"
-            value={contactPhone}
-            size="small"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                label="Contact Number"
+                name="contactPhone"
+                value={contactPhone}
+                size="small"
+                required
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Email"
-            name="contactEmail"
-            value={contactEmail}
-            size="small"
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                label="Found Location"
+                name="foundLocation"
+                value={foundLocation}
+                size="small"
+                required
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Found Location"
-            name="foundLocation"
-            value={foundLocation}
-            size="small"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                label="Date of Found"
+                name="foundDate"
+                value={foundDate}
+                size="small"
+                required
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Date of Found"
-            name="foundDate"
-            value={foundDate}
-            size="small"
-            required
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-          />
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                label="Description of Circumstances"
+                name="description"
+                value={description}
+                size="small"
+                onChange={handleChange}
+                fullWidth
+                multiline
+                rows={2}
+                margin="normal"
+                color="success"
+                focused
+              />
+            </Grid>
 
-          <TextField
-            variant="outlined"
-            label="Description of Circumstances"
-            name="description"
-            value={description}
-            size="small"
-            onChange={handleChange}
-            fullWidth
-            multiline
-            rows={4}
-            margin="normal"
-            color="success"
-            focused
-          />
+            <Grid item xs={12}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <Button
+                  variant="contained"
+                  component="label"
+                  color="success"
+                  sx={{ textTransform: "none", fontWeight: 600 }}
+                >
+                  Upload Picture
+                  <input
+                    type="file"
+                    hidden
+                    accept=".jpeg, .png, .jpg"
+                    onChange={handlePictureChange}
+                  />
+                </Button>
 
-          {/* Picture Upload */}
-          <TextField
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            color="success"
-            focused
-            name="petPicture"
-            type="file"
-            // accept="image/*"
-            accept=".jpeg, .png, .jpg"
-            label="Attach Picture of Your Found Pet"
-            onChange={handlePictureChange}
-          />
+                {petPicture && (
+                  <Typography variant="body2" color="textSecondary">
+                    Picture attached
+                  </Typography>
+                )}
+              </Box>
+            </Grid>
+          </Grid>
 
-          {/* Submit Button */}
           <Button
             variant="contained"
             color="success"
@@ -327,15 +299,14 @@ const FoundForm = () => {
             Submit Found Pet Application
           </Button>
 
-          {/* Snackbar for showing the success message */}
           <Snackbar
             open={showSuccess}
-            autoHideDuration={4000} // Duration in milliseconds
-            onClose={() => setShowSuccess(false)} // Function to handle Snackbar close event
+            autoHideDuration={4000}
+            onClose={() => setShowSuccess(false)}
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
           >
             <Alert
-              onClose={() => setShowSuccess(false)} // Function to handle Snackbar close event
+              onClose={() => setShowSuccess(false)}
               severity="success"
               sx={{ width: "100%" }}
             >
@@ -350,7 +321,6 @@ const FoundForm = () => {
 
 export default FoundForm;
 
-// Convert File to Base64 Format
 function convertToBase64(file) {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader();

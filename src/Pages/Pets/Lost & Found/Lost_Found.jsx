@@ -1,217 +1,248 @@
-import { Box, Divider, Stack, Typography } from "@mui/material";
-import React from "react";
+import {
+  Box,
+  Button,
+  Grid,
+  Typography,
+  Card,
+  CardContent,
+  CardActionArea,
+  CardMedia,
+  Stack,
+  Divider,
+  CircularProgress,
+  Alert,
+} from "@mui/material";
+import { useEffect, useState } from "react";
+import { getLostPets, getFoundPets } from "../../../API/api";
+import FoundForm from "./FoundForm";
+import LostForm from "./LostForm";
 
-const Lost_Found = () => {
+const LostFoundRedesign = () => {
+  const [lostPets, setLostPets] = useState([]);
+  const [foundPets, setFoundPets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const lostResponse = await getLostPets();
+        const foundResponse = await getFoundPets();
+        setLostPets(lostResponse.data);
+        setFoundPets(foundResponse.data);
+      } catch (error) {
+        setError("Error fetching data. Please try again.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <Box textAlign="center" py={6}>
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box textAlign="center" py={6}>
+        <Alert severity="error">{error}</Alert>
+      </Box>
+    );
+  }
+
   return (
-    <Box
-      className="myContainer"
-      // backgroundColor="primary.back"
-      mt="20px"
-      // borderRadius=".3rem"
-      textAlign={"center"}
-    >
-      <Typography
-        variant="h3"
-        color="primary.headline"
-        py={2}
-        sx={{ fontWeight: "900" }}
-      >
-        Lost & Found Pets
-      </Typography>
+    <Box className="myContainer">
+      {/* Hero Section / Banner */}
+      <Box textAlign="center" py={4} bgcolor="primary.back">
+        <Typography variant="h2" fontWeight="bold" mb={2}>
+          Lost & Found Pets
+        </Typography>
+        <Typography variant="h6" color="textSecondary">
+          Help reunite pets with their families by searching for lost pets or
+          posting found ones.
+        </Typography>
+      </Box>
 
-      {/* 2 Main Box Starts -------------------------------------------------------- */}
-
-      <Stack
-        // direction="row"
-        // justifyContent="space-around"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={0.5}
-        direction={{ xs: "column", sm: "row" }}
-        alignItems="center"
-        paddingTop={3}
-      >
-        {/* Lost A Pet???--------------------------------------------------------- */}
-        <Box flex="50%">
-          <Typography
-            variant="h4"
-            color={"white"}
-            backgroundColor="green"
-            p={3}
-            mb={1}
-            sx={{ fontWeight: "900" }}
-          >
-            Lost A Pet!?
+      {/* First 2-Column Section */}
+      <Grid container mt={2} bgcolor="primary.back">
+        <Box textAlign="center" sx={{ mx: "auto" }}>
+          <Typography variant="h5" fontWeight="bold" py={2} color={"green"}>
+            Found a Pet?? Search in "Lost Pets" or Post by "Found Pet
+            Registration" Section
           </Typography>
 
-          <Stack
-            backgroundColor="primary.back"
-            p={4}
-            // direction="row"
-            justifyContent="space-evenly"
-            alignItems="center"
-            spacing={4}
-            divider={<Divider orientation="horizental" flexItem />}
-          >
-            {/* 1 Box Starts -----------------------------------------------------------  */}
-            <a href="./lost_found/lost_form" style={{ textDecoration: "none" }}>
-              <Stack
-                p={3}
-                sx={{
-                  // backgroundColor: "#DDB5F9",
-                  borderLeft: "6px solid #7AB259",
-                  // opacity: "10",
-                  // alignItems: "center",
-                  color: "black",
-                  "&:hover": {
-                    borderLeft: "6px solid #FBD062",
-                    // boxShadow: "10px 10px 10px 10px rgba(82,82,82,0.2)",
-                  },
-                }}
-              >
-                <Typography
-                  variant="h5"
-                  pb={2}
-                  sx={{ lineHeight: 1.5, fontWeight: "900" }}
-                >
-                  REGISTER A LOST PET
-                </Typography>
-
-                <Typography variant="body1">
-                  Fill out a form with your pet's details. We'll post it on the
-                  wall if anyone finds your pet they will contact you.
-                </Typography>
-              </Stack>
-            </a>
-
-            {/* 2 Box Starts -----------------------------------------------------------  */}
-            <a
-              href="./lost_found/found_pets"
-              style={{ textDecoration: "none" }}
-            >
-              <Stack
-                p={3}
-                sx={{
-                  // backgroundColor: "#DDB5F9",
-                  borderLeft: "6px solid #7AB259",
-                  // opacity: "10",
-                  // alignItems: "center",
-                  color: "black",
-                  "&:hover": {
-                    borderLeft: "6px solid #FBD062",
-                    // boxShadow: "10px 10px 10px 10px rgba(82,82,82,0.2)",
-                  },
-                }}
-              >
-                <Typography
-                  variant="h5"
-                  pb={2}
-                  sx={{ lineHeight: 1.5, fontWeight: "900" }}
-                >
-                  SEE ALL FOUND PETS
-                </Typography>
-
-                <Typography variant="body1">
-                  Here you'll find all the posts about found pet animals by
-                  different people
-                </Typography>
-              </Stack>
-            </a>
-          </Stack>
+          <Divider variant="middle" sx={{ mx: "auto" }} />
         </Box>
 
-        {/* Found A Pet???--------------------------------------------------------- */}
-        <Box flex="50%">
-          <Typography
-            variant="h4"
-            p={3}
-            mb={1}
-            color={"white"}
-            backgroundColor="green"
-            sx={{ fontWeight: "900" }}
-          >
-            Found A Pet!?
+        {/* Left Column: Search Lost Pets */}
+        <Grid item xs={12} md={6} p={2}>
+          <Typography variant="h5" fontWeight="bold" textAlign="center">
+            LOST PETS
           </Typography>
 
-          <Stack
-            backgroundColor="primary.back"
-            p={4}
-            // direction="row"
-            justifyContent="space-evenly"
-            alignItems="center"
-            spacing={4}
-            divider={<Divider orientation="horizental" flexItem />}
-          >
-            {/* 1 Box Starts -----------------------------------------------------------  */}
-            <a
-              href="./lost_found/found_form"
-              style={{ textDecoration: "none" }}
-            >
-              <Stack
-                p={3}
-                sx={{
-                  // backgroundColor: "#DDB5F9",
-                  borderLeft: "6px solid #7AB259",
-                  // opacity: "10",
-                  // alignItems: "center",
-                  color: "black",
-                  "&:hover": {
-                    borderLeft: "6px solid #FBD062",
-                    // boxShadow: "10px 10px 10px 10px rgba(82,82,82,0.2)",
-                  },
-                }}
-              >
-                <Typography
-                  variant="h5"
-                  pb={2}
-                  sx={{ lineHeight: 1.5, fontWeight: "900" }}
-                >
-                  REGISTER A FOUND PET
-                </Typography>
+          <Stack my={3}>
+            <Grid container spacing={2}>
+              {lostPets.slice(0, 2).map((pet) => (
+                <Grid item xs={12} sm={6} key={pet._id}>
+                  <Card
+                    sx={{
+                      boxShadow: "none",
+                      backgroundColor: "#FBFBFB",
+                      "&:hover": {
+                        boxShadow: "10px 10px 10px 0px rgba(82,82,82,0.2)",
+                      },
+                    }}
+                  >
+                    <CardActionArea>
+                      <CardMedia
+                        component="img"
+                        image={pet.petPicture}
+                        height={187}
+                      
+                      />
+                      <CardContent>
+                        <Divider>PET INFO</Divider>
+                        <Typography gutterBottom fontWeight={700}>
+                          Pet Name: {pet.petName}
+                        </Typography>
+                        <Typography variant="body2">
+                          Type: {pet.animalType}
+                        </Typography>
+                        <Typography variant="body2">Age: {pet.age}</Typography>
+                        <Typography variant="body2">
+                          Color: {pet.colors}
+                        </Typography>
+                        <Typography variant="body2">
+                          Lost Location: {pet.lastSeenLocation}
+                        </Typography>
+                        <Typography variant="body2">
+                          Lost Date: {pet.lostDate}
+                        </Typography>
 
-                <Typography variant="body1">
-                  Fill out a form about the pet you found. If someone finds
-                  their lost pet here, they will contact you.
-                </Typography>
-              </Stack>
-            </a>
-
-            {/* 2 Box Starts -----------------------------------------------------------  */}
-            <a href="./lost_found/lost_pets" style={{ textDecoration: "none" }}>
-              <Stack
-              p={3}
-                px={5.6}
-                // py={1}
-                sx={{
-                  // backgroundColor: "#DDB5F9",
-                  borderLeft: "6px solid #7AB259",
-                  // opacity: "10",
-                  // alignItems: "center",
-                  color: "black",
-                  "&:hover": {
-                    borderLeft: "6px solid #FBD062",
-                    // boxShadow: "10px 10px 10px 10px rgba(82,82,82,0.2)",
-                  },
-                }}
-              >
-                <Typography
-                  variant="h5"
-                  pb={2}
-                  sx={{ lineHeight: 1.5, fontWeight: "900" }}
-                >
-                  SEE ALL LOST PETS
-                </Typography>
-
-                <Typography variant="body1">
-                  Here you'll find all the posts about Lost pet animals by their
-                  owner
-                </Typography>
-              </Stack>
-            </a>
+                        <Divider>OWNER INFO</Divider>
+                        <Typography variant="body2" fontWeight={700}>
+                          Owner Name: {pet.ownerName}
+                        </Typography>
+                        <Typography variant="body2">
+                          Contact: {pet.contactPhone}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
           </Stack>
+
+          {/* View All Lost Pets Button */}
+          <Button
+            href="/lost_found/lost_pets"
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{ mt: 3 }}
+          >
+            View All Lost Pets
+          </Button>
+        </Grid>
+
+        {/* Right Column: Post Found Pet */}
+        <Grid item xs={12} md={6} p={2}>
+          <FoundForm />
+        </Grid>
+      </Grid>
+
+      {/* Second 2-Column Section */}
+      <Grid container  mt={2} bgcolor="primary.back">
+        <Box textAlign="center" sx={{ mx: "auto" }}>
+          <Typography variant="h5" fontWeight="bold" py={2} color={"green"}>
+            Lost a Pet?? Search in "Found Pets" or Post by "Lost Pet
+            Registration" Section
+          </Typography>
+
+          <Divider variant="middle" sx={{ mx: "auto" }} />
         </Box>
-      </Stack>
+
+        {/* Left Column: Search Found Pets */}
+        <Grid item xs={12} md={6} p={2}>
+          <Typography variant="h5" fontWeight="bold" textAlign="center">
+            FOUND PETS
+          </Typography>
+
+          <Stack my={3}>
+            <Grid container spacing={2}>
+              {foundPets.slice(0, 2).map((pet) => (
+                <Grid item xs={12} sm={6} key={pet._id}>
+                  <Card
+                    sx={{
+                      boxShadow: "none",
+                      backgroundColor: "#FBFBFB",
+                      "&:hover": {
+                        boxShadow: "10px 10px 10px 0px rgba(82,82,82,0.2)",
+                      },
+                    }}
+                  >
+                    <CardActionArea>
+                      <CardMedia
+                        component="img"
+                        image={pet.petPicture}
+                        height={206}
+                      />
+                      <CardContent>
+                        <Divider>PET INFO</Divider>
+                        <Typography gutterBottom fontWeight={700}>
+                          Pet Name: {pet.petName}
+                        </Typography>
+                        <Typography variant="body2">
+                          Type: {pet.animalType}
+                        </Typography>
+                        <Typography variant="body2">Age: {pet.age}</Typography>
+                        <Typography variant="body2">
+                          Color: {pet.colors}
+                        </Typography>
+                        <Typography variant="body2">
+                          Found Location: {pet.lastSeenLocation}
+                        </Typography>
+
+                        <Divider>FINDER INFO</Divider>
+                        <Typography variant="body2" fontWeight={700}>
+                          Finder Name: {pet.ownerName}
+                        </Typography>
+                        <Typography variant="body2">
+                          Contact: {pet.contactPhone}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Stack>
+
+          {/* View All Found Pets Button */}
+          <Button
+            href="/lost_found/found_pets"
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{ mt: 3 }}
+          >
+            View All Found Pets
+          </Button>
+        </Grid>
+
+        {/* Right Column: Post Lost Pet */}
+        <Grid item xs={12} md={6} p={2}>
+          <LostForm />
+        </Grid>
+      </Grid>
     </Box>
   );
 };
 
-export default Lost_Found;
+export default LostFoundRedesign;

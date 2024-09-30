@@ -12,7 +12,7 @@ const Home = () => {
       <Branding />
       <Vat_Care />
       <Vats />
-      <Make_Difference />
+      {/* <Make_Difference /> */}
       <Adopted />
       <Adoptable_Animals />
     </div>

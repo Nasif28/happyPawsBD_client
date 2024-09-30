@@ -33,7 +33,7 @@ const Adoptable_Animals = () => {
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             {adoptableAnimals.slice(0, 6).map((item) => (
-              <Grid item xs={2} sm={4} md={4} key={item.rank}>
+              <Grid item xs={2} sm={4} md={4} key={item.code}>
                 <Card
                   sx={{
                     boxShadow: "none",
@@ -43,37 +43,59 @@ const Adoptable_Animals = () => {
                     },
                   }}
                 >
-                  <CardActionArea>
+                  <CardActionArea onClick={() => handleCardClick(item.code)}>
                     <CardMedia
                       component="img"
-                      image={item.img}
+                      image={item.photos}
                       alt={item.name}
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h6" fontWeight={700}>
                         {item.name}
                       </Typography>
-                      <Typography variant="body2" fontSize={11}>
-                        - {item.origin}
+                      <Typography variant="body2" fontSize={12}>
+                        {item.breed} - {item.origin}
                       </Typography>
+                      <Typography variant="body2" pt={2} color="primary.para">
+                        {item.age} Year{" "}
+                        <span style={{ color: "green" }}>|</span> {item.gender}{" "}
+                        <span style={{ color: "green" }}>|</span> {item.weight}
+                      </Typography>
+
                       <Typography
                         variant="body2"
                         color="primary.para"
-                        p={2}
+                        // p={2}
                         maxHeight="140px"
                         overflow="hidden"
                         textOverflow="ellipsis"
                         wordWrap="break-word"
                       >
-                        {item.shortDescription}
+                        {item.breeddescription}
                       </Typography>
-                      <Typography
-                        variant="body2"
-                        color="primary.green"
-                        textAlign={"right"}
+
+                      <Stack
+                        direction="row"
+                        justifyContent="space-between"
+                        alignItems="center"
+                        spacing={2}
+                        mt={2}
                       >
-                        - Read More
-                      </Typography>
+                        <Typography
+                          variant="body2"
+                          color="primary.green"
+                          textAlign={"left"}
+                        >
+                          Code: {item.code}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          color="primary.green"
+                          textAlign={"right"}
+                        >
+                          - Read More
+                        </Typography>
+                      </Stack>
                     </CardContent>
                   </CardActionArea>
                 </Card>
@@ -87,6 +109,13 @@ const Adoptable_Animals = () => {
           variant="outlined"
           color="success"
           href="/adoption/adoptable_pets"
+          sx={{
+            ":hover": {
+              backgroundColor: "success.main",
+              color: "white",
+              borderColor: "success.main",
+            },
+          }}
         >
           <Typography variant="button" fontWeight="bold">
             View All Adoptable Animals
