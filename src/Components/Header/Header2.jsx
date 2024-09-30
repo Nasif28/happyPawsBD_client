@@ -821,7 +821,7 @@ const Header2 = (props) => {
                   </Typography>
                 </MenuItem> */}
 
-                <MenuItem onClick={handleCloseUserMenu}>
+                {/* <MenuItem onClick={handleCloseUserMenu}>
                   <Typography
                     textAlign="center"
                     fontWeight="bold"
@@ -837,7 +837,7 @@ const Header2 = (props) => {
                   >
                     Dashboard
                   </Typography>
-                </MenuItem>
+                </MenuItem> */}
 
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography
