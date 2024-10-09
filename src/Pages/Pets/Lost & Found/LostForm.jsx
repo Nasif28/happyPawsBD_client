@@ -65,17 +65,17 @@ const LostFormcopy = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const formData = new FormData();
-      formData.append("lostPet", lostPet);
-
+      // Assuming the API expects JSON and the lostPet object is ready to be submitted
       await addLostPet(lostPet);
-
+  
+      // Reset the form to initial state on successful submission
       setLostPet(initialValue);
       setShowSuccess(true);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
   };
+  
 
   return (
     <Box>
