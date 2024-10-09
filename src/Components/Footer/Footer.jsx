@@ -120,7 +120,7 @@ const Footer = () => {
             {/* Multiple Links */}
             <Stack spacing={-2}>
               <Link
-                href="../"
+                href="/"
                 target="_blank"
                 rel="noopener noreferrer"
                 color={"primary.para"}
@@ -153,7 +153,7 @@ const Footer = () => {
 
               <br />
               <Link
-                href="/food"
+                href="/shop"
                 target="_blank"
                 rel="noopener noreferrer"
                 color={"primary.para"}
@@ -174,13 +174,13 @@ const Footer = () => {
 
               <br />
               <Link
-                href="/online_consultation"
+                href="/health_care_blog"
                 target="_blank"
                 rel="noopener noreferrer"
                 color={"primary.para"}
                 style={{ textDecoration: "none" }}
               >
-                Consultation
+                Health Care Blog
               </Link>
 
               <br />
@@ -218,47 +218,47 @@ const Footer = () => {
 
               <br />
               <Link
-                href="/volunteer"
+                href="/petcare"
                 target="_blank"
                 rel="noopener noreferrer"
                 color={"primary.para"}
                 style={{ textDecoration: "none" }}
               >
-                Volunteer
+                Pet Care
               </Link>
 
               <br />
               <Link
-                href="/make_donation"
+                href="/findvet"
                 target="_blank"
                 rel="noopener noreferrer"
                 color={"primary.para"}
                 style={{ textDecoration: "none" }}
               >
-                Donation
+                Find Vet
               </Link>
 
               <br />
 
               <Link
-                href="/share_your_story"
+                href="/pet_training"
                 target="_blank"
                 rel="noopener noreferrer"
                 color={"primary.para"}
                 style={{ textDecoration: "none" }}
               >
-                Your Story
+                Training
               </Link>
 
               <br />
               <Link
-                href="/remembrance"
+                href="/profile"
                 target="_blank"
                 rel="noopener noreferrer"
                 color={"primary.para"}
                 style={{ textDecoration: "none" }}
               >
-                Remembrance
+                Profile
               </Link>
 
               <br />
@@ -332,8 +332,9 @@ const Footer = () => {
           variant="body2"
         >
           <span>
-            Copyright © {new Date().getFullYear()} Happy Paws BD. All rights 
-            reserved <br />Developed by Mahmudul 
+            Copyright © {new Date().getFullYear()} Happy Paws BD. All rights
+            reserved <br />
+            Developed by Mahmudul
           </span>
         </Stack>
       </Box>

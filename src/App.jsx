@@ -60,6 +60,7 @@ import Profile from "./Dashboard/Profile";
 import Account from "./Dashboard/Account";
 import Dashboard from "./Dashboard/Dashboard";
 import AdoptablePetDetails from "./Pages/Pets/Adoption/AdoptablePetDetails";
+import ScrollToTop from "./context/ScrollToTop";
 
 const App = () => {
   return (
@@ -70,6 +71,8 @@ const App = () => {
         <UserAuthContextProvider>
           {/* <Header /> */}
           <Header2 />
+
+          <ScrollToTop />
 
           <Routes>
             <Route path="/" element={<Home />} />

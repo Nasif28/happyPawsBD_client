@@ -111,12 +111,20 @@ const Header2 = (props) => {
       sx={{ textAlign: "center" }}
     >
       <Typography variant="h6" sx={{ my: 1 }}>
-        <img src={HPBDLogo} alt="Happy Paws BD" width={100} />
+        <Link to="/">
+          <img
+            src={HPBDLogo}
+            alt="Happy Paws BD"
+            width={100}
+            style={{ cursor: "pointer" }}
+          />
+        </Link>
       </Typography>
+      ;
       <Divider />
       <List>
         <ListItem disablePadding onClick={handleDrawerToggle}>
-          <ListItemButton component={Link} to="/home">
+          <ListItemButton component={Link} to="/">
             <ListItemText primary="Home" />
           </ListItemButton>
         </ListItem>
@@ -272,13 +280,23 @@ const Header2 = (props) => {
           {/* Logo Full Screen ------------------------------------- */}
           <Typography
             variant="h6"
-            component="a"
-            href="../"
+            component={Link}
+            to="/"
             textAlign={{ xs: "center", md: "inherit" }}
             flexGrow={{ xs: "1", md: "0" }}
-            sx={{ color: "inherit", textDecoration: "none", pt: 1 }}
+            sx={{
+              color: "inherit",
+              textDecoration: "none",
+              pt: 1,
+              display: "inline-block",
+            }}
           >
-            <img src={HPBDLogo} alt="Happy Paws BD" width={100} />
+            <img
+              src={HPBDLogo}
+              alt="Happy Paws BD"
+              width={100}
+              style={{ cursor: "pointer" }}
+            />
           </Typography>
 
           <Stack
@@ -297,7 +315,7 @@ const Header2 = (props) => {
                   color: "inherit",
                   fontWeight: "600",
                 }}
-                to="/home"
+                to="/"
               >
                 Home
               </Link>
@@ -519,7 +537,7 @@ const Header2 = (props) => {
               horizontal: "left",
             }}
           >
-            <MenuItem
+            {/* <MenuItem
               onClick={handleMenu3Close}
               sx={{
                 fontSize: "",
@@ -536,7 +554,7 @@ const Header2 = (props) => {
               >
                 ONLINE CONSULTATION
               </Link>
-            </MenuItem>
+            </MenuItem> */}
 
             {/* <MenuItem
               on

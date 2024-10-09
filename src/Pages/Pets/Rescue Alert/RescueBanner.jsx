@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import RescueAlertBanner from "./../../../images/RescueAlertBanner.png";
 import React from "react";
+import { Link } from "react-router-dom";
 // import AdoptionForm from "./AdoptionForm";
 
 const BrandingWrapper = styled(Box)(({ theme }) => ({
@@ -41,15 +42,16 @@ const RescueBanner = () => {
               Work With Us. Be a Rescuer
             </Typography>
 
-            <Button
-              variant="contained"
-              color="success"
-              size="large"
-              sx={{ width: { sx: "60%", md: "40%" } }}
-              href="/volunteer"
-            >
-              Join Us
-            </Button>
+            <Link to="/contact_us" style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                color="success"
+                size="large"
+                sx={{ width: { sx: "60%", md: "40%" } }}
+              >
+                Contact Us
+              </Button>
+            </Link>
           </Box>
         </Stack>
 

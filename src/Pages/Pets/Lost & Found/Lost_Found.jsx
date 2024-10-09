@@ -103,7 +103,6 @@ const LostFoundRedesign = () => {
                         component="img"
                         image={pet.petPicture}
                         height={187}
-                      
                       />
                       <CardContent>
                         <Divider>PET INFO</Divider>
@@ -158,7 +157,7 @@ const LostFoundRedesign = () => {
       </Grid>
 
       {/* Second 2-Column Section */}
-      <Grid container  mt={2} bgcolor="primary.back">
+      <Grid container mt={2} bgcolor="primary.back">
         <Box textAlign="center" sx={{ mx: "auto" }}>
           <Typography variant="h5" fontWeight="bold" py={2} color={"green"}>
             Lost a Pet?? Search in "Found Pets" or Post by "Lost Pet

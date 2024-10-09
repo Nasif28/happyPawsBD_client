@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import adoptableAnimals from "./../../../API/adoptableAnimals.json";
 import {
@@ -11,6 +11,11 @@ import {
   Stack,
   Divider,
   Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
 } from "@mui/material";
 import {
   Vaccines,
@@ -29,6 +34,7 @@ import {
 import AdoptionForm from "./AdoptionForm";
 
 const AdoptablePetDetails = () => {
+  const [open, setOpen] = useState(false);
   const { code } = useParams();
   const pet = adoptableAnimals.find((item) => item.code === code);
 
@@ -39,6 +45,19 @@ const AdoptablePetDetails = () => {
       </Typography>
     );
   }
+
+  const handleOpen = () => {
+    // Check if medical records are available; if not, show modal
+    if (!pet.medicalrecords) {
+      setOpen(true);
+    } else {
+      window.open(pet.medicalrecords, "_blank");
+    }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <Box className="myContainer" sx={{ margin: "auto", p: 2, mt: 4 }}>
@@ -219,18 +238,39 @@ const AdoptablePetDetails = () => {
                   </Typography>
                 </Stack>
 
-                <Button
-                  variant="contained"
-                  color="success"
-                  href={pet.medicalrecords}
-                  target="_blank"
-                  // sx={{
-                  //   backgroundColor: "#1976D2",
-                  //   "&:hover": { backgroundColor: "#1565C0" },
-                  // }}
-                >
-                  View Medical Records
-                </Button>
+                <Box>
+                  {/* Button to view medical records */}
+                  <Button
+                    variant="contained"
+                    color="success"
+                    onClick={handleOpen} // Check and handle medical records on click
+                  >
+                    View Medical Records
+                  </Button>
+
+                  {/* Modal for 'No Medical Records Found' */}
+                  <Dialog open={open} onClose={handleClose}>
+                    <DialogTitle>
+                      {" "}
+                      <strong>No Medical Records Found</strong>
+                    </DialogTitle>
+                    <DialogContent>
+                      <DialogContentText>
+                        Unfortunately, there are no medical records available
+                        for this pet.
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button
+                        onClick={handleClose}
+                        variant="contained"
+                        color="info"
+                      >
+                        Close
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
+                </Box>
               </Stack>
             </CardContent>
           </Card>

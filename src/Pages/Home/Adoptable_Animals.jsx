@@ -11,8 +11,14 @@ import {
 } from "@mui/material";
 import React from "react";
 import adoptableAnimals from "./../../API/adoptableAnimals.json";
+import { useNavigate } from "react-router-dom";
 
 const Adoptable_Animals = () => {
+  const navigate = useNavigate();
+
+  const handleCardClick = (code) => {
+    navigate(`/adoption/adoptable_pets/${code}`);
+  };
   return (
     <Box className="myContainer" mb="20px" textAlign={"center"}>
       <Stack>
