@@ -67,7 +67,7 @@ const LostFormcopy = () => {
     try {
       // Assuming the API expects JSON and the lostPet object is ready to be submitted
       await addLostPet(lostPet);
-  
+
       // Reset the form to initial state on successful submission
       setLostPet(initialValue);
       setShowSuccess(true);
@@ -75,7 +75,6 @@ const LostFormcopy = () => {
       console.error("Error submitting form:", error);
     }
   };
-  
 
   return (
     <Box>
@@ -295,12 +294,12 @@ const LostFormcopy = () => {
           {/* Snackbar for showing the success message */}
           <Snackbar
             open={showSuccess}
-            autoHideDuration={4000} // Duration in milliseconds
-            onClose={() => setShowSuccess(false)} // Function to handle Snackbar close event
+            autoHideDuration={4000}
+            onClose={() => setShowSuccess(false)}
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
           >
             <Alert
-              onClose={() => setShowSuccess(false)} // Function to handle Snackbar close event
+              onClose={() => setShowSuccess(false)}
               severity="success"
               sx={{ width: "100%" }}
             >
