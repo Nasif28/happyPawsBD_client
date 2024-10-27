@@ -31,6 +31,7 @@ const ProductDetailDialog = ({
   open,
   onClose,
   onAddToCart,
+  handleQuantityChange,
   onBookmark,
 }) => {
   const [quantity, setQuantity] = useState(1);
@@ -39,7 +40,21 @@ const ProductDetailDialog = ({
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const handleAddToCart = () => {
-    onAddToCart({ ...product, quantity });
+    // Retrieve existing cart items from localStorage
+    const existingCartItems =
+      JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    // Add the new product with updated quantity
+    const updatedProduct = { ...product, quantity };
+    const newCartItems = [...existingCartItems, updatedProduct];
+
+    // Save updated cart items back to localStorage
+    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+
+    console.log("Updated Cart Items:", newCartItems);
+
+    // Reset the quantity and close the dialog
+    setQuantity(1);
     onClose();
   };
 
@@ -197,10 +212,11 @@ const ProductDetailDialog = ({
               type="number"
               label="Quantity"
               value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
+              onChange={(e) => setQuantity(Number(e.target.value))}
               InputProps={{ inputProps: { min: 1 } }}
               sx={{ mb: 2 }}
             />
+
             <Button
               variant="contained"
               color="primary"

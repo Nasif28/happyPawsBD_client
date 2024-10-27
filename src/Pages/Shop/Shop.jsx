@@ -28,7 +28,9 @@ const Shop = ({ cartItemsCount }) => {
 
   // Save cart items to Local Storage whenever they change
   useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    if (cartItems.length > 0) {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }
   }, [cartItems]);
 
   const handleAddToCart = (product) => {
@@ -44,7 +46,6 @@ const Shop = ({ cartItemsCount }) => {
       return [...prevItems, { ...product, quantity: 1 }];
     });
   };
-  console.log(cartItems);
   const handleRemoveItem = (productId) => {
     setCartItems((prevItems) =>
       prevItems.filter((item) => item.id !== productId)
@@ -58,6 +59,7 @@ const Shop = ({ cartItemsCount }) => {
       )
     );
   };
+  console.log(cartItems);
 
   const handleViewDetails = (product) => {
     setSelectedProduct(product);
@@ -123,6 +125,7 @@ const Shop = ({ cartItemsCount }) => {
           open={detailDialogOpen}
           onClose={handleDetailDialogClose}
           onAddToCart={handleAddToCart}
+          handleQuantityChange={handleQuantityChange}
         />
       )}
     </Box>

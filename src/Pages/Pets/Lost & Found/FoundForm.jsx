@@ -21,7 +21,6 @@ const initialValue = {
   gender: "",
   founderName: "",
   contactPhone: "",
-  contactEmail: "",
   foundLocation: "",
   foundDate: "",
   description: "",
@@ -57,18 +56,34 @@ const FoundForm = () => {
     setFoundPet({ ...foundPet, gender: e.target.value });
   };
 
-  const handlePictureChange = async (e) => {
-    setFoundPet({
-      ...foundPet,
-      petPicture: await convertToBase64(e.target.files[0]),
-    });
+  const handlePictureChange = (e) => {
+    const file = e.target.files[0];
+    setFoundPet({ ...foundPet, petPicture: file });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await addFoundPet(foundPet);
+    const formData = new FormData();
 
+    // Manually append each field to FormData
+    // formData.append("animalType", foundPet.animalType);
+    // formData.append("breed", foundPet.breed);
+    // formData.append("colors", foundPet.colors);
+    // formData.append("gender", foundPet.gender);
+    // formData.append("founderName", foundPet.founderName);
+    // formData.append("contactPhone", foundPet.contactPhone);
+    // formData.append("contactEmail", foundPet.contactEmail);
+    // formData.append("foundLocation", foundPet.foundLocation);
+    // formData.append("foundDate", foundPet.foundDate);
+    // formData.append("description", foundPet.description);
+    // formData.append("petPicture", foundPet.petPicture);
+
+    Object.entries(foundPet).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    try {
+      await addFoundPet(formData);
       setFoundPet(initialValue);
       setShowSuccess(true);
     } catch (error) {
@@ -320,16 +335,3 @@ const FoundForm = () => {
 };
 
 export default FoundForm;
-
-function convertToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-}

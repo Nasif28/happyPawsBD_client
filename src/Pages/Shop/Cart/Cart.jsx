@@ -10,7 +10,7 @@ const Cart = ({
   handleOrderConfirm,
 }) => {
   const [cartItems, setCartItems] = useState([]);
-
+  console.log(localStorage);
   // Load cart items from Local Storage on initial render
   useEffect(() => {
     const savedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
@@ -22,10 +22,11 @@ const Cart = ({
   return (
     <Box className="myContainer" sx={{ padding: 3 }}>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={7}>
           <DeliveryInformation />
         </Grid>
-        <Grid item xs={12} md={4}>
+
+        <Grid item xs={12} md={5}>
           <OrderSummary
             cartItems={cartItems}
             handleQuantityChange={handleQuantityChange}
@@ -33,6 +34,7 @@ const Cart = ({
           />
         </Grid>
       </Grid>
+
       <PaymentMethod handleOrderConfirm={handleOrderConfirm} />
     </Box>
   );

@@ -13,14 +13,13 @@ import {
   Alert,
   Typography,
   Grid,
+  CircularProgress,
 } from "@mui/material";
 
 const initialValue = {
   petName: "",
   animalType: "",
-  age: "",
   colors: "",
-  gender: "",
   ownerName: "",
   contactPhone: "",
   contactEmail: "",
@@ -30,9 +29,10 @@ const initialValue = {
   petPicture: "",
 };
 
-const LostFormcopy = () => {
+const LostForm = () => {
   const [lostPet, setLostPet] = useState(initialValue);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const {
     petName,
@@ -55,24 +55,28 @@ const LostFormcopy = () => {
     setLostPet({ ...lostPet, animalType: e.target.value });
   };
 
-  const handlePictureChange = async (e) => {
-    setLostPet({
-      ...lostPet,
-      petPicture: await convertToBase64(e.target.files[0]),
-    });
+  const handlePictureChange = (e) => {
+    const file = e.target.files[0];
+    setLostPet({ ...lostPet, petPicture: file });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      // Assuming the API expects JSON and the lostPet object is ready to be submitted
-      await addLostPet(lostPet);
+    setLoading(true);
+    const formData = new FormData();
 
-      // Reset the form to initial state on successful submission
+    Object.entries(lostPet).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    try {
+      await addLostPet(formData);
       setLostPet(initialValue);
       setShowSuccess(true);
     } catch (error) {
       console.error("Error submitting form:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -287,8 +291,13 @@ const LostFormcopy = () => {
             sx={{ my: 3, fontWeight: "700" }}
             fullWidth
             onClick={handleSubmit}
+            disabled={loading}
           >
-            Submit Lost Pet Application
+            {loading ? (
+              <CircularProgress size={24} color="inherit" />
+            ) : (
+              "Submit Lost Pet Application"
+            )}
           </Button>
 
           {/* Snackbar for showing the success message */}
@@ -312,18 +321,4 @@ const LostFormcopy = () => {
   );
 };
 
-export default LostFormcopy;
-
-// Convert File to Base64 Format
-function convertToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-}
+export default LostForm;

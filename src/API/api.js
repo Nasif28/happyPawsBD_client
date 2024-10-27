@@ -1,11 +1,22 @@
 import axios from "axios";
 
-const URL = "https://happypawsbd-server.onrender.com";
-// const URL = "http://localhost:5000";
+// const URL = "https://happypawsbd-server.onrender.com";
+const URL = "http://localhost:5000";
 
 // Lost Pet From Data
-export const addLostPet = async (lostPet) => {
-  return await axios.post(`${URL}/lost_found/lost_form`, lostPet);
+export const addLostPet = async (lostPetData) => {
+  try {
+    const response = await axios.post(
+      `${URL}/lost_found/lost_form`,
+      lostPetData,
+      { headers: { "Content-Type": "multipart/form-data" } }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("Error in addFoundPet:", error);
+    throw new Error("Failed to submit form");
+  }
 };
 
 // All Lost Pets
@@ -14,8 +25,19 @@ export const getLostPets = async () => {
 };
 
 // Found Pet From Data
-export const addFoundPet = async (foundPet) => {
-  return await axios.post(`${URL}/lost_found/found_form`, foundPet);
+export const addFoundPet = async (foundPetData) => {
+  try {
+    const response = await axios.post(
+      `${URL}/lost_found/found_form`,
+      foundPetData,
+      { headers: { "Content-Type": "multipart/form-data" } }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("Error in addFoundPet:", error);
+    throw new Error("Failed to submit form");
+  }
 };
 
 // All Found Pets
