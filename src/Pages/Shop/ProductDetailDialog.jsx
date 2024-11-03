@@ -230,7 +230,11 @@ const ProductDetailDialog = ({
                   backgroundColor: "#d4004c", // Darken on hover
                 },
               }}
-              onClick={handleAddToCart}
+              // onClick={handleAddToCart}
+              onClick={() => {
+                onAddToCart(product);
+                onClose();
+              }}
             >
               Add to Cart
             </Button>

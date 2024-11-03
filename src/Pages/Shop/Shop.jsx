@@ -8,6 +8,7 @@ import ProductDetailDialog from "./ProductDetailDialog";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ShopBanner from "./ShopBanner";
 import { Link } from "react-router-dom";
+import { updateCartInBackend } from "../../API/api";
 
 const Shop = ({ cartItemsCount }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -33,19 +34,47 @@ const Shop = ({ cartItemsCount }) => {
     }
   }, [cartItems]);
 
-  const handleAddToCart = (product) => {
+  // const handleAddToCart = (product) => {
+  //   setCartItems((prevItems) => {
+  //     const existingItem = prevItems.find((item) => item.id === product.id);
+  //     if (existingItem) {
+  //       return prevItems.map((item) =>
+  //         item.id === product.id
+  //           ? { ...item, quantity: item.quantity + 1 }
+  //           : item
+  //       );
+  //     }
+  //     return [...prevItems, { ...product, quantity: 1 }];
+  //   });
+  // };
+
+  const handleAddToCart = async (product) => {
+    // Update the local state first
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === product.id);
+
+      // If the product already exists in the cart, increment the quantity
       if (existingItem) {
-        return prevItems.map((item) =>
+        const updatedItems = prevItems.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
+
+        // Send the updated cart to the backend
+        updateCartInBackend(product._id, existingItem.quantity + 1);
+
+        return updatedItems;
       }
-      return [...prevItems, { ...product, quantity: 1 }];
+
+      // If the product is new, add it to the cart
+      const newItem = { ...product, quantity: 1 };
+      updateCartInBackend(product._id, 1);
+
+      return [...prevItems, newItem];
     });
   };
+
   const handleRemoveItem = (productId) => {
     setCartItems((prevItems) =>
       prevItems.filter((item) => item.id !== productId)

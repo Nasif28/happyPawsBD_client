@@ -40,6 +40,11 @@ export const addFoundPet = async (foundPetData) => {
   }
 };
 
+// Order
+export const orders = async (orderDetails) => {
+  return await axios.post(`${URL}/cart/orders`, orderDetails);
+};
+
 // All Found Pets
 export const getFoundPets = async () => {
   return await axios.get(`${URL}/lost_found/found_pets`);
@@ -63,4 +68,19 @@ export const groomingApplication = async (grooming, id) => {
 // Boarding Application From Data
 export const boardingApplication = async (boarding, id) => {
   return await axios.post(`${URL}/petcare/boarding/${id}`, boarding);
+};
+
+// ------------------------- Pet Shop -------------------------
+// Function to send the cart update to the backend
+export const updateCartInBackend = async (productId, quantity) => {
+  const userId = "user_id_here"; // Get user ID dynamically (from context or state)
+  try {
+    await axios.post(`${URL}/cart/${userId}`, {
+      productId,
+      quantity,
+    });
+    alert("Product added to cart!");
+  } catch (error) {
+    console.error("Error adding product to cart:", error);
+  }
 };

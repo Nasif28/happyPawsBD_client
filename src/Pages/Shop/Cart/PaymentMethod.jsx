@@ -10,9 +10,11 @@ import {
   Button,
 } from "@mui/material";
 
-const PaymentMethod = ({ handleOrderConfirm }) => {
-  const [paymentMethod, setPaymentMethod] = useState("cash_on_delivery");
-
+const PaymentMethod = ({
+  paymentMethod,
+  setPaymentMethod,
+  handleOrderConfirm,
+}) => {
   const handleChange = (event) => {
     setPaymentMethod(event.target.value);
   };
@@ -34,7 +36,7 @@ const PaymentMethod = ({ handleOrderConfirm }) => {
         <RadioGroup value={paymentMethod} onChange={handleChange}>
           <FormControlLabel
             value="online_payment"
-            control={<Radio />}
+            control={<Radio disabled />}
             label="Online Payment"
           />
           <FormControlLabel
@@ -44,11 +46,12 @@ const PaymentMethod = ({ handleOrderConfirm }) => {
           />
           <FormControlLabel
             value="pos_on_delivery"
-            control={<Radio />}
+            control={<Radio disabled />}
             label="POS on Delivery"
           />
         </RadioGroup>
       </FormControl>
+      <br />
       <Button
         variant="contained"
         color="primary"

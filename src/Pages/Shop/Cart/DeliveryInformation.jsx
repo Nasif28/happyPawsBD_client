@@ -1,15 +1,27 @@
 import React, { useState } from "react";
 import { Box, Grid, TextField, Switch, Typography } from "@mui/material";
-import {
-  // LocalizationProvider,
-  // DatePicker,
-} from "@mui/x-date-pickers/AdapterDateFns";
+// import { LocalizationProvider,DatePicker}"@mui/x-date-pickers/AdapterDateFns";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { useUserAuth } from "../../../context/UserAuthContext";
 
-const DeliveryInformation = () => {
+const DeliveryInformation = ({
+  deliveryInfo,
+  setDeliveryInfo,
+  validateFields,
+  errors,
+  setErrors,
+}) => {
+  const { user } = useUserAuth();
   const [scheduleDelivery, setScheduleDelivery] = useState(false);
   const [deliveryDate, setDeliveryDate] = useState(new Date());
+  // const name = user.displayName;
+  // const email = user.email;
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDeliveryInfo({ ...deliveryInfo, [name]: value });
+    setErrors({ ...errors, [name]: "" }); // Clear error for this field
+  };
   return (
     <Box
       sx={{
@@ -28,7 +40,12 @@ const DeliveryInformation = () => {
             fullWidth
             label="Name"
             variant="outlined"
-            defaultValue="Bryan Cranston"
+            name="name"
+            // defaultValue={name}
+            required
+            error={Boolean(errors.name)}
+            helperText={errors.name}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -36,7 +53,11 @@ const DeliveryInformation = () => {
             fullWidth
             label="Mobile Number"
             variant="outlined"
-            defaultValue="+1 424-236-3574"
+            name="phone"
+            required
+            error={Boolean(errors.phone)}
+            helperText={errors.phone}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -44,7 +65,12 @@ const DeliveryInformation = () => {
             fullWidth
             label="Email"
             variant="outlined"
-            defaultValue="thejon@example.com"
+            name="email"
+            required
+            // defaultValue={email}
+            error={Boolean(errors.email)}
+            helperText={errors.email}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -52,7 +78,8 @@ const DeliveryInformation = () => {
             fullWidth
             label="City"
             variant="outlined"
-            defaultValue="Hawthorne"
+            name="city"
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -60,7 +87,8 @@ const DeliveryInformation = () => {
             fullWidth
             label="State"
             variant="outlined"
-            defaultValue="California"
+            name="state"
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -68,7 +96,8 @@ const DeliveryInformation = () => {
             fullWidth
             label="ZIP"
             variant="outlined"
-            defaultValue="90250"
+            name="zip"
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12}>
@@ -76,11 +105,15 @@ const DeliveryInformation = () => {
             fullWidth
             label="Address"
             variant="outlined"
-            defaultValue="4796 Libby Street"
+            name="address"
+            required
+            error={Boolean(errors.address)}
+            helperText={errors.address}
+            onChange={handleChange}
           />
         </Grid>
       </Grid>
-      <Box sx={{ marginTop: 2 }}>
+      {/* <Box sx={{ marginTop: 2 }}>
         <Typography variant="subtitle1" gutterBottom>
           Schedule Delivery
         </Typography>
@@ -98,7 +131,7 @@ const DeliveryInformation = () => {
             />
           </LocalizationProvider>
         )}
-      </Box>
+      </Box> */}
     </Box>
   );
 };
