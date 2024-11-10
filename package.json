@@ -17,6 +17,8 @@
     "@mui/material": "^5.14.7",
     "@mui/styles": "^5.14.7",
     "@mui/x-date-pickers": "^7.9.0",
+    "@stripe/react-stripe-js": "^2.8.1",
+    "@stripe/stripe-js": "^4.9.0",
     "@trendyol-js/react-carousel": "^3.0.2",
     "axios": "^1.4.0",
     "date-fns": "2.29.2",

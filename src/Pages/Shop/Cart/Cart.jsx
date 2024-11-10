@@ -4,14 +4,14 @@ import DeliveryInformation from ".//DeliveryInformation";
 import OrderSummary from "./OrderSummary";
 import PaymentMethod from "./PaymentMethod";
 import axios from "axios";
-import { orders } from "../../../API/api";
+import { createPaymentSession, orders } from "../../../API/api";
+import { loadStripe } from "@stripe/stripe-js";
 
-const Cart = ({
-  handleQuantityChange,
+const stripePromise = loadStripe(
+  "pk_test_51QJQ6YGXyE7DqlV8yCFisSMWfkn305hInVMZYrIH4wq0CINZHgBTnKojeSpj73UJzbe1WY00LHvU8rit3qgHA4rs00RJ081Eb3"
+);
 
-  // handleRemoveItem,
-  // handleOrderConfirm,
-}) => {
+const Cart = ({ handleQuantityChange }) => {
   const [cartItems, setCartItems] = useState([]);
   const [deliveryInfo, setDeliveryInfo] = useState({
     name: "",
@@ -23,11 +23,10 @@ const Cart = ({
     address: "",
   });
   const [paymentMethod, setPaymentMethod] = useState("cash_on_delivery");
-  const [snackbarOpen, setSnackbarOpen] = useState(false); // Snackbar state
-  const [snackbarMessage, setSnackbarMessage] = useState(""); // Snackbar message
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
 
-  // Load cart items from Local Storage on initial render
   useEffect(() => {
     const savedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
     setCartItems(savedCartItems);
@@ -54,7 +53,7 @@ const Cart = ({
     if (!deliveryInfo.address) newErrors.address = "Address is required.";
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Return true if no errors
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleOrderConfirm = async () => {
@@ -63,45 +62,57 @@ const Cart = ({
       return;
     }
 
-    try {
-      const orderDetails = {
-        deliveryInfo: deliveryInfo,
-        orderSummary: {
-          items: cartItems,
-          total: calculateTotal(),
-        },
-        paymentMethod: paymentMethod,
-      };
+    if (paymentMethod === "cash_on_delivery") {
+      try {
+        const orderDetails = {
+          deliveryInfo,
+          orderSummary: {
+            items: cartItems,
+            total: calculateTotal(),
+          },
+          paymentMethod,
+        };
 
-      await orders(orderDetails);
+        await orders(orderDetails);
 
-      // axios
-      //   .post("http://localhost:5000/cart/orders", orderDetails)
-      //   .then((response) => {
-      //     console.log("Order successful:", response.data);
+        setSnackbarMessage("Order placed successfully!");
+        setSnackbarOpen(true);
 
-      // Show success notification
-      setSnackbarMessage("Order placed successfully!");
-      setSnackbarOpen(true);
+        setDeliveryInfo({
+          name: "",
+          email: "",
+          phone: "",
+          city: "",
+          state: "",
+          zip: "",
+          address: "",
+        });
+        setCartItems([]);
+        setPaymentMethod("cash_on_delivery");
+        localStorage.removeItem("cartItems");
+        setShowSuccess(true);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    } else if (paymentMethod === "online_payment") {
+      const stripe = await stripePromise;
+      try {
+        cartItems.forEach((item) => {
+          if (isNaN(item.price) || item.price <= 0) {
+            console.error(`Invalid price for item: ${item.id}`);
+            return; // Stop the process if the price is invalid
+          }
+        });
 
-      // Clear the delivery information, order summary, and payment method
-      setDeliveryInfo({
-        name: "",
-        email: "",
-        phone: "",
-        city: "",
-        state: "",
-        zip: "",
-        address: "",
-      });
-      setCartItems([]); // Clear the cart items
-      setPaymentMethod("cash_on_delivery"); // Reset payment method or set to default
-
-      // Optionally, you can also remove items from local storage
-      localStorage.removeItem("cartItems");
-      setShowSuccess(true);
-    } catch (error) {
-      console.error("Error:", error);
+        const { sessionId } = await createPaymentSession(
+          cartItems,
+          deliveryInfo
+        );
+        console.log(cartItems);
+        await stripe.redirectToCheckout({ sessionId });
+      } catch (error) {
+        console.error("Error during online payment:", error);
+      }
     }
   };
 
@@ -122,7 +133,6 @@ const Cart = ({
             errors={errors}
           />
         </Grid>
-
         <Grid item xs={12} md={5}>
           <OrderSummary
             cartItems={cartItems}
@@ -138,7 +148,6 @@ const Cart = ({
         handleOrderConfirm={handleOrderConfirm}
       />
 
-      {/* Snackbar for showing the success message */}
       <Snackbar
         open={showSuccess}
         autoHideDuration={4000}

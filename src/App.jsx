@@ -62,9 +62,11 @@ import Dashboard from "./Dashboard/Dashboard";
 import AdoptablePetDetails from "./Pages/Pets/Adoption/AdoptablePetDetails";
 import ScrollToTop from "./context/ScrollToTop";
 
+
 const App = () => {
   return (
     <>
+   
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
@@ -207,6 +209,7 @@ const App = () => {
 
         <Footer />
       </ThemeProvider>
+     
     </>
   );
 };

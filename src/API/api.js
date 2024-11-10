@@ -45,6 +45,25 @@ export const orders = async (orderDetails) => {
   return await axios.post(`${URL}/cart/orders`, orderDetails);
 };
 
+// Order Payment
+export const createPaymentSession = async (cartItems, deliveryInfo) => {
+  console.log(cartItems);
+  try {
+    const response = await axios.post(`${URL}/cart/orders/create-payment`, {
+      items: cartItems.map((item) => ({
+        id: item.id,
+        quantity: item.quantity,
+        price: item.price,
+      })),
+      deliveryInfo,
+    });
+    return response.data; // This should contain sessionId or other session details
+  } catch (error) {
+    console.error("Error creating checkout session:", error);
+    throw error;
+  }
+};
+
 // All Found Pets
 export const getFoundPets = async () => {
   return await axios.get(`${URL}/lost_found/found_pets`);

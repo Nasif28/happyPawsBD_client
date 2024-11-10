@@ -36,7 +36,7 @@ const PaymentMethod = ({
         <RadioGroup value={paymentMethod} onChange={handleChange}>
           <FormControlLabel
             value="online_payment"
-            control={<Radio disabled />}
+            control={<Radio />}
             label="Online Payment"
           />
           <FormControlLabel
