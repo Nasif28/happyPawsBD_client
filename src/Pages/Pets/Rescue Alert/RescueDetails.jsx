@@ -15,7 +15,7 @@ const RescueDetails = () => {
         </Typography>
 
         <Typography variant="body1">
-          "At HAPPY PAWS BD, we believe in the power of community.
+          "At Cute Paw, we believe in the power of community.
           <br />
           If you come across an animal that is in distress, injured, or in need
           of immediate rescue, let us know so we can take action.

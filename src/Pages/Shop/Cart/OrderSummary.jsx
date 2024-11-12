@@ -33,7 +33,7 @@ const OrderSummary = ({
           >
             <ListItemText
               primary={item.name}
-              secondary={`$${item.price.toFixed(2)} x ${item.quantity}`}
+              secondary={`৳${item.price.toFixed(2)} x ${item.quantity}`}
             />
             <Box>
               <IconButton
@@ -58,10 +58,10 @@ const OrderSummary = ({
         ))}
       </List>
       <Typography variant="h6" gutterBottom>
-        Subtotal: ${calculateTotal()}
+        Subtotal: ৳{calculateTotal()}
       </Typography>
       <Typography variant="h6" gutterBottom>
-        Total: ${calculateTotal()}
+        Total: ৳{calculateTotal()}
       </Typography>
     </Box>
   );

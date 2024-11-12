@@ -78,6 +78,7 @@ const Cart = ({ handleQuantityChange }) => {
         setSnackbarMessage("Order placed successfully!");
         setSnackbarOpen(true);
 
+        // Clear form and cart data after placing order
         setDeliveryInfo({
           name: "",
           email: "",
@@ -87,9 +88,9 @@ const Cart = ({ handleQuantityChange }) => {
           zip: "",
           address: "",
         });
-        setCartItems([]);
+        setCartItems([]); // Clear the cart from state
+        localStorage.removeItem("cartItems"); // Remove cart from localStorage
         setPaymentMethod("cash_on_delivery");
-        localStorage.removeItem("cartItems");
         setShowSuccess(true);
       } catch (error) {
         console.error("Error:", error);
@@ -108,7 +109,25 @@ const Cart = ({ handleQuantityChange }) => {
           cartItems,
           deliveryInfo
         );
-        console.log(cartItems);
+
+        setSnackbarMessage("Order placed successfully!");
+        setSnackbarOpen(true);
+
+        // Clear form and cart data after placing order
+        setDeliveryInfo({
+          name: "",
+          email: "",
+          phone: "",
+          city: "",
+          state: "",
+          zip: "",
+          address: "",
+        });
+        setCartItems([]); // Clear the cart from state
+        localStorage.removeItem("cartItems"); // Remove cart from localStorage
+        setPaymentMethod("cash_on_delivery");
+        setShowSuccess(true);
+
         await stripe.redirectToCheckout({ sessionId });
       } catch (error) {
         console.error("Error during online payment:", error);

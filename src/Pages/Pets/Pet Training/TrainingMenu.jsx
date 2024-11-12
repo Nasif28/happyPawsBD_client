@@ -26,7 +26,7 @@ const TrainingMenu = () => {
         color="primary.headline"
         sx={{ lineHeight: 1.5, fontWeight: "900", textAlign: "center" }}
       >
-        Happy Paws BD Focuses On
+        Cute Paw Focuses On
       </Typography>
 
       {/* Traning Section Starts ----------------------------------------------------  */}
