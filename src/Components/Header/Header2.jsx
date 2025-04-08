@@ -120,7 +120,7 @@ const Header2 = (props) => {
           />
         </Link>
       </Typography>
-      ;
+
       <Divider />
       <List>
         <ListItem disablePadding onClick={handleDrawerToggle}>
@@ -137,9 +137,9 @@ const Header2 = (props) => {
         </ListItem>
         <Collapse in={openMenus.pets} timeout="auto" unmountOnExit>
           <List component="div" disablePadding onClick={handleDrawerToggle}>
-            {/* <ListItemButton sx={{ pl: 4 }} component={Link} to="/pet_info">
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/pet_info">
               <ListItemText primary="Pet Info" />
-            </ListItemButton> */}
+            </ListItemButton>
 
             <ListItemButton sx={{ pl: 4 }} component={Link} to="/petcare">
               <ListItemText primary="Pet Care" />
@@ -177,29 +177,29 @@ const Header2 = (props) => {
         </ListItem>
         <Collapse in={openMenus.veterinary} timeout="auto" unmountOnExit>
           <List component="div" disablePadding onClick={handleDrawerToggle}>
-            {/* <ListItemButton
+            <ListItemButton
               sx={{ pl: 4 }}
               component={Link}
               to="/online_consultation"
             >
               <ListItemText primary="Online Consultation" />
-            </ListItemButton> */}
+            </ListItemButton>
 
-            {/* <ListItemButton
+            <ListItemButton
               sx={{ pl: 4 }}
               component={Link}
               to="/in_person_consultation"
             >
               <ListItemText primary="In-Person Consultation" />
-            </ListItemButton> */}
+            </ListItemButton>
 
             <ListItemButton sx={{ pl: 4 }} component={Link} to="/findvet">
               <ListItemText primary="Find Vet" />
             </ListItemButton>
 
-            {/* <ListItemButton sx={{ pl: 4 }} component={Link} to="/house_calls">
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/house_calls">
               <ListItemText primary="House Calls" />
-            </ListItemButton> */}
+            </ListItemButton>
 
             <ListItemButton
               sx={{ pl: 4 }}
@@ -209,12 +209,12 @@ const Header2 = (props) => {
               <ListItemText primary="Health Care Blog" />
             </ListItemButton>
 
-            {/* <ListItemButton sx={{ pl: 4 }} component={Link} to="/covid19_info">
+            <ListItemButton sx={{ pl: 4 }} component={Link} to="/covid19_info">
               <ListItemText primary="COVID-19 Info" />
-            </ListItemButton> */}
+            </ListItemButton>
           </List>
         </Collapse>
-        {/* 
+
         <ListItem disablePadding>
           <ListItemButton onClick={() => handleMenuToggle("getInvolve")}>
             <ListItemText primary="Get Involve" />
@@ -250,7 +250,7 @@ const Header2 = (props) => {
               <ListItemText primary="Reviews" />
             </ListItemButton>
           </List>
-        </Collapse> */}
+        </Collapse>
 
         <ListItem disablePadding onClick={handleDrawerToggle}>
           <ListItemButton component={Link} to="/about_us">
@@ -368,7 +368,7 @@ const Header2 = (props) => {
               <KeyboardArrowDownIcon fontSize="12" />
             </Button>
 
-            {/* <Button
+            <Button
               onClick={handleMenu4Click}
               sx={{
                 color: "inherit",
@@ -378,7 +378,7 @@ const Header2 = (props) => {
             >
               Get Involve
               <KeyboardArrowDownIcon fontSize="12" />
-            </Button> */}
+            </Button>
 
             <Button sx={{ "&:hover": { backgroundColor: "primary.back" } }}>
               <Link
@@ -422,7 +422,7 @@ const Header2 = (props) => {
               horizontal: "left",
             }}
           >
-            {/* <MenuItem
+            <MenuItem
               onClick={handleMenu1Close}
               sx={{
                 fontSize: "",
@@ -439,7 +439,7 @@ const Header2 = (props) => {
               >
                 PET INFO
               </Link>
-            </MenuItem> */}
+            </MenuItem>
 
             <MenuItem
               onClick={handleMenu1Close}
@@ -547,7 +547,7 @@ const Header2 = (props) => {
               horizontal: "left",
             }}
           >
-            {/* <MenuItem
+            <MenuItem
               onClick={handleMenu3Close}
               sx={{
                 fontSize: "",
@@ -564,9 +564,9 @@ const Header2 = (props) => {
               >
                 ONLINE CONSULTATION
               </Link>
-            </MenuItem> */}
+            </MenuItem>
 
-            {/* <MenuItem
+            <MenuItem
               on
               Click={handleMenu3Close}
               sx={{
@@ -584,7 +584,7 @@ const Header2 = (props) => {
               >
                 IN-PERSON CONSULTATION
               </Link>
-            </MenuItem> */}
+            </MenuItem>
 
             <MenuItem
               onClick={handleMenu3Close}
@@ -605,7 +605,7 @@ const Header2 = (props) => {
               </Link>
             </MenuItem>
 
-            {/* <MenuItem
+            <MenuItem
               onClick={handleMenu3Close}
               sx={{
                 fontSize: "",
@@ -622,7 +622,7 @@ const Header2 = (props) => {
               >
                 HOUSE CALLS
               </Link>
-            </MenuItem> */}
+            </MenuItem>
 
             <MenuItem
               onClick={handleMenu3Close}
@@ -643,7 +643,7 @@ const Header2 = (props) => {
               </Link>
             </MenuItem>
 
-            {/* <MenuItem
+            <MenuItem
               onClick={handleMenu3Close}
               sx={{
                 fontSize: "",
@@ -660,10 +660,10 @@ const Header2 = (props) => {
               >
                 COVID-19 INFO
               </Link>
-            </MenuItem> */}
+            </MenuItem>
           </Menu>
 
-          {/* <Menu
+          <Menu
             anchorEl={menu4AnchorEl}
             keepMounted
             open={Boolean(menu4AnchorEl)}
@@ -790,7 +790,7 @@ const Header2 = (props) => {
                 REVIEWS
               </Link>
             </MenuItem>
-          </Menu> */}
+          </Menu>
 
           {/* Profile Setting Icon or Login ----------------------------- */}
           {user ? (
@@ -831,7 +831,7 @@ const Header2 = (props) => {
                   </Link>
                 </MenuItem>
 
-                {/* <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem onClick={handleCloseUserMenu}>
                   <Typography
                     textAlign="center"
                     fontWeight="bold"
@@ -847,9 +847,9 @@ const Header2 = (props) => {
                   >
                     Account
                   </Typography>
-                </MenuItem> */}
+                </MenuItem>
 
-                {/* <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem onClick={handleCloseUserMenu}>
                   <Typography
                     textAlign="center"
                     fontWeight="bold"
@@ -865,7 +865,7 @@ const Header2 = (props) => {
                   >
                     Dashboard
                   </Typography>
-                </MenuItem> */}
+                </MenuItem>
 
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography
@@ -901,7 +901,7 @@ const Header2 = (props) => {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: "block", md: "none" },

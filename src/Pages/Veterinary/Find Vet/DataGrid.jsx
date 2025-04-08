@@ -4,22 +4,12 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { LocationOn } from "@mui/icons-material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LanguageIcon from "@mui/icons-material/Language";
 import ScheduleIcon from "@mui/icons-material/Schedule";
-import {
-  Box,
-  Button,
-  CardActionArea,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  IconButton,
-} from "@mui/material";
+import { Box, Button, Dialog } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const DataGrid = ({ data }) => {
@@ -76,8 +66,10 @@ const DataGrid = ({ data }) => {
               </Typography>
 
               <Typography variant="body2" sx={{ pt: 1 }}>
-                <strong> Contact: </strong>
-                {item.contact}
+                <strong>Contact:</strong>{" "}
+                {Array.isArray(item.contact)
+                  ? item.contact.join(", ")
+                  : item.contact}
               </Typography>
 
               <Box display={"flex"} justifyContent={"space-between"}>
@@ -183,7 +175,9 @@ const DataGrid = ({ data }) => {
                 }}
               >
                 <PhoneIcon fontSize="small" style={{ marginRight: "8px" }} />
-                {selectedVet.contact}
+                {Array.isArray(selectedVet.contact)
+                  ? selectedVet.contact.join(", ")
+                  : selectedVet.contact}
               </Typography>
 
               <Typography

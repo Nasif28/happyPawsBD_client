@@ -43,7 +43,7 @@ const Footer = () => {
               <img src={HPBDLogo} alt="Happy Paws BD" width={150} />
             </Typography>
             <Typography fontWeight={900} variant="h5" gutterBottom>
-              Cute Paw{" "}
+            Happy Paws BD{" "}
             </Typography>
 
             <Typography
@@ -51,7 +51,7 @@ const Footer = () => {
               variant="body2"
               // textAlign={"justify"}
             >
-              The "Cute Paw" project is a comprehensive pet website aimed
+              The "Happy Paws BD" project is a comprehensive pet website aimed
               at promoting pet welfare and providing a range of services to pet
               owners and enthusiasts.
             </Typography>
@@ -332,7 +332,7 @@ const Footer = () => {
           variant="body2"
         >
           <span>
-            Copyright © {new Date().getFullYear()} Cute Paw. All rights
+            Copyright © {new Date().getFullYear()} Happy Paws BD. All rights
             reserved <br />
             Developed by Mahmudul
           </span>

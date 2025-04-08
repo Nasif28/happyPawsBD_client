@@ -49,7 +49,7 @@ const PetTrainingBanner = () => {
               color="primary.para"
               sx={{ fontWeight: "500" }}
             >
-              Cute Paw - Along with boarding and daycare, we offer a range
+             Happy Paws BD - Along with boarding and daycare, we offer a range
               of training programs integrated through all three services. See
               below for all our options.
             </Typography>
