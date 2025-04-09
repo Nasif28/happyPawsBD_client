@@ -54,6 +54,7 @@ const Adoptable_Animals = () => {
                       component="img"
                       image={item.photos}
                       alt={item.name}
+                      height={250}
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h6" fontWeight={700}>

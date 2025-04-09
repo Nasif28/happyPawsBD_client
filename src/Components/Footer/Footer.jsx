@@ -43,7 +43,7 @@ const Footer = () => {
               <img src={HPBDLogo} alt="Happy Paws BD" width={150} />
             </Typography>
             <Typography fontWeight={900} variant="h5" gutterBottom>
-            Happy Paws BD{" "}
+              Happy Paws BD{" "}
             </Typography>
 
             <Typography
@@ -287,36 +287,6 @@ const Footer = () => {
       <Divider variant="body">All Rights Reserved</Divider>
 
       {/* Footer */}
-      {/* <Box
-        component="footer"
-        sx={{
-          py: 2,
-          textAlign: "center",
-        }}
-      >
-        <Stack
-          direction={{ xs: "column", sm: "row" }}
-          spacing={1}
-          alignItems="center"
-          justifyContent="center"
-          variant="body2"
-        >
-          <span>© {new Date().getFullYear()} Happy Paws BD. Developed by</span>
-          <a
-            className="span2"
-            href="https://www.facebook.com/nasif28/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            &nbsp; Nasif Jihan &nbsp;
-          </a>
-          <Avatar
-            alt="Nasif Jihan"
-            src={NasifIcon}
-            sx={{ width: 24, height: 24 }}
-          />
-        </Stack>
-      </Box> */}
       <Box
         component="footer"
         sx={{
@@ -331,11 +301,20 @@ const Footer = () => {
           justifyContent="center"
           variant="body2"
         >
-          <span>
-            Copyright © {new Date().getFullYear()} Happy Paws BD. All rights
-            reserved <br />
-            Developed by Mahmudul
-          </span>
+          <span>© {new Date().getFullYear()} Happy Paws BD. Developed by</span>
+          <Avatar
+            alt="Nasif Jihan"
+            src={NasifIcon}
+            sx={{ width: 18, height: 18 }}
+          />
+          <a
+            className="span2"
+            href="https://www.facebook.com/nasifjihan/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Nasif Jihan
+          </a>
         </Stack>
       </Box>
     </Box>
